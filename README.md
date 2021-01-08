@@ -1,42 +1,46 @@
-# døllar
-fully decentralized self-stabilizing dollar.
+# ∉thic
+Ethical, decentralized self-stabilizing money. Not an element of fiat monetary systems.
 
 ## stablecoin
 
-- shorthand name: `døllar`
-- full name: `Empty Set Dollar`
-- symbol: `ESD`
+- shorthand name: `∉thic`
+- full name: `Ethic Money`
+- symbol: `ETHC`
 - decimals: `18`
-- character: `∅ [U+2205], ∅100`
+- character: `∉ [U+2209]`
 - icons:
 
-![mfGW7wXg_400x400](https://raw.githubusercontent.com/emptysetsquad/dollar-dashboard/master/public/logo/esd_logo_circle.png)
-![mfGW7wXg_400x400](https://raw.githubusercontent.com/emptysetsquad/dollar-dashboard/master/public/logo/esd_logo_square.png)
+![mfGW7wXg_400x400](https://raw.githubusercontent.com/douglashorn/ethic-dashboard/master/public/logo/ethc_logo.png)
 
 ## dashboard
 
-simple [dashboard](https://github.com/emptysetsquad/dollar-dashboard) for interacting with the døllar protocol.
+simple [dashboard](https://github.com/douglashorn/ethic-dashboard) for interacting with the ∉thic protocol.
 
-## whitepaper
+## Litepaper
 
-is available [here](https://github.com/emptysetsquad/dollar/blob/master/d%C3%B8llar.pdf).
+is available [here](https://github.com/douglashorn/ethic/blob/master/xxxxx.pdf).
+
+Extending the Empty Set Dollar Whitepaper, available [here](https://github.com/emptysetsquad/dollar/blob/master/d%C3%B8llar.pdf).
 
 ## contracts
 ### mainnet
-- `0x443D2f2755DB5942601fa062Cc248aAA153313D3` **DAO**
-- `0x36F3FD68E7325a35EB768F1AedaAe9EA0689d723` **Døllar**
-- `0xea9f8bb8B5e8BA3D38628f0E18Ee82300eddBa0E` **Oracle**
-- `0x88ff79eB2Bc5850F27315415da8685282C7610F9` **UniswapV2 USDC:ESD Pair**
-- `0x4082d11e506e3250009a991061acd2176077c88f` **LP Incentivation Pool**
+- `0x----------------------------------------` **DAO**
+- `0x------------` **∉thic**
+- `0x------------` **Oracle**
+- `0x-----------` **UniswapV2 USDC:ETHC Pair**
+- `0x-----------` **LP Incentivation Pool**
 
 ## audit
 
-is available [here](https://github.com/emptysetsquad/dollar/blob/master/audit/REP-Dollar-06-11-20.pdf).
+Audit for forked codebase is available [here](https://github.com/emptysetsquad/dollar/blob/master/audit/REP-Dollar-06-11-20.pdf).
+
+Audit for ∉thic codebase: coming soon.
 
 ## disclaimer
 this project is an experiment - the protocol is audited, and we've put a significant amount of work into testing as well as generally de-risking the design of its core mechanism, however participants should take great caution as bugs resulting in loss of funds are always a possibility.
 
 ```
+Copyright 2020 Douglas Horn <ethicmoney@protonmail.com>
 Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
 Licensed under the Apache License, Version 2.0 (the "License");
