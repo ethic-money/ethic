@@ -37,7 +37,7 @@ Audit for forked codebase is available [here](https://github.com/emptysetsquad/d
 Audit for ∉thic codebase: coming soon.
 
 ## Disclaimer
-this project is an experiment - the protocol is audited, and we've put a significant amount of work into testing as well as generally de-risking the design of its core mechanism, however participants should take great caution as bugs resulting in loss of funds are always a possibility.
+This project is an experiment in decentralize finance and monetary systems. Its contracts are unaudited but based on previously audited open source software code. These contracts operate on a blockchain with dependencies on open source software code and price oracles that are accessed by wallet applications on computer operating systems - all are build using a variety of frameworks, programming languages and code libraries believed to be reliable but outside the control of the developers. Bugs, errors and exploits unknown to the developers may exist or be discovered or introduced at any layer or step in the technology stack of components that make this application operate. All participants should take great caution when interacting with this experimental software. The loss of some or all funds contributed to this experimental system is possibilite. The developers disavow any fiduciary responsibility, custodianship or legal or moral responsibilities for losses resulting from anything outside their direct, explicit, intentioned actions. 
 
 ```
 Copyright 2021 Douglas Horn <ethicmoney@protonmail.com>
