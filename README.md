@@ -59,20 +59,25 @@ Ethical, decentralized, self-stabilizing money. Not an element of fiat monetary 
 
 ## Dashboard
 
-simple [dashboard](https://github.com/douglashorn/ethic-dashboard) for interacting with the ∉thic protocol.
+A simple [dashboard](https://github.com/douglashorn/ethic-dashboard) for interacting with the ∉thic protocol.
 
 ## Litepaper
 
-is available [here](https://github.com/douglashorn/ethic/blob/master/xxxxx.pdf).
-
-Extending the Empty Set Dollar Whitepaper, available [here](https://github.com/emptysetsquad/dollar/blob/master/d%C3%B8llar.pdf).
+The [∉thic Litepaper](https://github.com/douglashorn/ethic/blob/master/xxxxx.pdf) describes unique features of ∉thic among Set Dollar Protocols, originally developed in the [Empty Set Dollar Whitepaper](https://github.com/emptysetsquad/dollar/blob/master/d%C3%B8llar.pdf).
 
 ## Community Owned and Governed
 
+∉thic is entirely owned and operated by the community of ETHC token holders. V1 governance will exist on Ethereum's Aragon but will rapidly (within 3 months of launch) migrate to V2 governance on the Telos Decide governance system which will allow benefits including:
 
+* Free voting on all ballots
+* Deterministic Cross-Chain Interaction (CCI) to Ethereum to exectue ballot outcomes
+* Fast, easy voting experience via the custom ∉thic Voting Wallet mobile app 
 
 ## Open Source Software - A Legacy of Contributions
 
+∉thic aims to honor the legacy of open source software by first acknowledging the long line ofcontributions of developers over the past 70 years of computer science and particularly cryptocurrencies. A portion of the developer fees will be paid to EmptySetSquad for their contributions and the first governance votes on ∉thic will determine which other service providers or developers (e.g. Metamask, Ethereum developers, etc.) the ETHC token holders wish to also include in the ongoing developer reward structure. 
+
+Rewarding developers incentivizes them to remain with a project, uncovering bugs, developing new and improved features and listening to the community that controls their fees. This is the ultimate predictor of a project that will grow and thrive over years to come.
 
 ## Contracts
 ### Mainnet
