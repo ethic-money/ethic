@@ -1,18 +1,18 @@
 # ∉thic
 Ethical, decentralized self-stabilizing money. Not an element of fiat monetary systems.
 
-## stablecoin
+## Stablecoin
 
 - shorthand name: `∉thic`
 - full name: `Ethic Money`
 - symbol: `ETHC`
 - decimals: `18`
 - character: `∉ [U+2209]`
-- icons:
+- logo:
 
-![mfGW7wXg_400x400](https://raw.githubusercontent.com/douglashorn/ethic-dashboard/master/public/logo/ethc_logo.png)
+![](https://raw.githubusercontent.com/DouglasHorn/ethic-dashboard/master/ethic_logo.png)
 
-## dashboard
+## Dashboard
 
 simple [dashboard](https://github.com/douglashorn/ethic-dashboard) for interacting with the ∉thic protocol.
 
@@ -22,25 +22,25 @@ is available [here](https://github.com/douglashorn/ethic/blob/master/xxxxx.pdf).
 
 Extending the Empty Set Dollar Whitepaper, available [here](https://github.com/emptysetsquad/dollar/blob/master/d%C3%B8llar.pdf).
 
-## contracts
-### mainnet
+## Contracts
+### Mainnet
 - `0x----------------------------------------` **DAO**
 - `0x------------` **∉thic**
 - `0x------------` **Oracle**
 - `0x-----------` **UniswapV2 USDC:ETHC Pair**
 - `0x-----------` **LP Incentivation Pool**
 
-## audit
+## Audit
 
 Audit for forked codebase is available [here](https://github.com/emptysetsquad/dollar/blob/master/audit/REP-Dollar-06-11-20.pdf).
 
 Audit for ∉thic codebase: coming soon.
 
-## disclaimer
+## Disclaimer
 this project is an experiment - the protocol is audited, and we've put a significant amount of work into testing as well as generally de-risking the design of its core mechanism, however participants should take great caution as bugs resulting in loss of funds are always a possibility.
 
 ```
-Copyright 2020 Douglas Horn <ethicmoney@protonmail.com>
+Copyright 2021 Douglas Horn <ethicmoney@protonmail.com>
 Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -57,4 +57,4 @@ limitations under the License.
 ```
 
 <br>
-made with 💔️ by the {ess}.
+Escape the Fiat Monetary System
