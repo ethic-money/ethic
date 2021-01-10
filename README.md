@@ -2,6 +2,14 @@
 
 Ethical, decentralized, self-stabilizing money. Not an element of fiat monetary systems.
 
+| :white_check_mark: Algorithmic Stablecoin | :x: NO Rebasing |
+| --- | --- |
+| :white_check_mark: Voluntary Elastic Supply | :x: NO Premine |
+| :white_check_mark: 100% Community Governance | :x: NO Pre-existing Developer Pool |
+
+ :white_check_mark: Publicly Identified, Experienced Developers 
+
+
 ## What is ∉thic?
 
 ∉thic is a stablecoin that is meant to revolutionize the role of money, and to usher in greater responsibility and professionalism to the DeFi world. The symbol for ∉thic is the mathematical sign, **∉**, meaning "Not an element of" (a set). This is meant to express ∉thic's core mission to define a stable, ethical store of value, unit of account, and medium of exchange that is not an element of the unethical systems that comprise fiat monies, as well as to pay homage to the EmptySetSquad who anonymously authored the underlying smart contract framework ∉thic is built upon.
@@ -55,15 +63,15 @@ Ethical, decentralized, self-stabilizing money. Not an element of fiat monetary 
 - character: `∉ [U+2209]`
 - logo:
 
-![image](https://raw.githubusercontent.com/DouglasHorn/ethic-dashboard/master/ethic_logo.png)
+![image](https://raw.githubusercontent.com/ethic-money/ethic-dashboard/master/ethic_logo.png)
 
 ## Dashboard
 
-A simple [dashboard](https://github.com/douglashorn/ethic-dashboard) for interacting with the ∉thic protocol.
+A simple [dashboard](https://github.com/ethic-money/ethic-dashboard) for interacting with the ∉thic protocol.
 
 ## Litepaper
 
-The [∉thic Litepaper](https://github.com/douglashorn/ethic/blob/master/xxxxx.pdf) describes unique features of ∉thic among Set Dollar Protocols, originally developed in the [Empty Set Dollar Whitepaper](https://github.com/emptysetsquad/dollar/blob/master/d%C3%B8llar.pdf).
+The [∉thic Litepaper](https://github.com/ethic-money/ethic/blob/master/xxxxx.pdf) describes unique features of ∉thic among Set Dollar Protocols, originally developed in the [Empty Set Dollar Whitepaper](https://github.com/emptysetsquad/dollar/blob/master/d%C3%B8llar.pdf).
 
 ## Community Owned and Governed
 
@@ -97,7 +105,7 @@ Audit for ∉thic codebase: coming soon.
 This project is an experiment in decentralize finance and monetary systems. Its contracts are unaudited but based on previously audited open source software code. These contracts operate on a blockchain with dependencies on open source software code and price oracles that are accessed by wallet applications on computer operating systems - all are build using a variety of frameworks, programming languages and code libraries believed to be reliable but outside the control of the developers. Bugs, errors and exploits unknown to the developers may exist or be discovered or introduced at any layer or step in the technology stack of components that make this application operate. All participants should take great caution when interacting with this experimental software. The loss of some or all funds contributed to this experimental system is possibilite. The developers disavow any fiduciary responsibility, custodianship or legal or moral responsibilities for losses resulting from anything outside their direct, explicit, intentioned actions. 
 
 ```
-Copyright 2021 Douglas Horn <ethicmoney@protonmail.com>
+Copyright 2021 Douglas Horn <devs@ethic.money>
 Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
 Licensed under the Apache License, Version 2.0 (the "License");
