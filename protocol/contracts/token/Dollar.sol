@@ -27,7 +27,7 @@ import "./IDollar.sol";
 contract Dollar is IDollar, MinterRole, ERC20Detailed, Permittable, ERC20Burnable  {
 
     constructor()
-    ERC20Detailed("Empty Set Dollar", "ESD", 18)
+    ERC20Detailed("Ethic Money", "ETHC", 18)
     Permittable()
     public
     { }
