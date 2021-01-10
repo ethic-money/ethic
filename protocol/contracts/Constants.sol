@@ -25,12 +25,12 @@ library Constants {
 
     /* Bootstrapping */
     uint256 private constant BOOTSTRAPPING_PERIOD = 90;
-    uint256 private constant BOOTSTRAPPING_PRICE = 11e17; // 1.10 USDC
+    uint256 private constant BOOTSTRAPPING_PRICE = 11e17; // 1.10 DAI
     uint256 private constant BOOTSTRAPPING_SPEEDUP_FACTOR = 3; // 30 days @ 8 hours
 
     /* Oracle */
-    address private constant USDC = address(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
-    uint256 private constant ORACLE_RESERVE_MINIMUM = 1e10; // 10,000 USDC
+    address private constant DAI_ADDRESS = address(0x6B175474E89094C44Da98b954EedeAC495271d0F);
+    uint256 private constant ORACLE_RESERVE_MINIMUM = 1e10; // 10,000 DAI
 
     /* Bonding */
     uint256 private constant INITIAL_STAKE_MULTIPLE = 1e6; // 100 ESD -> 100M ESDS
@@ -85,8 +85,8 @@ library Constants {
      * Getters
      */
 
-    function getUsdcAddress() internal pure returns (address) {
-        return USDC;
+    function getDaiAddress() internal pure returns (address) {
+        return DAI_ADDRESS;
     }
 
     function getOracleReserveMinimum() internal pure returns (uint256) {
