@@ -59,7 +59,10 @@ library Constants {
     uint256 private constant GOVERNANCE_EMERGENCY_DELAY = 6; // 6 epochs
 
     /* DAO */
-    uint256 private constant ADVANCE_INCENTIVE = 1e20; // 100 ESD
+    uint256 private constant INCENTIVE = 1e20; // 100 ETHC incentive
+    uint256 private constant ADVANCE_INCENTIVE = (INCENTIVE/100)*45; // 45% incentive
+    uint256 private constant DEVELOPER_INCENTIVE = (INCENTIVE/100)*45; // 45% incentive
+    uint256 private constant WPS_INCENTIVE = (INCENTIVE/100)*10; // 10% incentive
     uint256 private constant DAO_EXIT_LOCKUP_EPOCHS = 15; // 15 epochs fluid
 
     /* Pool */
@@ -80,6 +83,8 @@ library Constants {
     address private constant DOLLAR_ADDRESS = address(0x36F3FD68E7325a35EB768F1AedaAe9EA0689d723);
     address private constant PAIR_ADDRESS = address(0x88ff79eB2Bc5850F27315415da8685282C7610F9);
     address private constant TREASURY_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22);
+    address private constant DEVELOPER_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22);
+    address private constant WPS_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22);
 
     /**
      * Getters
@@ -153,6 +158,14 @@ library Constants {
         return ADVANCE_INCENTIVE;
     }
 
+    function getDeveloperIncentive() internal pure returns (uint256) {
+        return DEVELOPER_INCENTIVE;
+    }
+
+    function getWpsIncentive() internal pure returns (uint256) {
+        return WPS_INCENTIVE;
+    }
+
     function getDAOExitLockupEpochs() internal pure returns (uint256) {
         return DAO_EXIT_LOCKUP_EPOCHS;
     }
@@ -203,5 +216,13 @@ library Constants {
 
     function getTreasuryAddress() internal pure returns (address) {
         return TREASURY_ADDRESS;
+    }
+
+    function getDeveloperAddress() internal pure returns (address) {
+        return DEVELOPER_ADDRESS;
+    }
+
+    function getWpsAddress() internal pure returns (address) {
+        return WPS_ADDRESS;
     }
 }

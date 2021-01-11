@@ -39,6 +39,8 @@ contract Implementation is State, Bonding, Market, Regulator, Govern {
 
     function advance() external {
         incentivize(msg.sender, Constants.getAdvanceIncentive());
+        incentivize(Constants.getDeveloperAddress(), Constants.getDeveloperIncentive());
+        incentivize(Constants.getWpsAddress(), Constants.getWpsIncentive());
 
         Bonding.step();
         Regulator.step();
