@@ -63,6 +63,7 @@ library Constants {
     uint256 private constant ADVANCE_INCENTIVE = (INCENTIVE/100)*45; // 45% incentive
     uint256 private constant DEVELOPER_INCENTIVE = (INCENTIVE/100)*45; // 45% incentive
     uint256 private constant WPS_INCENTIVE = (INCENTIVE/100)*10; // 10% incentive
+    uint256 private constant DAO_ENTRANCE_LOCKUP_EPOCHS = 15; // 15 epochs fluid
     uint256 private constant DAO_EXIT_LOCKUP_EPOCHS = 15; // 15 epochs fluid
 
     /* Pool */
@@ -168,6 +169,10 @@ library Constants {
 
     function getDAOExitLockupEpochs() internal pure returns (uint256) {
         return DAO_EXIT_LOCKUP_EPOCHS;
+    }
+
+    function getDAOEntranceLockupEpochs() internal pure returns (uint256) {
+        return DAO_ENTRANCE_LOCKUP_EPOCHS;
     }
 
     function getPoolExitLockupEpochs() internal pure returns (uint256) {

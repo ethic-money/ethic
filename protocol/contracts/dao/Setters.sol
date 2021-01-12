@@ -110,8 +110,8 @@ contract Setters is State, Getters {
         _state.balance.coupons = _state.balance.coupons.sub(amount, reason);
     }
 
-    function unfreeze(address account) internal {
-        _state.accounts[account].fluidUntil = epoch().add(Constants.getDAOExitLockupEpochs());
+    function unfreeze(address account, uint256 epochs) internal {
+        _state.accounts[account].fluidUntil = epoch().add(epochs);
     }
 
     function updateAllowanceCoupons(address owner, address spender, uint256 amount) internal {
