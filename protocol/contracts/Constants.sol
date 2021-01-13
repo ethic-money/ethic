@@ -72,6 +72,8 @@ library Constants {
     /* Market */
     uint256 private constant COUPON_EXPIRATION = 90;
     uint256 private constant DEBT_RATIO_CAP = 20e16; // 20%
+    uint256 private constant INITIAL_COUPON_REDEMPTION_PENALTY = 50e16; // 50%
+    uint256 private constant COUPON_REDEMPTION_PENALTY_DECAY = 3600; // 1 hour
 
     /* Regulator */
     uint256 private constant SUPPLY_CHANGE_LIMIT = 3e16; // 3%
@@ -185,6 +187,14 @@ library Constants {
 
     function getDebtRatioCap() internal pure returns (Decimal.D256 memory) {
         return Decimal.D256({value: DEBT_RATIO_CAP});
+    }
+
+    function getInitialCouponRedemptionPenalty() internal pure returns (Decimal.D256 memory) {
+        return Decimal.D256({value: INITIAL_COUPON_REDEMPTION_PENALTY});
+    }
+
+    function getCouponRedemptionPenaltyDecay() internal pure returns (uint256) {
+        return COUPON_REDEMPTION_PENALTY_DECAY;
     }
 
     function getSupplyChangeLimit() internal pure returns (Decimal.D256 memory) {
