@@ -42,13 +42,9 @@ library Constants {
         uint256 period;
     }
 
-    uint256 private constant PREVIOUS_EPOCH_OFFSET = 0;
-    uint256 private constant PREVIOUS_EPOCH_START = 0;
-    uint256 private constant PREVIOUS_EPOCH_PERIOD = 0;
-
-    uint256 private constant CURRENT_EPOCH_OFFSET = 106;
-    uint256 private constant CURRENT_EPOCH_START = 1610292686;
-    uint256 private constant CURRENT_EPOCH_PERIOD = 3600;
+    uint256 private constant EPOCH_OFFSET = 106;
+    uint256 private constant EPOCH_START = 1610292686;
+    uint256 private constant EPOCH_PERIOD = 3600;
 
     /* Governance */
     uint256 private constant GOVERNANCE_PERIOD = 9; // 9 epochs
@@ -101,19 +97,11 @@ library Constants {
         return ORACLE_RESERVE_MINIMUM;
     }
 
-    function getPreviousEpochStrategy() internal pure returns (EpochStrategy memory) {
+    function getEpochStrategy() internal pure returns (EpochStrategy memory) {
         return EpochStrategy({
-            offset: PREVIOUS_EPOCH_OFFSET,
-            start: PREVIOUS_EPOCH_START,
-            period: PREVIOUS_EPOCH_PERIOD
-        });
-    }
-
-    function getCurrentEpochStrategy() internal pure returns (EpochStrategy memory) {
-        return EpochStrategy({
-            offset: CURRENT_EPOCH_OFFSET,
-            start: CURRENT_EPOCH_START,
-            period: CURRENT_EPOCH_PERIOD
+            offset: EPOCH_OFFSET,
+            start: EPOCH_START,
+            period: EPOCH_PERIOD
         });
     }
 
