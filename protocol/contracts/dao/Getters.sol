@@ -1,5 +1,5 @@
 /*
-    Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
+    Copyright 2021 Ethic Money Devs <devs@ethic.money> and Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -32,11 +32,11 @@ contract Getters is State {
      */
 
     function name() public view returns (string memory) {
-        return "Empty Set Dollar Stake";
+        return "Ethic Money Stake";
     }
 
     function symbol() public view returns (string memory) {
-        return "ESDS";
+        return "ETHCS";
     }
 
     function decimals() public view returns (uint8) {
@@ -59,8 +59,8 @@ contract Getters is State {
      * Global
      */
 
-    function dollar() public view returns (IDollar) {
-        return _state.provider.dollar;
+    function ethic() public view returns (IEthic) {
+        return _state.provider.ethic;
     }
 
     function oracle() public view returns (IOracle) {
@@ -92,7 +92,7 @@ contract Getters is State {
     }
 
     function totalNet() public view returns (uint256) {
-        return dollar().totalSupply().sub(totalDebt());
+        return ethic().totalSupply().sub(totalDebt());
     }
 
     /**
@@ -147,12 +147,9 @@ contract Getters is State {
     }
 
     function epochTime() public view returns (uint256) {
-        Constants.EpochStrategy memory current = Constants.getCurrentEpochStrategy();
-        Constants.EpochStrategy memory previous = Constants.getPreviousEpochStrategy();
+        Constants.EpochStrategy memory current = Constants.getEpochStrategy();
 
-        return blockTimestamp() < current.start ?
-            epochTimeWithStrategy(previous) :
-            epochTimeWithStrategy(current);
+        return epochTimeWithStrategy(current);
     }
 
     function epochTimeWithStrategy(Constants.EpochStrategy memory strategy) private view returns (uint256) {
