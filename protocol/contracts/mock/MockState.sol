@@ -83,7 +83,7 @@ contract MockState is Setters {
     }
 
     function unfreezeE(address account) external {
-        super.unfreeze(account);
+        super.unfreeze(account, 120); // Hardcode 120 epochs to unfreeze - 5 days @ 24 epochs per day
     }
 
     function updateAllowanceCouponsE(address owner, address spender, uint256 amount) external {
