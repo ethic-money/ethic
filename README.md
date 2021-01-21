@@ -3,7 +3,7 @@
 Ethical, decentralized, self-stabilizing money. Not an element of fiat monetary systems.
 
 | :white_check_mark: Algorithmic Stablecoin | :x: NO Rebasing |
-| --- | --- |
+| :--- | :--- |
 | :white_check_mark: Voluntary Elastic Supply | :x: NO Premine |
 | :white_check_mark: 100% Community Governance | :x: NO Pre-existing Developer Pool |
 
@@ -105,7 +105,7 @@ Audit for ∉thic codebase: coming soon.
 This project is an experiment in decentralize finance and monetary systems. Its contracts are unaudited but based on previously audited open source software code. These contracts operate on a blockchain with dependencies on open source software code and price oracles that are accessed by wallet applications on computer operating systems - all are build using a variety of frameworks, programming languages and code libraries believed to be reliable but outside the control of the developers. Bugs, errors and exploits unknown to the developers may exist or be discovered or introduced at any layer or step in the technology stack of components that make this application operate. All participants should take great caution when interacting with this experimental software. The loss of some or all funds contributed to this experimental system is possibilite. The developers disavow any fiduciary responsibility, custodianship or legal or moral responsibilities for losses resulting from anything outside their direct, explicit, intentioned actions. 
 
 ```
-Copyright 2021 Douglas Horn <devs@ethic.money>
+Copyright 2021 Ethic Money Devs <devs@ethic.money>
 Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
 Licensed under the Apache License, Version 2.0 (the "License");
