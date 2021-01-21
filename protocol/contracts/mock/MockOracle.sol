@@ -1,5 +1,5 @@
 /*
-    Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
+    Copyright 2021 Ethic Money Devs <devs@ethic.money> and Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -24,17 +24,15 @@ import "../external/Decimal.sol";
 contract MockOracle is Oracle {
     Decimal.D256 private _latestPrice;
     bool private _latestValid;
-    address private _usdc;
+    address private _dai;
 
-    constructor (address pair, address dollar, address usdc) Oracle(dollar) public {
+    constructor (address pair, address ethic, address dai) Oracle(ethic) public {
         _pair = IUniswapV2Pair(pair);
         _index = 0;
-        _usdc = usdc;
+        _dai = daiv ;
     }
 
-    function usdc() internal view returns (address) {
-        return _usdc;
-    }
+    function dai() internal view returns (address) {    }
 
     function capture() public returns (Decimal.D256 memory, bool) {
         (_latestPrice, _latestValid) = super.capture();
