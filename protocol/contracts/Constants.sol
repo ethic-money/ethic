@@ -22,30 +22,34 @@ import "./external/Decimal.sol";
 library Constants {
     /* Chain */
     uint256 private constant CHAIN_ID = 1; // Mainnet
-
+    
     /* Bootstrapping */
-    uint256 private constant BOOTSTRAPPING_PERIOD = 480; // 20 days * 1/hr epochs
+    uint256 private constant BOOTSTRAPPING_PERIOD = 90;
     uint256 private constant BOOTSTRAPPING_PRICE = 11e17; // 1.10 DAI
-    uint256 private constant BOOTSTRAPPING_SPEEDUP_FACTOR = 3; 
-
+    uint256 private constant BOOTSTRAPPING_SPEEDUP_FACTOR = 3; // 30 days @ 8 hours
+    
     /* Oracle */
     address private constant DAI_ADDRESS = address(0x6B175474E89094C44Da98b954EedeAC495271d0F);
     uint256 private constant ORACLE_RESERVE_MINIMUM = 1e10; // 10,000 DAI
-
+    
     /* Bonding */
-    uint256 private constant INITIAL_STAKE_MULTIPLE = 1e6; // 100 ETHC -> 100M ETHCS
-
+    uint256 private constant INITIAL_STAKE_MULTIPLE = 1e6; // 100 ESD -> 100M ETHCS
+    
     /* Epoch */
     struct EpochStrategy {
         uint256 offset;
         uint256 start;
         uint256 period;
     }
-
-    uint256 private constant EPOCH_OFFSET = 106;
-    uint256 private constant EPOCH_START = 1610292686;
-    uint256 private constant EPOCH_PERIOD = 3600;
-
+    
+    uint256 private constant PREVIOUS_EPOCH_OFFSET = 0;
+    uint256 private constant PREVIOUS_EPOCH_START = 0;
+    uint256 private constant PREVIOUS_EPOCH_PERIOD = 0;
+    
+    uint256 private constant CURRENT_EPOCH_OFFSET = 106;
+    uint256 private constant CURRENT_EPOCH_START = 1610292686;
+    uint256 private constant CURRENT_EPOCH_PERIOD = 3600;
+    
     /* Governance */
     uint256 private constant GOVERNANCE_PERIOD = 9; // 9 epochs
     uint256 private constant GOVERNANCE_EXPIRATION = 2; // 2 + 1 epochs
@@ -53,7 +57,7 @@ library Constants {
     uint256 private constant GOVERNANCE_PROPOSAL_THRESHOLD = 5e15; // 0.5%
     uint256 private constant GOVERNANCE_SUPER_MAJORITY = 66e16; // 66%
     uint256 private constant GOVERNANCE_EMERGENCY_DELAY = 6; // 6 epochs
-
+    
     /* DAO */
     uint256 private constant INCENTIVE = 1e20; // 100 ETHC incentive
     uint256 private constant ADVANCE_INCENTIVE = (INCENTIVE/100)*45; // 45% incentive
@@ -61,10 +65,10 @@ library Constants {
     uint256 private constant WPS_INCENTIVE = (INCENTIVE/100)*10; // 10% incentive
     uint256 private constant DAO_ENTRANCE_LOCKUP_EPOCHS = 15; // 15 epochs fluid
     uint256 private constant DAO_EXIT_LOCKUP_EPOCHS = 15; // 15 epochs fluid
-
+    
     /* Pool */
     uint256 private constant POOL_EXIT_LOCKUP_EPOCHS = 5; // 5 epochs fluid
-
+    
     /* Market */
     uint256 private constant COUPON_EXPIRATION = 90;
     uint256 private constant DEBT_RATIO_CAP = 20e16; // 20%
@@ -76,15 +80,15 @@ library Constants {
     uint256 private constant COUPON_SUPPLY_CHANGE_LIMIT = 6e16; // 6%
     uint256 private constant ORACLE_POOL_RATIO = 20; // 20%
     uint256 private constant TREASURY_RATIO = 250; // 2.5%
-
+    
     /* Deployed */
     address private constant DAO_ADDRESS = address(0x443D2f2755DB5942601fa062Cc248aAA153313D3);
-    address private constant ETHIC_ADDRESS = address(0x36F3FD68E7325a35EB768F1AedaAe9EA0689d723); // Change address to real Ethic address
+    address private constant ETHIC_ADDRESS = address(0x36F3FD68E7325a35EB768F1AedaAe9EA0689d723);
     address private constant PAIR_ADDRESS = address(0x88ff79eB2Bc5850F27315415da8685282C7610F9);
     address private constant TREASURY_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22);
-    address private constant DEVELOPER_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22); // Change addess to real dev address
-    address private constant WPS_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22); // Change address to real WPS address
-
+    address private constant DEVELOPER_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22);
+    address private constant WPS_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22);
+    
     /**
      * Getters
      */
@@ -185,6 +189,14 @@ library Constants {
         return COUPON_REDEMPTION_PENALTY_DECAY;
     }
     
+    function getInitialCouponRedemptionPenalty() internal pure returns (Decimal.D256 memory) {
+        return Decimal.D256({value: INITIAL_COUPON_REDEMPTION_PENALTY});
+    }
+
+    function getCouponRedemptionPenaltyDecay() internal pure returns (uint256) {
+        return COUPON_REDEMPTION_PENALTY_DECAY;
+    }
+
     function getSupplyChangeLimit() internal pure returns (Decimal.D256 memory) {
         return Decimal.D256({value: SUPPLY_CHANGE_LIMIT});
     }
