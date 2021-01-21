@@ -3,7 +3,7 @@
 Ethical, decentralized, self-stabilizing money. Not an element of fiat monetary systems.
 
 | :white_check_mark: Algorithmic Stablecoin | :x: NO Rebasing |
-| --- | --- |
+| :--- | :--- |
 | :white_check_mark: Voluntary Elastic Supply | :x: NO Premine |
 | :white_check_mark: 100% Community Governance | :x: NO Pre-existing Developer Pool |
 
