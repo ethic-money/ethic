@@ -1,5 +1,5 @@
 /*
-    Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
+    Copyright 2021 Ethic Money Devs <devs@ethic.money> and Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -24,10 +24,10 @@ import "./Permittable.sol";
 import "./IDollar.sol";
 
 
-contract Dollar is IDollar, MinterRole, ERC20Detailed, Permittable, ERC20Burnable  {
+contract Ethic is IEthic, MinterRole, ERC20Detailed, Permittable, ERC20Burnable  {
 
     constructor()
-    ERC20Detailed("Empty Set Dollar", "ESD", 18)
+    ERC20Detailed("Ethic", "ETHC", 18)
     Permittable()
     public
     { }
@@ -43,7 +43,7 @@ contract Dollar is IDollar, MinterRole, ERC20Detailed, Permittable, ERC20Burnabl
             _approve(
                 sender,
                 _msgSender(),
-                allowance(sender, _msgSender()).sub(amount, "Dollar: transfer amount exceeds allowance"));
+                allowance(sender, _msgSender()).sub(amount, "Ethic: transfer amount exceeds allowance"));
         }
         return true;
     }
