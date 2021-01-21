@@ -1,5 +1,5 @@
 /*
-    Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
+    Copyright 2021 Ethic Money Devs <devs@ethic.money> and Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ contract PoolGetters is PoolState {
      */
 
     function usdc() public view returns (address) {
-        return Constants.getUsdcAddress();
+        return Constants.getDaiAddress();
     }
 
     function dao() public view returns (IDAO) {
@@ -37,7 +37,7 @@ contract PoolGetters is PoolState {
     }
 
     function dollar() public view returns (IDollar) {
-        return IDollar(Constants.getDollarAddress());
+        return IEthic(Constants.getDollarAddress());
     }
 
     function univ2() public view returns (IERC20) {
@@ -61,7 +61,7 @@ contract PoolGetters is PoolState {
     }
 
     function totalRewarded() public view returns (uint256) {
-        return dollar().balanceOf(address(this)).sub(totalClaimable());
+        return ethic().balanceOf(address(this)).sub(totalClaimable());
     }
 
     function paused() public view returns (bool) {
