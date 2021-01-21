@@ -42,9 +42,9 @@ library Constants {
         uint256 period;
     }
 
-    uint256 private constant CURRENT_EPOCH_OFFSET = 106;
-    uint256 private constant CURRENT_EPOCH_START = 1610292686;
-    uint256 private constant CURRENT_EPOCH_PERIOD = 3600;
+    uint256 private constant EPOCH_OFFSET = 106;
+    uint256 private constant EPOCH_START = 1610292686;
+    uint256 private constant EPOCH_PERIOD = 3600;
 
     /* Governance */
     uint256 private constant GOVERNANCE_PERIOD = 9; // 9 epochs
@@ -79,7 +79,7 @@ library Constants {
 
     /* Deployed */
     address private constant DAO_ADDRESS = address(0x443D2f2755DB5942601fa062Cc248aAA153313D3);
-    address private constant ETHIC_ADDRESS = address(0x36F3FD68E7325a35EB768F1AedaAe9EA0689d723);
+    address private constant ETHIC_ADDRESS = address(0x36F3FD68E7325a35EB768F1AedaAe9EA0689d723); // Change address to real Ethic address
     address private constant PAIR_ADDRESS = address(0x88ff79eB2Bc5850F27315415da8685282C7610F9);
     address private constant TREASURY_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22);
     address private constant DEVELOPER_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22); // Change addess to real dev address
