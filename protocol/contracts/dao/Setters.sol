@@ -1,5 +1,5 @@
 /*
-    Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
+    Copyright 2021 Ethic Money Devs <devs@ethic.money> and Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -110,8 +110,8 @@ contract Setters is State, Getters {
         _state.balance.coupons = _state.balance.coupons.sub(amount, reason);
     }
 
-    function unfreeze(address account) internal {
-        _state.accounts[account].fluidUntil = epoch().add(Constants.getDAOExitLockupEpochs());
+    function unfreeze(address account, uint 256 epochs) internal {
+        _state.accounts[account].fluidUntil = epoch().add(epochs);
     }
 
     function updateAllowanceCoupons(address owner, address spender, uint256 amount) internal {
