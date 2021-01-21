@@ -1,5 +1,5 @@
 /*
-    Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
+    Copyright 2021 Ethic Money Devs <devs@ethic.money> and Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -26,18 +26,18 @@ import "./PoolGetters.sol";
 contract Liquidity is PoolGetters {
     address private constant UNISWAP_FACTORY = address(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
 
-    function addLiquidity(uint256 dollarAmount) internal returns (uint256, uint256) {
-        (address dollar, address usdc) = (address(dollar()), usdc());
-        (uint reserveA, uint reserveB) = getReserves(dollar, usdc);
+    function addLiquidity(uint256 ethicAmount) internal returns (uint256, uint256) {
+        (address ethic, address dai) = (address(ethic()), dai());
+        (uint reserveA, uint reserveB) = getReserves(ethic, dai);
 
-        uint256 usdcAmount = (reserveA == 0 && reserveB == 0) ?
-             dollarAmount :
-             UniswapV2Library.quote(dollarAmount, reserveA, reserveB);
+        uint256 daiAmount = (reserveA == 0 && reserveB == 0) ?
+             ethicAmount :
+             UniswapV2Library.quote(ethicAmount, reserveA, reserveB);
 
         address pair = address(univ2());
-        IERC20(dollar).transfer(pair, dollarAmount);
-        IERC20(usdc).transferFrom(msg.sender, pair, usdcAmount);
-        return (usdcAmount, IUniswapV2Pair(pair).mint(address(this)));
+        IERC20(ethic).transfer(pair, ethicAmount);
+        IERC20(dai).transferFrom(msg.sender, pair, daiAmount);
+        return (daiAmount, IUniswapV2Pair(pair).mint(address(this)));
     }
 
     // overridable for testing
