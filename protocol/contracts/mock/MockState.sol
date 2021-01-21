@@ -1,5 +1,5 @@
 /*
-    Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
+    Copyright 2021 Ethic Money Devs <devs@ethic.money> and Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -83,7 +83,7 @@ contract MockState is Setters {
     }
 
     function unfreezeE(address account) external {
-        super.unfreeze(account);
+        super.unfreeze(account, 120); // Hardcode 120 epochs to unfreeze - 5 days @ 24 epochs per day
     }
 
     function updateAllowanceCouponsE(address owner, address spender, uint256 amount) external {

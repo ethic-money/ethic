@@ -1,5 +1,5 @@
 /*
-    Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
+    Copyright 2021 Ethic Money Devs <devs@ethic.money> and Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -21,19 +21,19 @@ import "../oracle/PoolSetters.sol";
 
 contract MockPoolState is PoolSetters {
     address private _dao;
-    address private _dollar;
+    address private _ethic;
 
-    function set(address dao, address dollar) external {
+    function set(address dao, address ethic) external {
         _dao = dao;
-        _dollar = dollar;
+        _ethic = ethic;
     }
 
     function dao() public view returns (IDAO) {
         return IDAO(_dao);
     }
 
-    function dollar() public view returns (IDollar) {
-        return IDollar(_dollar);
+    function ethic() public view returns (IEthic) {
+        return IEthic(_ethic);
     }
 
     /**

@@ -1,5 +1,5 @@
 /*
-    Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
+    Copyright 2021 Ethic Money Devs <devs@ethic.money> and Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -21,9 +21,9 @@ import "@openzeppelin/contracts/token/ERC20/ERC20Burnable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20Detailed.sol";
 import "../oracle/IUSDC.sol";
 
-contract TestnetUSDC is ERC20Detailed, ERC20Burnable, IUSDC {
+contract TestnetDAI is ERC20Detailed, ERC20Burnable, IDAI {
     constructor()
-    ERC20Detailed("USD//C", "USDC", 6)
+    ERC20Detailed("USD//C", "DAI", 6)
     public
     { }
 

@@ -1,5 +1,5 @@
 /*
-    Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
+    Copyright 2021 Ethic Money Devs <devs@ethic.money> and Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -18,12 +18,12 @@ pragma solidity ^0.5.17;
 pragma experimental ABIEncoderV2;
 
 import "../dao/Comptroller.sol";
-import "../token/Dollar.sol";
+import "../token/Ethic.sol";
 import "./MockState.sol";
 
 contract MockComptroller is Comptroller, MockState {
     constructor(address pool) public {
-        _state.provider.dollar = new Dollar();
+        _state.provider.ethic = new Ethic();
         _state.provider.pool = pool;
     }
 
@@ -57,6 +57,6 @@ contract MockComptroller is Comptroller, MockState {
 
     /* For testing only */
     function mintToE(address account, uint256 amount) external {
-        dollar().mint(account, amount);
+        ethic().mint(account, amount);
     }
 }

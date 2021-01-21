@@ -1,5 +1,5 @@
 /*
-    Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
+    Copyright 2021 Ethic Money Devs <devs@ethic.money> and Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -30,6 +30,7 @@ contract Market is Comptroller, Curve {
     event CouponExpiration(uint256 indexed epoch, uint256 couponsExpired, uint256 lessRedeemable, uint256 lessDebt, uint256 newBonded);
     event CouponPurchase(address indexed account, uint256 indexed epoch, uint256 dollarAmount, uint256 couponAmount);
     event CouponRedemption(address indexed account, uint256 indexed epoch, uint256 couponAmount);
+    event CouponBurn(address indexed account, uint256 indexed epoch, uint256 couponAmount);
     event CouponTransfer(address indexed from, address indexed to, uint256 indexed epoch, uint256 value);
     event CouponApproval(address indexed owner, address indexed spender, uint256 value);
 
@@ -62,28 +63,45 @@ contract Market is Comptroller, Curve {
     }
 
     function couponPremium(uint256 amount) public view returns (uint256) {
-        return calculateCouponPremium(dollar().totalSupply(), totalDebt(), amount);
+        return calculateCouponPremium(ethic().totalSupply(), totalDebt(), amount);
     }
 
-    function purchaseCoupons(uint256 dollarAmount) external returns (uint256) {
+    function couponRedemptionPenalty(uint256 couponEpoch, uint256 couponAmount) public view returns (uint256) {
+        uint timeIntoEpoch = block.timestamp % Constants.getEpochStrategy().period;
+        uint couponAge = epoch() - couponEpoch;
+
+        uint couponEpochDecay = Constants.getCouponRedemptionPenaltyDecay() /  Constants.getCouponExpiration() * (Constants.getCouponExpiration() - couponAge);
+
+        if(timeIntoEpoch > couponEpochDecay) {
+            return 0;
+        }
+
+        Decimal.D256 memory couponEpochInitialPenalty = Constants.getInitialCouponRedemptionPenalty().div(Decimal.D256({value: Constants.getCouponExpiration() })).mul(Decimal.D256({value: Constants.getCouponExpiration() - couponAge}));
+
+        Decimal.D256 memory couponEpochDecayedPenalty = couponEpochInitialPenalty.div(Decimal.D256({value: couponEpochDecay})).mul(Decimal.D256({value: couponEpochDecay - timeIntoEpoch}));
+
+        return Decimal.D256({value: couponAmount}).mul(couponEpochDecayedPenalty).value;
+    }
+
+function purchaseCoupons(uint256 ethicAmount) external returns (uint256) {
         Require.that(
-            dollarAmount > 0,
+            ethicAmount > 0,
             FILE,
             "Must purchase non-zero amount"
         );
 
         Require.that(
-            totalDebt() >= dollarAmount,
+            totalDebt() >= ethicAmount,
             FILE,
             "Not enough debt"
         );
 
         uint256 epoch = epoch();
-        uint256 couponAmount = dollarAmount.add(couponPremium(dollarAmount));
-        burnFromAccount(msg.sender, dollarAmount);
+        uint256 couponAmount = ethicAmount.add(couponPremium(ethicAmount));
+        burnFromAccount(msg.sender, ethicAmount);
         incrementBalanceOfCoupons(msg.sender, epoch, couponAmount);
 
-        emit CouponPurchase(msg.sender, epoch, dollarAmount, couponAmount);
+        emit CouponPurchase(msg.sender, epoch, ethicAmount, couponAmount);
 
         return couponAmount;
     }
@@ -91,12 +109,16 @@ contract Market is Comptroller, Curve {
     function redeemCoupons(uint256 couponEpoch, uint256 couponAmount) external {
         require(epoch().sub(couponEpoch) >= 2, "Market: Too early to redeem");
         decrementBalanceOfCoupons(msg.sender, couponEpoch, couponAmount, "Market: Insufficient coupon balance");
-        redeemToAccount(msg.sender, couponAmount);
+        uint burnAmount = couponRedemptionPenalty(couponEpoch, couponAmount);
+        uint256 redeemAmount = couponAmount - burnAmount;
 
-        emit CouponRedemption(msg.sender, couponEpoch, couponAmount);
+        redeemToAccount(msg.sender, redeemAmount);
+        
+        emit CouponBurn(msg.sender, couponEpoch, burnAmount);
+        emit CouponRedemption(msg.sender, couponEpoch, redeemAmount);
     }
 
-    function approveCoupons(address spender, uint256 amount) external {
+    function approveCoupons(address spender, 256 amount) external {
         require(spender != address(0), "Market: Coupon approve to the zero address");
 
         updateAllowanceCoupons(msg.sender, spender, amount);

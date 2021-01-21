@@ -1,5 +1,5 @@
 /*
-    Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
+    Copyright 2021 Ethic Money Devs <devs@ethic.money> and Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -45,14 +45,14 @@ contract Bonding is Setters, Permission {
     }
 
     function deposit(uint256 value) external onlyFrozenOrLocked(msg.sender) {
-        dollar().transferFrom(msg.sender, address(this), value);
+        ethic().transferFrom(msg.sender, address(this), value);
         incrementBalanceOfStaged(msg.sender, value);
 
         emit Deposit(msg.sender, value);
     }
 
     function withdraw(uint256 value) external onlyFrozenOrLocked(msg.sender) {
-        dollar().transfer(msg.sender, value);
+        ethic().transfer(msg.sender, value);
         decrementBalanceOfStaged(msg.sender, value, "Bonding: insufficient staged balance");
 
         emit Withdraw(msg.sender, value);

@@ -1,5 +1,5 @@
 /*
-    Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
+    Copyright 2021 Ethic Money Devs <devs@ethic.money> and Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ pragma solidity ^0.5.17;
 pragma experimental ABIEncoderV2;
 
 import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
-import "../token/IDollar.sol";
+import "../token/IEthic.sol";
 import "../oracle/IOracle.sol";
 import "../external/Decimal.sol";
 
@@ -77,7 +77,7 @@ contract Candidate {
 
 contract Storage {
     struct Provider {
-        IDollar dollar;
+        IEthic ethic;
         IOracle oracle;
         address pool;
     }

@@ -1,5 +1,5 @@
 /*
-    Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
+    Copyright 2021 Ethic Money Devs <devs@ethic.money> and Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -20,31 +20,31 @@ pragma experimental ABIEncoderV2;
 import "../oracle/Pool.sol";
 
 contract MockPool is Pool {
-    address private _usdc;
+    address private _dai;
     address private _dao;
-    address private _dollar;
+    address private _ethic;
     address private _univ2;
 
-    constructor(address usdc) Pool() public {
-        _usdc = usdc;
+    constructor(address dai) Pool() public {
+        _dai = dai;
     }
 
-    function set(address dao, address dollar, address univ2) external {
+    function set(address dao, address ethic, address univ2) external {
         _dao = dao;
-        _dollar = dollar;
+        _ethic = ethic;
         _univ2 = univ2;
     }
 
-    function usdc() public view returns (address) {
-        return _usdc;
+    function dai() public view returns (address) {
+        return _dai;
     }
 
     function dao() public view returns (IDAO) {
         return IDAO(_dao);
     }
 
-    function dollar() public view returns (IDollar) {
-        return IDollar(_dollar);
+    function ethic() public view returns (IEthic) {
+        return IEthic(_ethic);
     }
 
     function univ2() public view returns (IERC20) {

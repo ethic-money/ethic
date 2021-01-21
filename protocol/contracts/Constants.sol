@@ -1,5 +1,5 @@
 /*
-    Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
+    Copyright 2021 Ethic Money Devs <devs@ethic.money> and Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -24,16 +24,16 @@ library Constants {
     uint256 private constant CHAIN_ID = 1; // Mainnet
 
     /* Bootstrapping */
-    uint256 private constant BOOTSTRAPPING_PERIOD = 90;
-    uint256 private constant BOOTSTRAPPING_PRICE = 11e17; // 1.10 USDC
-    uint256 private constant BOOTSTRAPPING_SPEEDUP_FACTOR = 3; // 30 days @ 8 hours
+    uint256 private constant BOOTSTRAPPING_PERIOD = 480; // 20 days * 1/hr epochs
+    uint256 private constant BOOTSTRAPPING_PRICE = 11e17; // 1.10 DAI
+    uint256 private constant BOOTSTRAPPING_SPEEDUP_FACTOR = 3; 
 
     /* Oracle */
-    address private constant USDC = address(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
-    uint256 private constant ORACLE_RESERVE_MINIMUM = 1e10; // 10,000 USDC
+    address private constant DAI_ADDRESS = address(0x6B175474E89094C44Da98b954EedeAC495271d0F);
+    uint256 private constant ORACLE_RESERVE_MINIMUM = 1e10; // 10,000 DAI
 
     /* Bonding */
-    uint256 private constant INITIAL_STAKE_MULTIPLE = 1e6; // 100 ESD -> 100M ESDS
+    uint256 private constant INITIAL_STAKE_MULTIPLE = 1e6; // 100 ETHC -> 100M ETHCS
 
     /* Epoch */
     struct EpochStrategy {
@@ -42,13 +42,9 @@ library Constants {
         uint256 period;
     }
 
-    uint256 private constant PREVIOUS_EPOCH_OFFSET = 91;
-    uint256 private constant PREVIOUS_EPOCH_START = 1600905600;
-    uint256 private constant PREVIOUS_EPOCH_PERIOD = 86400;
-
     uint256 private constant CURRENT_EPOCH_OFFSET = 106;
-    uint256 private constant CURRENT_EPOCH_START = 1602201600;
-    uint256 private constant CURRENT_EPOCH_PERIOD = 28800;
+    uint256 private constant CURRENT_EPOCH_START = 1610292686;
+    uint256 private constant CURRENT_EPOCH_PERIOD = 3600;
 
     /* Governance */
     uint256 private constant GOVERNANCE_PERIOD = 9; // 9 epochs
@@ -59,7 +55,11 @@ library Constants {
     uint256 private constant GOVERNANCE_EMERGENCY_DELAY = 6; // 6 epochs
 
     /* DAO */
-    uint256 private constant ADVANCE_INCENTIVE = 1e20; // 100 ESD
+    uint256 private constant INCENTIVE = 1e20; // 100 ETHC incentive
+    uint256 private constant ADVANCE_INCENTIVE = (INCENTIVE/100)*45; // 45% incentive
+    uint256 private constant DEVELOPER_INCENTIVE = (INCENTIVE/100)*45; // 45% incentive
+    uint256 private constant WPS_INCENTIVE = (INCENTIVE/100)*10; // 10% incentive
+    uint256 private constant DAO_ENTRANCE_LOCKUP_EPOCHS = 15; // 15 epochs fluid
     uint256 private constant DAO_EXIT_LOCKUP_EPOCHS = 15; // 15 epochs fluid
 
     /* Pool */
@@ -68,6 +68,8 @@ library Constants {
     /* Market */
     uint256 private constant COUPON_EXPIRATION = 90;
     uint256 private constant DEBT_RATIO_CAP = 20e16; // 20%
+    uint256 private constant INITIAL_COUPON_REDEMPTION_PENALTY = 50e16; // 50%
+    uint256 private constant COUPON_REDEMPTION_PENALTY_DECAY = 3600; // 1 hour
 
     /* Regulator */
     uint256 private constant SUPPLY_CHANGE_LIMIT = 3e16; // 3%
@@ -77,35 +79,29 @@ library Constants {
 
     /* Deployed */
     address private constant DAO_ADDRESS = address(0x443D2f2755DB5942601fa062Cc248aAA153313D3);
-    address private constant DOLLAR_ADDRESS = address(0x36F3FD68E7325a35EB768F1AedaAe9EA0689d723);
+    address private constant ETHIC_ADDRESS = address(0x36F3FD68E7325a35EB768F1AedaAe9EA0689d723);
     address private constant PAIR_ADDRESS = address(0x88ff79eB2Bc5850F27315415da8685282C7610F9);
     address private constant TREASURY_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22);
+    address private constant DEVELOPER_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22); // Change addess to real dev address
+    address private constant WPS_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22); // Change address to real WPS address
 
     /**
      * Getters
      */
 
-    function getUsdcAddress() internal pure returns (address) {
-        return USDC;
+    function getDaiAddress() internal pure returns (address) {
+        return DAI_ADDRESS;
     }
 
     function getOracleReserveMinimum() internal pure returns (uint256) {
         return ORACLE_RESERVE_MINIMUM;
     }
 
-    function getPreviousEpochStrategy() internal pure returns (EpochStrategy memory) {
+    function getEpochStrategy() internal pure returns (EpochStrategy memory) {
         return EpochStrategy({
-            offset: PREVIOUS_EPOCH_OFFSET,
-            start: PREVIOUS_EPOCH_START,
-            period: PREVIOUS_EPOCH_PERIOD
-        });
-    }
-
-    function getCurrentEpochStrategy() internal pure returns (EpochStrategy memory) {
-        return EpochStrategy({
-            offset: CURRENT_EPOCH_OFFSET,
-            start: CURRENT_EPOCH_START,
-            period: CURRENT_EPOCH_PERIOD
+            offset: EPOCH_OFFSET,
+            start: EPOCH_START,
+            period: EPOCH_PERIOD
         });
     }
 
@@ -153,10 +149,22 @@ library Constants {
         return ADVANCE_INCENTIVE;
     }
 
+    function getDeveloperIncentive() internal pure returns (uint256) {
+        return DEVELOPER_INCENTIVE;
+    }
+
+    function getWpsIncentive() internal pure returns (uint256) {
+        return WPS_INCENTIVE;
+    } 
+    
     function getDAOExitLockupEpochs() internal pure returns (uint256) {
         return DAO_EXIT_LOCKUP_EPOCHS;
     }
 
+    function getDAOEntranceLockupEpochs() internal pure returns (uint256) {
+        return DAO_ENTRANCE_LOCKUP_EPOCHS;
+    }
+    
     function getPoolExitLockupEpochs() internal pure returns (uint256) {
         return POOL_EXIT_LOCKUP_EPOCHS;
     }
@@ -169,6 +177,14 @@ library Constants {
         return Decimal.D256({value: DEBT_RATIO_CAP});
     }
 
+    function getInitialCouponRedemptionPenalty() internal pure returns (Decimal.D256 memory) {
+        return Decimal.D256({value: INITIAL_COUPON_REDEMPTION_PENALTY});
+    }
+
+    function getCouponRedemptionPenaltyDecay() internal pure returns (uint256) {
+        return COUPON_REDEMPTION_PENALTY_DECAY;
+    }
+    
     function getSupplyChangeLimit() internal pure returns (Decimal.D256 memory) {
         return Decimal.D256({value: SUPPLY_CHANGE_LIMIT});
     }
@@ -193,8 +209,8 @@ library Constants {
         return DAO_ADDRESS;
     }
 
-    function getDollarAddress() internal pure returns (address) {
-        return DOLLAR_ADDRESS;
+    function getEthicAddress() internal pure returns (address) {
+        return ETHIC_ADDRESS;
     }
 
     function getPairAddress() internal pure returns (address) {
@@ -203,5 +219,13 @@ library Constants {
 
     function getTreasuryAddress() internal pure returns (address) {
         return TREASURY_ADDRESS;
+    }
+    
+    function getDeveloperAddress() internal pure returns (address) {
+        return DEVELOPER_ADDRESS;
+    }
+
+    function getWpsAddress() internal pure returns (address) {
+        return WPS_ADDRESS;
     }
 }

@@ -1,5 +1,5 @@
 /*
-    Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
+    Copyright 2021 Ethic Money Devs <devs@ethic.money> and Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ contract Comptroller is Setters {
     bytes32 private constant FILE = "Comptroller";
 
     function mintToAccount(address account, uint256 amount) internal {
-        dollar().mint(account, amount);
+        ethic().mint(account, amount);
         if (!bootstrappingAt(epoch())) {
             increaseDebt(amount);
         }
@@ -36,22 +36,22 @@ contract Comptroller is Setters {
     }
 
     function burnFromAccount(address account, uint256 amount) internal {
-        dollar().transferFrom(account, address(this), amount);
-        dollar().burn(amount);
+        ethic().transferFrom(account, address(this), amount);
+        ethic().burn(amount);
         decrementTotalDebt(amount, "Comptroller: not enough outstanding debt");
 
         balanceCheck();
     }
 
     function redeemToAccount(address account, uint256 amount) internal {
-        dollar().transfer(account, amount);
+        ethic().transfer(account, amount);
         decrementTotalRedeemable(amount, "Comptroller: not enough redeemable balance");
 
         balanceCheck();
     }
 
     function burnRedeemable(uint256 amount) internal {
-        dollar().burn(amount);
+        ethic().burn(amount);
         decrementTotalRedeemable(amount, "Comptroller: not enough redeemable balance");
 
         balanceCheck();
@@ -109,7 +109,7 @@ contract Comptroller is Setters {
     }
 
     function resetDebt(Decimal.D256 memory targetDebtRatio) internal returns (uint256) {
-        uint256 targetDebt = targetDebtRatio.mul(dollar().totalSupply()).asUint256();
+        uint256 targetDebt = targetDebtRatio.mul(ethic().totalSupply()).asUint256();
         uint256 currentDebt = totalDebt();
 
         if (currentDebt > targetDebt) {
@@ -124,7 +124,7 @@ contract Comptroller is Setters {
 
     function balanceCheck() private {
         Require.that(
-            dollar().balanceOf(address(this)) >= totalBonded().add(totalStaged()).add(totalRedeemable()),
+            ethic().balanceOf(address(this)) >= totalBonded().add(totalStaged()).add(totalRedeemable()),
             FILE,
             "Inconsistent balances"
         );
@@ -132,25 +132,25 @@ contract Comptroller is Setters {
 
     function mintToDAO(uint256 amount) private {
         if (amount > 0) {
-            dollar().mint(address(this), amount);
+            ethic().mint(address(this), amount);
             incrementTotalBonded(amount);
         }
     }
 
     function mintToPool(uint256 amount) private {
         if (amount > 0) {
-            dollar().mint(pool(), amount);
+            ethic().mint(pool(), amount);
         }
     }
 
     function mintToTreasury(uint256 amount) private {
         if (amount > 0) {
-            dollar().mint(Constants.getTreasuryAddress(), amount);
+            ethic().mint(Constants.getTreasuryAddress(), amount);
         }
     }
 
     function mintToRedeemable(uint256 amount) private {
-        dollar().mint(address(this), amount);
+        ethic().mint(address(this), amount);
         incrementTotalRedeemable(amount);
 
         balanceCheck();
