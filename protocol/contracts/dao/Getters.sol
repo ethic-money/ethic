@@ -147,7 +147,7 @@ contract Getters is State {
     }
 
     function epochTime() public view returns (uint256) {
-        Constants.EpochStrategy memory current = Constants.getEpochStrategy();
+        Constants.EpochStrategy memory current = Constants.getEpochStrategy(); // Only one epoch strategy
 
         return epochTimeWithStrategy(current);
     }
