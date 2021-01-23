@@ -59,7 +59,7 @@ contract Bonding is Setters, Permission {
     }
 
     function bond(uint256 value) external onlyFrozenOrFluid(msg.sender) {
-        unfreeze(msg.sender);
+        unfreeze(msg.sender, Constants.getDAOEntranceLockupEpochs()); // Use individual DAO entrance lockups per address
 
         uint256 balance = totalBonded() == 0 ?
             value.mul(Constants.getInitialStakeMultiple()) :
@@ -72,7 +72,7 @@ contract Bonding is Setters, Permission {
     }
 
     function unbond(uint256 value) external onlyFrozenOrFluid(msg.sender) {
-        unfreeze(msg.sender);
+        unfreeze(msg.sender, Constants.getDAOExitLockupEpochs()); // Use individual DAO exit lockups per address
 
         uint256 staged = value.mul(balanceOfBonded(msg.sender)).div(balanceOf(msg.sender));
         incrementBalanceOfStaged(msg.sender, staged);
@@ -83,7 +83,7 @@ contract Bonding is Setters, Permission {
     }
 
     function unbondUnderlying(uint256 value) external onlyFrozenOrFluid(msg.sender) {
-        unfreeze(msg.sender);
+        unfreeze(msg.sender, Constants.getDAOExitLockupEpochs()); // Use individual DAO exit lockups per address
 
         uint256 balance = value.mul(totalSupply()).div(totalBonded());
         incrementBalanceOfStaged(msg.sender, value);

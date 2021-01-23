@@ -42,52 +42,48 @@ library Constants {
         uint256 period;
     }
     
-    uint256 private constant PREVIOUS_EPOCH_OFFSET = 0;
-    uint256 private constant PREVIOUS_EPOCH_START = 0;
-    uint256 private constant PREVIOUS_EPOCH_PERIOD = 0;
-    
     uint256 private constant CURRENT_EPOCH_OFFSET = 106;
     uint256 private constant CURRENT_EPOCH_START = 1610292686;
     uint256 private constant CURRENT_EPOCH_PERIOD = 3600;
     
     /* Governance */
-    uint256 private constant GOVERNANCE_PERIOD = 9; // 9 epochs
-    uint256 private constant GOVERNANCE_EXPIRATION = 2; // 2 + 1 epochs
-    uint256 private constant GOVERNANCE_QUORUM = 20e16; // 20%
-    uint256 private constant GOVERNANCE_PROPOSAL_THRESHOLD = 5e15; // 0.5%
-    uint256 private constant GOVERNANCE_SUPER_MAJORITY = 66e16; // 66%
-    uint256 private constant GOVERNANCE_EMERGENCY_DELAY = 6; // 6 epochs
+    uint256 private constant GOVERNANCE_PERIOD = 96; // 96 epochs = 4 days
+    uint256 private constant GOVERNANCE_EXPIRATION = 11; // 11 + 1 epochs = 12 hours
+    uint256 private constant GOVERNANCE_QUORUM = 30e16; // 30% - higher quorum for better governance
+    uint256 private constant GOVERNANCE_PROPOSAL_THRESHOLD = 2e16; // 2% - higher proposal threshold
+    uint256 private constant GOVERNANCE_SUPER_MAJORITY = 6e17; // 60% - lower supermajority
+    uint256 private constant GOVERNANCE_EMERGENCY_DELAY = 72; // 72 epochs = 3 days
     
     /* DAO */
-    uint256 private constant INCENTIVE = 1e20; // 100 ETHC incentive
-    uint256 private constant ADVANCE_INCENTIVE = (INCENTIVE/100)*45; // 45% incentive
-    uint256 private constant DEVELOPER_INCENTIVE = (INCENTIVE/100)*45; // 45% incentive
-    uint256 private constant WPS_INCENTIVE = (INCENTIVE/100)*10; // 10% incentive
-    uint256 private constant DAO_ENTRANCE_LOCKUP_EPOCHS = 15; // 15 epochs fluid
-    uint256 private constant DAO_EXIT_LOCKUP_EPOCHS = 15; // 15 epochs fluid
+    uint256 private constant INCENTIVE = 12e19; // 120 ETHC incentive
+    uint256 private constant ADVANCE_INCENTIVE = (INCENTIVE/100)*50; // 50% of incentive
+    uint256 private constant DEVELOPER_INCENTIVE = (INCENTIVE/100)*50; // 50% of incentive
+    uint256 private constant WPS_INCENTIVE = (INCENTIVE/100)*0; // 0% of incentive (ready for future)
+    uint256 private constant DAO_ENTRANCE_LOCKUP_EPOCHS = 96; // 96 epochs fluid = 4 days
+    uint256 private constant DAO_EXIT_LOCKUP_EPOCHS = 96; // 96 epochs fluid = 4 days
     
     /* Pool */
-    uint256 private constant POOL_EXIT_LOCKUP_EPOCHS = 5; // 5 epochs fluid
+    uint256 private constant POOL_EXIT_LOCKUP_EPOCHS = 48; // 48 epochs fluid = 2 days
     
     /* Market */
-    uint256 private constant COUPON_EXPIRATION = 90;
-    uint256 private constant DEBT_RATIO_CAP = 20e16; // 20%
-    uint256 private constant INITIAL_COUPON_REDEMPTION_PENALTY = 50e16; // 50%
+    uint256 private constant COUPON_EXPIRATION = 1080; // 1080 epochs = 45 days
+    uint256 private constant DEBT_RATIO_CAP = 2e17; // 20%
+    uint256 private constant INITIAL_COUPON_REDEMPTION_PENALTY = 5e17; // 50%
     uint256 private constant COUPON_REDEMPTION_PENALTY_DECAY = 3600; // 1 hour
 
     /* Regulator */
-    uint256 private constant SUPPLY_CHANGE_LIMIT = 3e16; // 3%
+    uint256 private constant SUPPLY_CHANGE_LIMIT = 3e15; // 0.3% per epoch = 7.2% per day
     uint256 private constant COUPON_SUPPLY_CHANGE_LIMIT = 6e16; // 6%
     uint256 private constant ORACLE_POOL_RATIO = 20; // 20%
     uint256 private constant TREASURY_RATIO = 250; // 2.5%
     
     /* Deployed */
-    address private constant DAO_ADDRESS = address(0x443D2f2755DB5942601fa062Cc248aAA153313D3);
-    address private constant ETHIC_ADDRESS = address(0x36F3FD68E7325a35EB768F1AedaAe9EA0689d723);
-    address private constant PAIR_ADDRESS = address(0x88ff79eB2Bc5850F27315415da8685282C7610F9);
-    address private constant TREASURY_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22);
-    address private constant DEVELOPER_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22);
-    address private constant WPS_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22);
+    address private constant DAO_ADDRESS = address(0x___); // update with real DAO address
+    address private constant ETHIC_ADDRESS = address(0x____); // update with real ethic address
+    address private constant PAIR_ADDRESS = address(0x____); // update with real pair address
+    address private constant TREASURY_ADDRESS = address(0x____); // update with real treasury address
+    address private constant DEVELOPER_ADDRESS = address(0x____); // update with real developer address
+    address private constant WPS_ADDRESS = address(0x____); // update with real developer address
     
     /**
      * Getters
@@ -181,14 +177,6 @@ library Constants {
         return Decimal.D256({value: DEBT_RATIO_CAP});
     }
 
-    function getInitialCouponRedemptionPenalty() internal pure returns (Decimal.D256 memory) {
-        return Decimal.D256({value: INITIAL_COUPON_REDEMPTION_PENALTY});
-    }
-
-    function getCouponRedemptionPenaltyDecay() internal pure returns (uint256) {
-        return COUPON_REDEMPTION_PENALTY_DECAY;
-    }
-    
     function getInitialCouponRedemptionPenalty() internal pure returns (Decimal.D256 memory) {
         return Decimal.D256({value: INITIAL_COUPON_REDEMPTION_PENALTY});
     }
