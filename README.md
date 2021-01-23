@@ -1,6 +1,8 @@
-# ∉thic
+# ∉thic 
 
-Ethical, decentralized, self-stabilizing money. Not an element of fiat monetary systems.
+![image](https://avatars.githubusercontent.com/u/77220017?s=400&u=4c74930480eff37b4dacb870b810e441baf22b64&v=4)
+
+Ethical, decentralized, self-stabilizing money. **Not an element of fiat monetary systems.**
 
 | :white_check_mark: Algorithmic Stablecoin | :x: Not a product of fiat money systems |
 | :--- | :--- |
@@ -20,7 +22,7 @@ Ethical, decentralized, self-stabilizing money. Not an element of fiat monetary 
 
 The symbol for ∉thic is the mathematical sign, **∉**, meaning "Not an element of" (a set). This is meant to express ∉thic's core mission to define a stable, voluntary, ethical store of value, unit of account, and medium of exchange that _is not an element of the unethical systems that comprise fiat monies_, as well as to pay homage to the EmptySetSquad who anonymously authored the underlying smart contract framework ∉thic is built upon.
 
-∉thic is the first "Set Dollar Protocol" developed by a publicly revealed developer with a strong, multi-year track record in blockchain. Douglas Horn lead the creation of the Telos blockchain in 2018 as a highly successful no-ICO blockchain and community in 2018. In October 2020, [his call for higher DeFi standards](https://cointelegraph.com/news/the-chance-for-defi-to-fulfill-the-technology-s-promise) was published by Cointelegraph outlining his five hallmarks of responsible DeFi:
+∉thic is the first "Voluntary Elastic Stablecoin Protocol" developed by a publicly disclosed developer with a strong, multi-year track record in blockchain. [Douglas Horn](https://github.com/DouglasHorn) led the creation of the Telos blockchain in 2018 as a highly successful no-ICO blockchain and community in 2018. In October 2020, [his call for higher DeFi standards](https://cointelegraph.com/news/the-chance-for-defi-to-fulfill-the-technology-s-promise) was published by Cointelegraph outlining his five hallmarks of responsible DeFi:
 
 :white_check_mark:  Publicly identified, experienced founders
 
@@ -72,9 +74,38 @@ The symbol for ∉thic is the mathematical sign, **∉**, meaning "Not an elemen
 - symbol: `ETHC`
 - decimals: `18`
 - character: `∉ [U+2209]`
-- logo:
 
-![image](https://raw.githubusercontent.com/ethic-money/ethic-dashboard/master/ethic_logo.png)
+## Features & Tokenomics
+
+∉thic seeks to optimize features of the voluntary elastic stablecoin class through improved features and tokenomics.
+
+| Parameter | Setting | Rationale |
+| --- | --- | --- |
+| Target Denomination | Maker DAI | Standard 1 USD unit without being directly tied to any fiat USD |
+| Epoch Time | 1 hour | Smaller, more consistent adjustments |
+| Bonding | ∉100 -> 100M ETHCS | Successful for previous protocols |
+| Oracle Reserve Minimum | 10,000 DAI | Successful for previous protocols |
+| Bootstrapping Period | 45 days (1080 epochs) | Longer period with lower speedup |
+| Bootstrapping Price Target | 1.10 DAI | Successful for previous protocols |
+| Bootstrapping Speedup Factor | 2 | Lower speedup paired to longer bootstrap period |
+| Epoch Advance Reward | ∉60.00 | More frequent epochs / reasonable reward |
+| Governance Period | 4 days (96 epochs) | Longer voting period invites more voters |
+| Governance Expiration |  1/2 day (12 epochs) | Reasonable amount of time to execute governance |
+| Governance Quorum | 30% | Higher quorum supports better governance |
+| Governance Proposal Threshold | 2% | Ensure proposals have reasonable support |
+| Governance Super-Majority | 60% | With higher quorum, a lower supermajority helps ensure passage with broader community support |
+| Governance Emergency Delay | 3 days (72 epochs) | Such delays will be rare; Ensures time to fully develop and test a solution |
+| DAO Entrance Lockup Period | 4 days (96 epochs) | Shorter period creates better liquidity for users |
+| DAO Exit Lockup Period | 4 days (96 epochs) | Shorter period encourages turnover |
+| Pool Exit Lockup Period | 2 days (48 epochs) | Improved experience for liquidity providers |
+| Coupon Expiration | 45 days (1080 epochs) | Provides longer viable period for coupon-holders to preserve against value loss in prolonged contraction |
+| Debt Ratio Cap | 20% |  |
+| Initial Coupon Redemption Penalty | 50% | Favors earlier token burners over later thanks to DSD improvement |
+| Coupon Redeption Penaly Delay | 1 hour |  |
+| Supply Change Limit | 0.3%/epoch or 7.2% per day | high resolution (1 hr) supply change with lower daily amount for greater stability |
+| Coupon Supply Limit | 6% |  |
+| Oracle Pool Ratio | 20% |  |
+| Treasury Ratio | 2.25% | Lower treasury ratio to accommodate additional creation on advance |
 
 ## Dashboard
 
