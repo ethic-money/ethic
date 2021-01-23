@@ -2,7 +2,7 @@
 
 ![image](https://avatars.githubusercontent.com/u/77220017?s=400&u=4c74930480eff37b4dacb870b810e441baf22b64&v=4)
 
-Ethical, decentralized, self-stabilizing money. **Not an element of fiat monetary systems.**
+Ethical, decentralized, voluntary, self-stabilizing money. **Not an element of fiat monetary systems.**
 
 | :white_check_mark: Algorithmic Stablecoin | :x: Not a product of fiat money systems |
 | :--- | :--- |
