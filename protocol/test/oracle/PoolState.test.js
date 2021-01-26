@@ -12,9 +12,9 @@ describe('PollState', function () {
 
   beforeEach(async function () {
     this.dao = await MockSettableDAO.new({from: ownerAddress});
-    this.dollar = await MockToken.new("Empty Set Dollar", "ESD", 18, {from: ownerAddress});
+    this.ethic = await MockToken.new("Ethic Money", "ETHC", 18, {from: ownerAddress});
     this.setters = await MockPoolState.new({from: ownerAddress});
-    await this.setters.set(this.dao.address, this.dollar.address);
+    await this.setters.set(this.dao.address, this.ethic.address);
   });
 
   /**
@@ -251,7 +251,7 @@ describe('PollState', function () {
   describe('rewarded', function () {
     describe('no user', function () {
       beforeEach('call', async function () {
-        await this.dollar.mint(this.setters.address, 500);
+        await this.ethic.mint(this.setters.address, 500);
       });
 
       it('reward display correctly', async function () {
@@ -267,7 +267,7 @@ describe('PollState', function () {
 
       describe('when called', function () {
         beforeEach('call', async function () {
-          await this.dollar.mint(this.setters.address, 500);
+          await this.ethic.mint(this.setters.address, 500);
         });
 
         it('reward display correctly', async function () {
@@ -285,7 +285,7 @@ describe('PollState', function () {
 
       describe('when called', function () {
         beforeEach('call', async function () {
-          await this.dollar.mint(this.setters.address, 500);
+          await this.ethic.mint(this.setters.address, 500);
         });
 
         it('reward display correctly', async function () {
