@@ -105,7 +105,7 @@ The symbol for ∉thic is the mathematical sign, **∉**, meaning "Not an elemen
 | Coupon Expiration | 45 days (1080 epochs) | Provides longer viable period for coupon-holders to preserve against value loss in prolonged contraction |
 | Debt Ratio Cap | 20% |  |
 | Initial Coupon Redemption Penalty | 50% | Favors earlier token burners over later thanks to DSD improvement |
-| Coupon Redeption Penaly Delay | 1 hour |  |
+| Coupon Redeption Penalty Delay | 1 hour |  |
 | Supply Change Limit | 0.3%/epoch or 7.2% per day | high resolution (1 hr) supply change with lower daily amount for greater stability |
 | Coupon Supply Limit | 6% |  |
 | Oracle Pool Ratio | 20% |  |
@@ -182,4 +182,4 @@ limitations under the License.
 ```
 
 <br>
-Escape the Fiat Monetary System
+**Escape the Fiat Monetary System**
