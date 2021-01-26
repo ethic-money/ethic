@@ -20,7 +20,11 @@ Ethical, decentralized, voluntary, self-stabilizing money. **Not an element of f
 
 ∉thic is a chance to opt out of money systems bound to fiat monetary systems that are unethical, enforced through violence, and exacerbating the imbalances between the world's rich and poor.
 
-The symbol for ∉thic is the mathematical sign, **∉**, meaning "Not an element of" (a set). This is meant to express ∉thic's core mission to define a stable, voluntary, ethical store of value, unit of account, and medium of exchange that _is not an element of the unethical systems that comprise fiat monies_, as well as to pay homage to the EmptySetSquad who anonymously authored the underlying smart contract framework ∉thic is built upon.
+The symbol for ∉thic is the mathematical sign, **∉**, meaning "Not an element of" (a set). This is meant to express ∉thic's core mission to define a stable, voluntary, ethical store of value, unit of account, and medium of exchange that _is not an element of the unethical systems that comprise fiat monies_, as well as to pay homage to the EmptySetSquad who anonymously authored the underlying **døllar** smart contract framework ∉thic is built upon. (An important component of ethical action is to acknowledge and suitably reward those whose prior contributions made progress possible.)
+
+![image](https://raw.githubusercontent.com/ethic-money/ethic/master/Cointelegraph%20Oct%202%202020%20Douglas%20Horn.png?token=AI7OU5PLQHLIW3EMZ7SEXFTAB7SEO)
+
+### A Break from Fiat Money
 
 ∉thic is the first "Voluntary Elastic Stablecoin Protocol" developed by a publicly disclosed developer with a strong, multi-year track record in blockchain. [Douglas Horn](https://github.com/DouglasHorn) led the creation of the Telos blockchain in 2018 as a highly successful no-ICO blockchain and community in 2018. In October 2020, [his call for higher DeFi standards](https://cointelegraph.com/news/the-chance-for-defi-to-fulfill-the-technology-s-promise) was published by Cointelegraph outlining his five hallmarks of responsible DeFi:
 
@@ -79,7 +83,7 @@ The symbol for ∉thic is the mathematical sign, **∉**, meaning "Not an elemen
 
 ∉thic seeks to optimize features of the voluntary elastic stablecoin class through improved features and tokenomics.
 
-| Parameter | Setting | Rationale |
+| Parameter Name | Setting | Rationale |
 | --- | --- | --- |
 | Target Denomination | Maker DAI | Standard 1 USD unit without being directly tied to any fiat USD |
 | Epoch Time | 1 hour | Smaller, more consistent adjustments |
@@ -96,8 +100,8 @@ The symbol for ∉thic is the mathematical sign, **∉**, meaning "Not an elemen
 | Governance Super-Majority | 60% | With higher quorum, a lower supermajority helps ensure passage with broader community support |
 | Governance Emergency Delay | 3 days (72 epochs) | Such delays will be rare; Ensures time to fully develop and test a solution |
 | DAO Entrance Lockup Period | 4 days (96 epochs) | Shorter period creates better liquidity for users |
-| DAO Exit Lockup Period | 4 days (96 epochs) | Shorter period encourages turnover |
-| Pool Exit Lockup Period | 2 days (48 epochs) | Improved experience for liquidity providers |
+| DAO Exit Lockup Period | 7 days (168 epochs) | Longer period encourages more stable staking to expand pool equity |
+| Pool Exit Lockup Period | 4 days (96 epochs) | Improved experience for liquidity providers |
 | Coupon Expiration | 45 days (1080 epochs) | Provides longer viable period for coupon-holders to preserve against value loss in prolonged contraction |
 | Debt Ratio Cap | 20% |  |
 | Initial Coupon Redemption Penalty | 50% | Favors earlier token burners over later thanks to DSD improvement |
