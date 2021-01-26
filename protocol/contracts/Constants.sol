@@ -60,10 +60,10 @@ library Constants {
     uint256 private constant DEVELOPER_INCENTIVE = (INCENTIVE/100)*50; // 50% of incentive
     uint256 private constant WPS_INCENTIVE = (INCENTIVE/100)*0; // 0% of incentive (ready for future)
     uint256 private constant DAO_ENTRANCE_LOCKUP_EPOCHS = 96; // 96 epochs fluid = 4 days
-    uint256 private constant DAO_EXIT_LOCKUP_EPOCHS = 96; // 96 epochs fluid = 4 days
+    uint256 private constant DAO_EXIT_LOCKUP_EPOCHS = 168; // 168 epochs fluid = 7 days
     
     /* Pool */
-    uint256 private constant POOL_EXIT_LOCKUP_EPOCHS = 48; // 48 epochs fluid = 2 days
+    uint256 private constant POOL_EXIT_LOCKUP_EPOCHS = 96; // 96 epochs fluid = 4 days
     
     /* Market */
     uint256 private constant COUPON_EXPIRATION = 1080; // 1080 epochs = 45 days
