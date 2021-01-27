@@ -6,7 +6,7 @@ const { expect } = require('chai');
 const Ethic = contract.fromArtifact('Ethic');
 const MockOracle = contract.fromArtifact('MockOracle');
 const MockUniswapV2PairTrade = contract.fromArtifact('MockUniswapV2PairTrade');
-const MockDAI = contract.fromArtifact('MockDAI');
+const TestnetDAI = contract.fromArtifact('TestnetDAI');
 
 const DECIMAL_DIFF = new BN(10).pow(new BN(12));
 const EPSILON = new BN(1).mul(DECIMAL_DIFF);
@@ -38,7 +38,7 @@ describe('Oracle', function () {
 
   beforeEach(async function () {
     this.ethic = await Ethic.new({from: ownerAddress});
-    this.dai = await MockDAI.new({from: ownerAddress});
+    this.dai = await TestnetDAI.new({from: ownerAddress});
     this.amm = await MockUniswapV2PairTrade.new({from: ownerAddress});
     this.oracle = await MockOracle.new(this.amm.address, this.ethic.address, this.dai.address, {from: ownerAddress, gas: 8000000});
     await time.increase(3600);
@@ -568,6 +568,7 @@ describe('Oracle', function () {
           expect(await this.oracle.reserve()).to.be.bignumber.equal(dai(3000));
         });
       });
+    });
   });
 
   describe('pair', function () {
