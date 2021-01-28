@@ -138,6 +138,13 @@ Current Ethereum-based voting systems are inefficient because voting requires pa
 Rewarding developers incentivizes them to remain with a project, uncovering bugs, developing new and improved features and listening to the community that controls their fees. This is the ultimate predictor of a project that will grow and thrive over years to come.
 
 ## Contracts
+### Kovan
+- `0x3A29121f4D66d67432B3420c5fA5711003CB76C1` **DAO**
+- `0xb0deb36900e84Cf257325452a775fe9E81d060fb` **∉thic**
+- `0x------------` **Oracle**
+- `0x7ab1D07Dcf918d1AB6f312b50464DD5C65CA0250` **UniswapV2 USDC:ETHC Pair**
+- `0x------------` **LP Incentivation Pool**
+
 ### Mainnet
 - `0x----------------------------------------` **DAO**
 - `0x------------` **∉thic**

@@ -29,7 +29,7 @@ library Constants {
     uint256 private constant BOOTSTRAPPING_SPEEDUP_FACTOR = 3; // 30 days @ 8 hours
 
     /* Oracle */
-    address private constant DAI_ADDRESS = address(0x6B175474E89094C44Da98b954EedeAC495271d0F);
+    address private constant DAI_ADDRESS = address(0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa);
     uint256 private constant ORACLE_RESERVE_MINIMUM = 1e10; // 10,000 DAI
 
     /* Bonding */
@@ -78,12 +78,12 @@ library Constants {
     uint256 private constant TREASURY_RATIO = 250; // 2.5%
 
     /* Deployed */
-    address private constant DAO_ADDRESS = address(0x443D2f2755DB5942601fa062Cc248aAA153313D3);
-    address private constant ETHIC_ADDRESS = address(0x36F3FD68E7325a35EB768F1AedaAe9EA0689d723);
-    address private constant PAIR_ADDRESS = address(0x88ff79eB2Bc5850F27315415da8685282C7610F9);
-    address private constant TREASURY_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22);
-    address private constant DEVELOPER_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22);
-    address private constant WPS_ADDRESS = address(0x460661bd4A5364A3ABCc9cfc4a8cE7038d05Ea22);
+    address private constant DAO_ADDRESS = address(0x3A29121f4D66d67432B3420c5fA5711003CB76C1);
+    address private constant ETHIC_ADDRESS = address(0xb0deb36900e84Cf257325452a775fe9E81d060fb);
+    address private constant PAIR_ADDRESS = address(0x7ab1D07Dcf918d1AB6f312b50464DD5C65CA0250);
+    address private constant TREASURY_ADDRESS = address(0x88B6b8518D80ecf62C39D5A3AafaCcC4705941A7);
+    address private constant DEVELOPER_ADDRESS = address(0x64655E2c5721A92077978076B38bD34872f8b09F);
+    address private constant WPS_ADDRESS = address(0x42125A6B882bBF6e69375F2a274F23aC928c593a);
 
 
     /**
