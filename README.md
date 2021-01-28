@@ -22,7 +22,7 @@ Ethical, decentralized, voluntary, self-stabilizing money. **Not an element of f
 
 The symbol for ∉thic is the mathematical sign, **∉**, meaning "Not an element of" (a set). This is meant to express ∉thic's core mission to define a stable, voluntary, ethical store of value, unit of account, and medium of exchange that _is not an element of the unethical systems that comprise fiat monies_, as well as to pay homage to the EmptySetSquad who anonymously authored the underlying **døllar** smart contract framework ∉thic is built upon. (An important component of ethical action is to acknowledge and suitably reward those whose prior contributions made progress possible.)
 
-![image](https://raw.githubusercontent.com/ethic-money/ethic/master/Cointelegraph%20Oct%202%202020%20Douglas%20Horn.png?token=AI7OU5IANIKMDC6JUF73MY3AB7TTK)
+![image](https://github.com/ethic-money/ethic/blob/master/Cointelegraph%20Oct%202%202020%20Douglas%20Horn.png)
 
 ### A Break from Fiat Money
 
