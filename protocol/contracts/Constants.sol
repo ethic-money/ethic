@@ -33,7 +33,7 @@ library Constants {
     uint256 private constant ORACLE_RESERVE_MINIMUM = 1e10; // 10,000 DAI
     
     /* Bonding */
-    uint256 private constant INITIAL_STAKE_MULTIPLE = 1e6; // 100 ESD -> 100M ETHCS
+    uint256 private constant INITIAL_STAKE_MULTIPLE = 1e6; // 100 ETHC -> 100M ETHCS
     
     /* Epoch */
     struct EpochStrategy {
