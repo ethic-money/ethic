@@ -55,10 +55,10 @@ library Constants {
     uint256 private constant GOVERNANCE_EMERGENCY_DELAY = 72; // 72 epochs = 3 days
     
     /* DAO */
-    uint256 private constant INCENTIVE = 12e19; // 120 ETHC incentive
+    uint256 private constant INCENTIVE = 8e19; // 80 ETHC total incentive
     uint256 private constant ADVANCE_INCENTIVE = (INCENTIVE/100)*50; // 50% of incentive
     uint256 private constant DEVELOPER_INCENTIVE = (INCENTIVE/100)*50; // 50% of incentive
-    uint256 private constant WPS_INCENTIVE = (INCENTIVE/100)*0; // 0% of incentive (ready for future)
+    uint256 private constant TREASURY_INCENTIVE = (INCENTIVE/100)*0; // 0% of incentive (ready for future)
     uint256 private constant DAO_ENTRANCE_LOCKUP_EPOCHS = 96; // 96 epochs fluid = 4 days
     uint256 private constant DAO_EXIT_LOCKUP_EPOCHS = 168; // 168 epochs fluid = 7 days
     
@@ -83,7 +83,6 @@ library Constants {
     address private constant PAIR_ADDRESS = address(0x____); // update with real pair address
     address private constant TREASURY_ADDRESS = address(0x____); // update with real treasury address
     address private constant DEVELOPER_ADDRESS = address(0x____); // update with real developer address
-    address private constant WPS_ADDRESS = address(0x____); // update with real developer address
     
     /**
      * Getters
