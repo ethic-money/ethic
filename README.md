@@ -87,12 +87,12 @@ The symbol for ∉thic is the mathematical sign, **∉**, meaning "Not an elemen
 | --- | --- | --- |
 | Target Denomination | Maker DAI | Standard 1 USD unit without being directly tied to any fiat USD |
 | Epoch Time | 1 hour | Smaller, more consistent adjustments |
-| Bonding | ∉100 -> 100M ETHCS | Successful for previous protocols |
+| Bonding | 100 ETHC -> 100M ETHCS | Successful for previous protocols |
 | Oracle Reserve Minimum | 10,000 DAI | Successful for previous protocols |
 | Bootstrapping Period | 45 days (1080 epochs) | Longer period with lower speedup |
 | Bootstrapping Price Target | 1.10 DAI | Successful for previous protocols |
 | Bootstrapping Speedup Factor | 2 | Lower speedup paired to longer bootstrap period |
-| Epoch Advance Reward | ∉60.00 | More frequent epochs / reasonable reward |
+| Epoch Advance Reward | 40 ETHC | More frequent epochs / reasonable reward |
 | Governance Period | 4 days (96 epochs) | Longer voting period invites more voters |
 | Governance Expiration |  1/2 day (12 epochs) | Reasonable amount of time to execute governance |
 | Governance Quorum | 30% | Higher quorum supports better governance |
@@ -104,7 +104,7 @@ The symbol for ∉thic is the mathematical sign, **∉**, meaning "Not an elemen
 | Pool Exit Lockup Period | 4 days (96 epochs) | Improved experience for liquidity providers |
 | Coupon Expiration | 45 days (1080 epochs) | Provides longer viable period for coupon-holders to preserve against value loss in prolonged contraction |
 | Debt Ratio Cap | 20% |  |
-| Initial Coupon Redemption Penalty | 50% | Favors earlier token burners over later thanks to DSD improvement |
+| Initial Coupon Redemption Penalty | 50% | Favors earlier token burners over later thanks to a DSD improvement |
 | Coupon Redeption Penalty Delay | 1 hour |  |
 | Supply Change Limit | 0.3%/epoch or 7.2% per day | high resolution (1 hr) supply change with lower daily amount for greater stability |
 | Coupon Supply Limit | 6% |  |
@@ -124,7 +124,7 @@ The [∉thic Litepaper](https://github.com/ethic-money/ethic/blob/master/xxxxx.p
 ∉thic is entirely owned and operated by the community of ETHC token holders. V1 governance will exist on Ethereum's Aragon but will rapidly (within 3 months of launch) migrate to V2 governance on the Telos Decide™ governance system which will allow benefits including:
 
 * Free voting on all ballots
-* Deterministic Cross-Chain Interaction (CCI) to Ethereum to exectue ballot outcomes
+* Deterministic Cross-Chain Interaction (CCI) to Ethereum to execute ballot outcomes
 * Fast, easy voting experience via the custom ∉thic Voting Wallet mobile app 
 
 Current Ethereum-based voting systems are inefficient because voting requires paying large gas fees. Managing voting through the Telos Decide system will make all voting free and fast, encouraging better governance.
@@ -138,12 +138,27 @@ Current Ethereum-based voting systems are inefficient because voting requires pa
 Rewarding developers incentivizes them to remain with a project, uncovering bugs, developing new and improved features and listening to the community that controls their fees. This is the ultimate predictor of a project that will grow and thrive over years to come.
 
 ## Contracts
-### Mainnet
-- `0x----------------------------------------` **DAO**
-- `0x------------` **∉thic**
+
+### Kovan Testnet
+
+- `0x3A29121f4D66d67432B3420c5fA5711003CB76C1` **DAO**
+- `0xb0deb36900e84Cf257325452a775fe9E81d060fb` **∉thic**
 - `0x------------` **Oracle**
-- `0x-----------` **UniswapV2 USDC:ETHC Pair**
+- `0x7ab1D07Dcf918d1AB6f312b50464DD5C65CA0250` **UniswapV2 DAI:ETHC Pair**
+- `0x------------` **LP Incentivation Pool**
+- `0x64655E2c5721A92077978076B38bD34872f8b09F` **Developer Reward Pool Multisig**
+- `0x88B6b8518D80ecf62C39D5A3AafaCcC4705941A7` **Community Treasury Multisig**
+
+
+### Mainnet
+
+- `0x-----------` **DAO**
+- `0x-----------` **∉thic**
+- `0x-----------` **Oracle**
+- `0x-----------` **UniswapV2 DAI:ETHC Pair**
 - `0x-----------` **LP Incentivation Pool**
+- `0x-----------` **Developer Reward Pool Multisig**
+- `0x-----------` **Community Treasury Multisig**
 
 ## Audit
 
@@ -160,6 +175,17 @@ For the protection of the community, the ∉thic project will only accept develo
 ## Claiming Developer Rewards
 
 ∉thic earns a regular pool of new developer rewards in order to continuously advance the protocol. The intended function of these rewards is to encourage ongoing __future__ development. However, ∉thic recognizes the debt that every program owes to its predecessors and the importance of rewarding all contributors to the success of the system. Any participant who has a legitmate claim of contributing to the existence and health of the system should propose a payment. Examples are the developers of the Empty Set Dollar protocol and others whose work helps form the foundation of this project.
+
+### Developer Rewards and Community Treasury Funds Control
+
+As ∉thic operations accrues funds for the community treasure and developer rewards pools, these funds are deposited into Ethereum contracts controlled by multisignature wallets (using the Gnosis multisig wallet contracts). The signers with the ability to approve these transactions are also openly announced individuals who will only approve transactions voted on and passed by the community. They are not developers of the protocol and their only role is to approve only valid draws from these multisig wallets. Executing any transfer requires agreement from 4 signatures of a possible 6 signers.
+
+**Sukesh Tedla** (Sweden) - Chairman of Swedish Blockchain Association
+
+**Rory Mapstone** (South Africa) - 
+
+**Rami James** (Israel) - Scatter Wallet principal
+
 
 ## Disclaimer
 This project is an experiment in decentralize finance and monetary systems. Its contracts are unaudited but based on previously audited open source software code. These contracts operate on a blockchain with dependencies on open source software code and price oracles that are accessed by wallet applications on computer operating systems - all are build using a variety of frameworks, programming languages and code libraries believed to be reliable but outside the control of the developers. Bugs, errors and exploits unknown to the developers may exist or be discovered or introduced at any layer or step in the technology stack of components that make this application operate. All participants should take great caution when interacting with this experimental software. The loss of some or all funds contributed to this experimental system is possibilite. The developers disavow any fiduciary responsibility, custodianship or legal or moral responsibilities for losses resulting from anything outside their direct, explicit, intentioned actions. 
