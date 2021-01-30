@@ -48,17 +48,16 @@ library Constants {
     
     /* Governance */
     uint256 private constant GOVERNANCE_PERIOD = 96; // 96 epochs = 4 days
-    uint256 private constant GOVERNANCE_EXPIRATION = 11; // 11 + 1 epochs = 12 hours
+    uint256 private constant GOVERNANCE_EXPIRATION = 23; // 23 + 1 epochs = 24 hours
     uint256 private constant GOVERNANCE_QUORUM = 30e16; // 30% - higher quorum for better governance
     uint256 private constant GOVERNANCE_PROPOSAL_THRESHOLD = 2e16; // 2% - higher proposal threshold
     uint256 private constant GOVERNANCE_SUPER_MAJORITY = 6e17; // 60% - lower supermajority
     uint256 private constant GOVERNANCE_EMERGENCY_DELAY = 72; // 72 epochs = 3 days
     
     /* DAO */
-    uint256 private constant INCENTIVE = 12e19; // 120 ETHC incentive
+    uint256 private constant INCENTIVE = 8e19; // 80 ETHC total incentive
     uint256 private constant ADVANCE_INCENTIVE = (INCENTIVE/100)*50; // 50% of incentive
-    uint256 private constant DEVELOPER_INCENTIVE = (INCENTIVE/100)*50; // 50% of incentive
-    uint256 private constant WPS_INCENTIVE = (INCENTIVE/100)*0; // 0% of incentive (ready for future)
+    uint256 private constant TREASURY_INCENTIVE = (INCENTIVE/100)*50; // 50% of incentive
     uint256 private constant DAO_ENTRANCE_LOCKUP_EPOCHS = 96; // 96 epochs fluid = 4 days
     uint256 private constant DAO_EXIT_LOCKUP_EPOCHS = 168; // 168 epochs fluid = 7 days
     
@@ -69,7 +68,7 @@ library Constants {
     uint256 private constant COUPON_EXPIRATION = 1080; // 1080 epochs = 45 days
     uint256 private constant DEBT_RATIO_CAP = 2e17; // 20%
     uint256 private constant INITIAL_COUPON_REDEMPTION_PENALTY = 5e17; // 50%
-    uint256 private constant COUPON_REDEMPTION_PENALTY_DECAY = 3600; // 1 hour
+    uint256 private constant COUPON_REDEMPTION_PENALTY_DECAY = 3600; // 1 hour 
 
     /* Regulator */
     uint256 private constant SUPPLY_CHANGE_LIMIT = 3e15; // 0.3% per epoch = 7.2% per day
@@ -82,8 +81,6 @@ library Constants {
     address private constant ETHIC_ADDRESS = address(0x____); // update with real ethic address
     address private constant PAIR_ADDRESS = address(0x____); // update with real pair address
     address private constant TREASURY_ADDRESS = address(0x____); // update with real treasury address
-    address private constant DEVELOPER_ADDRESS = address(0x____); // update with real developer address
-    address private constant WPS_ADDRESS = address(0x____); // update with real developer address
     
     /**
      * Getters
@@ -149,13 +146,9 @@ library Constants {
         return ADVANCE_INCENTIVE;
     }
 
-    function getDeveloperIncentive() internal pure returns (uint256) {
-        return DEVELOPER_INCENTIVE;
+    function getTreasuryIncentive() internal pure returns (uint256) {
+        return TREASURY_INCENTIVE;
     }
-
-    function getWpsIncentive() internal pure returns (uint256) {
-        return WPS_INCENTIVE;
-    } 
     
     function getDAOExitLockupEpochs() internal pure returns (uint256) {
         return DAO_EXIT_LOCKUP_EPOCHS;
@@ -219,13 +212,5 @@ library Constants {
 
     function getTreasuryAddress() internal pure returns (address) {
         return TREASURY_ADDRESS;
-    }
-    
-    function getDeveloperAddress() internal pure returns (address) {
-        return DEVELOPER_ADDRESS;
-    }
-
-    function getWpsAddress() internal pure returns (address) {
-        return WPS_ADDRESS;
     }
 }
