@@ -146,13 +146,9 @@ library Constants {
         return ADVANCE_INCENTIVE;
     }
 
-    function getDeveloperIncentive() internal pure returns (uint256) {
-        return DEVELOPER_INCENTIVE;
+    function getTreasuryIncentive() internal pure returns (uint256) {
+        return TREASURY_INCENTIVE;
     }
-
-    function getWpsIncentive() internal pure returns (uint256) {
-        return WPS_INCENTIVE;
-    } 
     
     function getDAOExitLockupEpochs() internal pure returns (uint256) {
         return DAO_EXIT_LOCKUP_EPOCHS;
