@@ -94,7 +94,7 @@ The symbol for ∉thic is the mathematical sign, **∉**, meaning "Not an elemen
 | Bootstrapping Speedup Factor | 2 | Lower speedup paired to longer bootstrap period |
 | Epoch Advance Reward | 40 ETHC | More frequent epochs / reasonable reward |
 | Governance Period | 4 days (96 epochs) | Longer voting period invites more voters |
-| Governance Expiration |  1/2 day (12 epochs) | Reasonable amount of time to execute governance |
+| Governance Expiration |  1 day (24 epochs) | Reasonable amount of time to execute governance proposals |
 | Governance Quorum | 30% | Higher quorum supports better governance |
 | Governance Proposal Threshold | 2% | Ensure proposals have reasonable support |
 | Governance Super-Majority | 60% | With higher quorum, a lower supermajority helps ensure passage with broader community support |
@@ -146,7 +146,6 @@ Rewarding developers incentivizes them to remain with a project, uncovering bugs
 - `0x------------` **Oracle**
 - `0x7ab1D07Dcf918d1AB6f312b50464DD5C65CA0250` **UniswapV2 DAI:ETHC Pair**
 - `0x------------` **LP Incentivation Pool**
-- `0x64655E2c5721A92077978076B38bD34872f8b09F` **Developer Reward Pool Multisig**
 - `0x88B6b8518D80ecf62C39D5A3AafaCcC4705941A7` **Community Treasury Multisig**
 
 
@@ -157,7 +156,6 @@ Rewarding developers incentivizes them to remain with a project, uncovering bugs
 - `0x-----------` **Oracle**
 - `0x-----------` **UniswapV2 DAI:ETHC Pair**
 - `0x-----------` **LP Incentivation Pool**
-- `0x-----------` **Developer Reward Pool Multisig**
 - `0x-----------` **Community Treasury Multisig**
 
 ## Audit
@@ -176,9 +174,9 @@ For the protection of the community, the ∉thic project will only accept develo
 
 ∉thic earns a regular pool of new developer rewards in order to continuously advance the protocol. The intended function of these rewards is to encourage ongoing __future__ development. However, ∉thic recognizes the debt that every program owes to its predecessors and the importance of rewarding all contributors to the success of the system. Any participant who has a legitmate claim of contributing to the existence and health of the system should propose a payment. Examples are the developers of the Empty Set Dollar protocol and others whose work helps form the foundation of this project.
 
-### Developer Rewards and Community Treasury Funds Control
+### Community Treasury Funds Control
 
-As ∉thic operations accrues funds for the community treasure and developer rewards pools, these funds are deposited into Ethereum contracts controlled by multisignature wallets (using the Gnosis multisig wallet contracts). The signers with the ability to approve these transactions are also openly announced individuals who will only approve transactions voted on and passed by the community. They are not developers of the protocol and their only role is to approve only valid draws from these multisig wallets. Executing any transfer requires agreement from 4 signatures of a possible 6 signers.
+As ∉thic operations accrues funds for the community treasury pool intended to support ongoing development and marketing efforts, these funds are deposited into an Ethereum address controlled by multisignature wallets (using the Gnosis multisig wallet contracts). The signers with the ability to approve these transactions are also openly announced individuals who will only approve transactions voted on and passed by the community. They are not developers of the protocol and their only role is to approve only valid draws from these multisig wallets. Executing any transfer requires agreement from 4 signatures of a possible 7 signers.
 
 **Sukesh Tedla** (Sweden) - Chairman of Swedish Blockchain Association
 
@@ -188,7 +186,7 @@ As ∉thic operations accrues funds for the community treasure and developer rew
 
 
 ## Disclaimer
-This project is an experiment in decentralize finance and monetary systems. Its contracts are unaudited but based on previously audited open source software code. These contracts operate on a blockchain with dependencies on open source software code and price oracles that are accessed by wallet applications on computer operating systems - all are build using a variety of frameworks, programming languages and code libraries believed to be reliable but outside the control of the developers. Bugs, errors and exploits unknown to the developers may exist or be discovered or introduced at any layer or step in the technology stack of components that make this application operate. All participants should take great caution when interacting with this experimental software. The loss of some or all funds contributed to this experimental system is possibilite. The developers disavow any fiduciary responsibility, custodianship or legal or moral responsibilities for losses resulting from anything outside their direct, explicit, intentioned actions. 
+This project is an experiment in decentralize finance and monetary systems. Its contracts are unaudited but based on previously audited open source software code. These contracts operate on a blockchain with dependencies on open source software code and price oracles that are accessed by wallet applications on computer operating systems - all are built using a variety of frameworks, programming languages and code libraries believed to be reliable but outside the control of the developers. Bugs, errors and exploits unknown to the developers may exist or be discovered or introduced at any layer or step in the technology stack of components that make this application operate. All participants should take great caution when interacting with this experimental software. The loss of some or all funds contributed to this experimental system is possibilite. The developers and Treasury address multisig signers disavow any fiduciary responsibility, custodianship or legal or moral responsibilities for losses resulting from anything outside their direct, explicit, intentioned actions. 
 
 ```
 Copyright 2021 Ethic Money Devs <devs@ethic.money>
