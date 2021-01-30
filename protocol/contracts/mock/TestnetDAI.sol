@@ -19,11 +19,11 @@ pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20Burnable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20Detailed.sol";
-import "../oracle/IUSDC.sol";
+import "../oracle/IDAI.sol";
 
 contract TestnetDAI is ERC20Detailed, ERC20Burnable, IDAI {
     constructor()
-    ERC20Detailed("USD//C", "DAI", 6)
+    ERC20Detailed("DAI", "DAI", 18)
     public
     { }
 
