@@ -27,7 +27,7 @@ import "./Permission.sol";
 
 contract Deployer1 is State, Permission, Upgradeable {
     function initialize() initializer public {
-        _state.provider.dollar = new Ethic();
+        _state.provider.ethic = new Ethic();
     }
 
     function implement(address implementation) external {
@@ -38,7 +38,7 @@ contract Deployer1 is State, Permission, Upgradeable {
 contract Deployer2 is State, Permission, Upgradeable {
     function initialize() initializer public {
         _state.provider.oracle = new Oracle(address(ethic()));
-        ethic().setup();
+        //ethic().setup(); //NOTE: Implement this later!
     }
 
     function implement(address implementation) external {
@@ -48,7 +48,8 @@ contract Deployer2 is State, Permission, Upgradeable {
 
 contract Deployer3 is State, Permission, Upgradeable {
     function initialize() initializer public {
-        _state.provider.pool = address(new Pool(address(ethic()), address(oracle().pair())));
+        // Fix this later:
+        //_state.provider.pool = address(new Pool(address(ethic()), address(oracle().pair())));
     }
 
     function implement(address implementation) external {

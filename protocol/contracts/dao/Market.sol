@@ -113,12 +113,12 @@ function purchaseCoupons(uint256 ethicAmount) external returns (uint256) {
         uint256 redeemAmount = couponAmount - burnAmount;
 
         redeemToAccount(msg.sender, redeemAmount);
-        
+
         emit CouponBurn(msg.sender, couponEpoch, burnAmount);
         emit CouponRedemption(msg.sender, couponEpoch, redeemAmount);
     }
 
-    function approveCoupons(address spender, 256 amount) external {
+    function approveCoupons(address spender, uint256 amount) external {
         require(spender != address(0), "Market: Coupon approve to the zero address");
 
         updateAllowanceCoupons(msg.sender, spender, amount);
