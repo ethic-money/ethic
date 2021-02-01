@@ -28,7 +28,7 @@ contract PoolGetters is PoolState {
      * Global
      */
 
-    function usdc() public view returns (address) {
+    function dai() public view returns (address) {
         return Constants.getDaiAddress();
     }
 
@@ -36,8 +36,8 @@ contract PoolGetters is PoolState {
         return IDAO(Constants.getDaoAddress());
     }
 
-    function dollar() public view returns (IDollar) {
-        return IEthic(Constants.getDollarAddress());
+    function ethic() public view returns (IEthic) {
+        return IEthic(Constants.getEthicAddress());
     }
 
     function univ2() public view returns (IERC20) {
