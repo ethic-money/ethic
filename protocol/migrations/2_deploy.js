@@ -10,6 +10,7 @@ module.exports = function(deployer) {
     switch (deployer.network) {
       case 'development':
       case 'rinkeby':
+      case 'kovan':
       case 'ropsten':
         await deployImplementation(deployer);
         break;
