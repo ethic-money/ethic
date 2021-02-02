@@ -20,6 +20,7 @@ pragma experimental ABIEncoderV2;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "../token/IEthic.sol";
 import "./IDAO.sol";
+import "./IDAI.sol";
 
 contract PoolAccount {
     enum Status {
