@@ -42,9 +42,9 @@ library Constants {
         uint256 period;
     }
     
-    uint256 private constant CURRENT_EPOCH_OFFSET = 106;
-    uint256 private constant CURRENT_EPOCH_START = 1610292686;
-    uint256 private constant CURRENT_EPOCH_PERIOD = 3600;
+    uint256 private constant EPOCH_OFFSET = 106;
+    uint256 private constant EPOCH_START = 1610292686;
+    uint256 private constant EPOCH_PERIOD = 3600;
     
     /* Governance */
     uint256 private constant GOVERNANCE_PERIOD = 96; // 96 epochs = 4 days
@@ -81,6 +81,9 @@ library Constants {
     address private constant ETHIC_ADDRESS = address(0xb0deb36900e84Cf257325452a775fe9E81d060fb); // Kovan Testnet - update with mainnet ethic address
     address private constant PAIR_ADDRESS = address(0x7ab1D07Dcf918d1AB6f312b50464DD5C65CA0250); // Kovan Testnet - update with mainnet pair address
     address private constant TREASURY_ADDRESS = address(0x88B6b8518D80ecf62C39D5A3AafaCcC4705941A7); // Kovan Testnet - update with mainnet treasury address
+    address private constant DEVELOPER_ADDRESS = address(0x64655E2c5721A92077978076B38bD34872f8b09F); // Kovan Testnet - unneeded on mainnet
+    address private constant WPS_ADDRESS = address(0x42125A6B882bBF6e69375F2a274F23aC928c593a); // Kovan Testnet - unneeded on mainnet
+    
     
     /**
      * Getters
@@ -148,7 +151,7 @@ library Constants {
 
     function getTreasuryIncentive() internal pure returns (uint256) {
         return TREASURY_INCENTIVE;
-    }
+    }    
     
     function getDAOExitLockupEpochs() internal pure returns (uint256) {
         return DAO_EXIT_LOCKUP_EPOCHS;

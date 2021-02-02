@@ -110,7 +110,7 @@ contract Setters is State, Getters {
         _state.balance.coupons = _state.balance.coupons.sub(amount, reason);
     }
 
-    function unfreeze(address account, uint 256 epochs) internal {
+    function unfreeze(address account, uint256 epochs) internal {
         _state.accounts[account].fluidUntil = epoch().add(epochs);
     }
 

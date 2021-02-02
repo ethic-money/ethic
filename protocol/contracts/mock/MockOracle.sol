@@ -29,7 +29,7 @@ contract MockOracle is Oracle {
     constructor (address pair, address ethic, address dai) Oracle(ethic) public {
         _pair = IUniswapV2Pair(pair);
         _index = 0;
-        _dai = daiv ;
+        _dai = dai ;
     }
 
     function dai() internal view returns (address) {    }
