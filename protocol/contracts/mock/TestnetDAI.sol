@@ -31,8 +31,4 @@ contract TestnetDAI is ERC20Detailed, ERC20Burnable, IDAI {
         _mint(account, amount);
         return true;
     }
-
-    function isBlacklisted(address account) external view returns (bool) {
-        return false;
-    }
 }
