@@ -87,7 +87,7 @@ contract Regulator is Comptroller {
         if (!valid) {
             return Decimal.one();
         }
-
-        return price;
+        
+        return price.div(1e12).mul(4);  // Note: Price comes in x 1e12, normalize here
     }
 }
