@@ -1,4 +1,4 @@
-const Implementation = artifacts.require("Ethic");
+/* const Implementation = artifacts.require("Ethic");
 async function deployImplementation(deployer) {
   await deployer.deploy(Implementation);
 }
@@ -21,3 +21,4 @@ module.exports = function(deployer) {
     }
   })
 };
+*/
