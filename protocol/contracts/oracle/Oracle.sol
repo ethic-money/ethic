@@ -24,6 +24,7 @@ import '../external/UniswapV2Library.sol';
 import "../external/Require.sol";
 import "../external/Decimal.sol";
 import "./IOracle.sol";
+import "./IDAI.sol";
 import "../Constants.sol";
 
 contract Oracle is IOracle {
