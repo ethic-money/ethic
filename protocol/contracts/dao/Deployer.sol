@@ -38,7 +38,7 @@ contract Deployer1 is State, Permission, Upgradeable {
 contract Deployer2 is State, Permission, Upgradeable {
     function initialize() initializer public {
         _state.provider.oracle = new Oracle(address(ethic()));
-        //ethic().setup(); //NOTE: Implement this later!
+        oracle().setup(); 
     }
 
     function implement(address implementation) external {
@@ -48,8 +48,7 @@ contract Deployer2 is State, Permission, Upgradeable {
 
 contract Deployer3 is State, Permission, Upgradeable {
     function initialize() initializer public {
-        // Fix this later:
-        //_state.provider.pool = address(new Pool(address(ethic()), address(oracle().pair())));
+        _state.provider.pool = address(new Pool(address(ethic()), address(oracle().pair())));
     }
 
     function implement(address implementation) external {
