@@ -9,7 +9,7 @@
     "compile": "truffle compile",
     "test": "mocha --timeout 10000 --exit --recursive test",
     "deploy": "truffle migrate --network mainnet",
-    "verify": "truffle run verify Implementation --network mainnet"
+    "verify": "truffle run verify Implementation --network kovan"
   },
   "author": "",
   "license": "Apache-2.0",
