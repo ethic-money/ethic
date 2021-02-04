@@ -27,9 +27,9 @@ import "./Liquidity.sol";
 contract Pool is PoolSetters, Liquidity {
     using SafeMath for uint256;
 
-        constructor(address dollar, address univ2) public {
+    constructor(address ethic, address univ2) public {
         _state.provider.dao = IDAO(msg.sender);
-        _state.provider.dollar = IEthic(ethic);
+        _state.provider.ethic = IEthic(ethic);
         _state.provider.univ2 = IERC20(univ2);
     }
 
