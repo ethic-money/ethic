@@ -1,7 +1,29 @@
+const Deployer1 = artifacts.require("Deployer1");
+const Deployer2 = artifacts.require("Deployer2");
+const Deployer3 = artifacts.require("Deployer3");
 const Implementation = artifacts.require("Implementation");
+const Root = artifacts.require("Root");
+const TestnetDAI = artifacts.require("TestnetDAI");
 
-async function deployImplementation(deployer) {
-  await deployer.deploy(Implementation);
+async function deployTestnetDAI(deployer) {
+  await deployer.deploy(TestnetDAI);
+}
+
+async function deployTestnet(deployer) {
+  const d1 = await deployer.deploy(Deployer1);
+  const root = await deployer.deploy(Root, d1.address);
+  const rootAsD1 = await Deployer1.at(root.address);
+
+  const d2 = await deployer.deploy(Deployer2);
+  await rootAsD1.implement(d2.address);
+  const rootAsD2 = await Deployer2.at(root.address);
+
+  const d3 = await deployer.deploy(Deployer3);
+  await rootAsD2.implement(d3.address);
+  const rootAsD3 = await Deployer3.at(root.address);
+
+  const implementation = await deployer.deploy(Implementation);
+  await rootAsD3.implement(implementation.address);
 }
 
 module.exports = function(deployer) {
@@ -12,7 +34,7 @@ module.exports = function(deployer) {
       case 'rinkeby':
       case 'kovan':
       case 'ropsten':
-        await deployImplementation(deployer);
+        await deployTestnet(deployer);
         break;
       case 'mainnet':
       case 'mainnet-fork':
