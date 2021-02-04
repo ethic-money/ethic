@@ -16,7 +16,7 @@ function cents(n) {
 }
 
 function dai(n) {
-  return new BN(n).mul(new BN(10).pow(new BN(6)));
+  return new BN(n).mul(new BN(10).pow(new BN(18)));
 }
 
 function uint112s(time, priceNum=1, priceDen=1) {
@@ -30,7 +30,7 @@ async function priceForToBN(oracle) {
 async function simulateTrade(amm, ethc, dai) {
   return await amm.simulateTrade(
     new BN(ethc).mul(new BN(10).pow(new BN(18))),
-    new BN(dai).mul(new BN(10).pow(new BN(6))));
+    new BN(dai).mul(new BN(10).pow(new BN(18))));
 }
 
 describe('Oracle', function () {
