@@ -157,7 +157,7 @@ Rewarding developers incentivizes them to remain with a project, uncovering bugs
 - `0x-----------` **Oracle**
 - `0x-----------` **UniswapV2 DAI:ETHC Pair**
 - `0x-----------` **LP Incentivation Pool**
-- `0x-----------` **Community Treasury Multisig**
+- `0x25825313BeAd63Ab5b93Aae07f1879A6bC501F6E` **Community Treasury Multisig**
 
 ## Audit
 
@@ -187,7 +187,7 @@ As ∉thic operations accrues funds for the community treasury pool intended to 
 | **Marlon Williams** | USA |  Qubicles CEO | `0x87E592C8D476EA66329Df1801D4a45FD463A7003` |
 | **Rami James** | Israel |  Scatter Founder | `0xebc927335d9a6ae78312dda40a8d9de10c7b32fa` |
 | **George Vernon** | USA |  Crypto Investor | `0x988c844503F2740c17Cc0010A4fBbDC89D5209AA` |
-| **Douglas Horn**  [![Twitter](https://i.imgur.com/wWzX9uB.png)](https://twitter.com/Douglas_Horn) [![Github](https://i.imgur.com/9I6NRUm.png)](https://github.com/DouglasHorn)       | USA |  ETHIC Founder, Telos Architect | `0x5C327e62F735F37e7F816eEb2c8574a4ce61E003` |
+| **Douglas Horn**  [![Twitter](https://i.imgur.com/wWzX9uB.png)](https://twitter.com/Douglas_Horn) [![Github](https://i.imgur.com/9I6NRUm.png)](https://github.com/DouglasHorn)       | USA |  ∉thic Founder, Telos Architect | `0x5C327e62F735F37e7F816eEb2c8574a4ce61E003` |
 
 
 ## Disclaimer
