@@ -1,0 +1,3485 @@
+{
+  "contractName": "MockPool",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "ethic",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "dai",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "univ2",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "start",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Bond",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Claim",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Deposit",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "lessDai",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newUniv2",
+          "type": "uint256"
+        }
+      ],
+      "name": "Provide",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "start",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newClaimable",
+          "type": "uint256"
+        }
+      ],
+      "name": "Unbond",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Withdraw",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOfBonded",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOfClaimable",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOfPhantom",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOfRewarded",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOfStaged",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "bond",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "claim",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "deposit",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "emergencyPause",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "emergencyWithdraw",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "paused",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "provide",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "statusOf",
+      "outputs": [
+        {
+          "internalType": "enum PoolAccount.Status",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "totalBonded",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "totalClaimable",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "totalPhantom",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "totalRewarded",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "totalStaged",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "unbond",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdraw",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "dao",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "ethic",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "univ2",
+          "type": "address"
+        }
+      ],
+      "name": "set",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "dai",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "dao",
+      "outputs": [
+        {
+          "internalType": "contract IDAO",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "ethic",
+      "outputs": [
+        {
+          "internalType": "contract IEthic",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "univ2",
+      "outputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ethic\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"dai\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"univ2\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"start\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Bond\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Claim\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Deposit\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"lessDai\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newUniv2\",\"type\":\"uint256\"}],\"name\":\"Provide\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"start\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newClaimable\",\"type\":\"uint256\"}],\"name\":\"Unbond\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Withdraw\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOfBonded\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOfClaimable\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOfPhantom\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOfRewarded\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOfStaged\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"bond\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"claim\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"dai\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"dao\",\"outputs\":[{\"internalType\":\"contract IDAO\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"deposit\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"emergencyPause\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"emergencyWithdraw\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"ethic\",\"outputs\":[{\"internalType\":\"contract IEthic\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"paused\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"provide\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"dao\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"ethic\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"univ2\",\"type\":\"address\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"statusOf\",\"outputs\":[{\"internalType\":\"enum PoolAccount.Status\",\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalBonded\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalClaimable\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalPhantom\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalRewarded\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalStaged\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"unbond\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"univ2\",\"outputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"withdraw\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{\"balanceOfStaged(address)\":{\"notice\":\"Account\"}}}},\"settings\":{\"compilationTarget\":{\"/home/ville/projects/ethic/protocol/contracts/mock/MockPool.sol\":\"MockPool\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/ville/projects/ethic/protocol/contracts/Constants.sol\":{\"keccak256\":\"0x5d1ba952106168690fa397330fb3ec3d8526cb799ad672f292a4ba34d5116bfe\",\"urls\":[\"bzz-raw://c79e7e0d384c705c3434d0fc2731aa87a92554109e022b886ef39306789b5d8b\",\"dweb:/ipfs/QmeJPchsGbHv2ZuhjUrmEKWBKjV5LCaE6JePemynRh8ESH\"]},\"/home/ville/projects/ethic/protocol/contracts/external/Decimal.sol\":{\"keccak256\":\"0x2940908a476566bd3650a1a90713be76ab9d9880d6454b9bb2ad81a24fede7e7\",\"urls\":[\"bzz-raw://092234c76e2321182f5dd316cf875ed0a7979441bdf85b121e2579fb91067de3\",\"dweb:/ipfs/QmPJMkXZXZFrKSwXp2qJQimLTGN4R8sJWAXWBahxQvDJTY\"]},\"/home/ville/projects/ethic/protocol/contracts/external/Require.sol\":{\"keccak256\":\"0x3b8edcc166414f1c408972bf8130893a601a29eb87454621b187e754a8372922\",\"urls\":[\"bzz-raw://3a900707d5229254a1f021438d32adf87cf37a251cc0eea926e24cccad3ecf14\",\"dweb:/ipfs/QmWda2qiJEUnjftpqhxR1cZPJXqjkHJwFhLpXurod3uwnW\"]},\"/home/ville/projects/ethic/protocol/contracts/external/UniswapV2Library.sol\":{\"keccak256\":\"0xd64a9a9bcb92eba3ee35e94393bde31a82829f1784efa5b5464d17d1bb7e0096\",\"urls\":[\"bzz-raw://6718ea8498c8fcabe9a81815067fbf3ec3e8c3af25f81bc83311c01ff05789bd\",\"dweb:/ipfs/QmSz3xWZk7J3woub7r3P849trnpBhrepFimxPVK2B21wNJ\"]},\"/home/ville/projects/ethic/protocol/contracts/mock/MockPool.sol\":{\"keccak256\":\"0xda1124e465339639cb1c4581838a04a51a6fcf31eef314aede1f37af9cab3cb4\",\"urls\":[\"bzz-raw://a81726bad847e37d972bf8503dbe5db93d02ea7ae4c674d9198ee10e6d60d8bc\",\"dweb:/ipfs/QmXKfCNbZhPKyskg5SorTzFkDix9PD2zZZERKf6NjSt27v\"]},\"/home/ville/projects/ethic/protocol/contracts/oracle/IDAI.sol\":{\"keccak256\":\"0xb8b3431bbac07e156e8919feb44eda66a2f3f584b2f3e94a2e511ca7c7809398\",\"urls\":[\"bzz-raw://0df3a402cceb926e7a309ace528f2d748d718fc7e15d7a6916d9607d47eb5713\",\"dweb:/ipfs/QmTC69Wktttkr6hdpoVZdxBBXLwYcv2kQLGuJozWw92Xqe\"]},\"/home/ville/projects/ethic/protocol/contracts/oracle/IDAO.sol\":{\"keccak256\":\"0x177f0d2017689735294fbaacd93a722ce2fd394b22b4d5cf63d81d2ead00f3ec\",\"urls\":[\"bzz-raw://b39559b09570717c07c7c222a1dbe483fbd3a8e90a56b224350d1400ff5d6de4\",\"dweb:/ipfs/QmVTU2ZBTyjpKiDnUU4m2jEM2DvvUsULo1xPw4zSaTWY4L\"]},\"/home/ville/projects/ethic/protocol/contracts/oracle/Liquidity.sol\":{\"keccak256\":\"0x685527ec2c3a070a5d58670bc57f4ae9b788d0d97d0e54c2abbc982864eff484\",\"urls\":[\"bzz-raw://6747d77ddf32fe3494e5575b236e9b38b52d68bf1b6bcaa93c8b9b3ae00e7e29\",\"dweb:/ipfs/QmYmGJ8t6pwxuoJcTwkKNWsC6EwEg8ec8ANKSNYdc2HN1w\"]},\"/home/ville/projects/ethic/protocol/contracts/oracle/Pool.sol\":{\"keccak256\":\"0x79d35d8da5419c872c1c4b85d89dcce1418a8ac9b3995a9bb1f5c03baee24dbd\",\"urls\":[\"bzz-raw://f019ac1b2a8ff5a71ffc65254612973aecc8904b0db7ef4a11507a17e08c9328\",\"dweb:/ipfs/Qmf2EVmcb1aySbp65e4xJkbkxSJ7tzJEouyBokEdViSHfp\"]},\"/home/ville/projects/ethic/protocol/contracts/oracle/PoolGetters.sol\":{\"keccak256\":\"0xd46563cdfb07b43368f8ac076f662b31a6757ce80536dc256397b06a93e87e4c\",\"urls\":[\"bzz-raw://bb11e9ed69b7bb2e6a29563fea22ed115ee90e9ff5a3131cedf1fc41d7a3feff\",\"dweb:/ipfs/QmUfsJSpFj4DFGs11jthjpgZfjTG7GPmZqpoVtESKTq8Jk\"]},\"/home/ville/projects/ethic/protocol/contracts/oracle/PoolSetters.sol\":{\"keccak256\":\"0xb4cb30e88882aefadd91548dbe0febfa6d3c9368febe9b10a02ef10e35295ed8\",\"urls\":[\"bzz-raw://af196b5c319bfd717fbfda05ef1b6ecf787ffbfd78943b1b9de0ae21800fc8e8\",\"dweb:/ipfs/QmTSYkPRCBxNuHr5fYN83PaDP7c1Tvnr5urQWd7FB5c217\"]},\"/home/ville/projects/ethic/protocol/contracts/oracle/PoolState.sol\":{\"keccak256\":\"0xc7806f32d3786495d144d9e91b8e102f517e912d6f7703970853a6c2b11452d1\",\"urls\":[\"bzz-raw://06affbafc5b0adcd01bd61317fe7d0c0d9f5cd96b1d4a55224949b454f41491f\",\"dweb:/ipfs/QmZVRS1xCLaHXdGGiB1HNXTCC6cwud1gBJcRGLXFGa4YGW\"]},\"/home/ville/projects/ethic/protocol/contracts/token/IEthic.sol\":{\"keccak256\":\"0xda810425fed0dde994a89b810e0c16d0e771a7c562cb8efed8cbbd1197959aec\",\"urls\":[\"bzz-raw://b2a07225fbfeed6adc90a2e0e0d8d55c464aa1b0df156683203f17ed1ccd06b3\",\"dweb:/ipfs/QmfDWdphvtr3WaZbGe2dYxBTAMsXWTaCiBxtSMkemHB8v6\"]},\"@openzeppelin/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x640b6dee7a4b830bdfd52b5031a07fc2b12209f5b2e29e5d364a7d37f69d8076\",\"urls\":[\"bzz-raw://31113152e1ddb78fe7a4197f247591ca894e93f916867beb708d8e747b6cc74f\",\"dweb:/ipfs/QmbZaJyXdpsYGykVhHH9qpVGQg9DGCxE2QufbCUy3daTgq\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xe5bb0f57cff3e299f360052ba50f1ea0fff046df2be070b6943e0e3c3fdad8a9\",\"urls\":[\"bzz-raw://59fd025151435da35faa8093a5c7a17de02de9d08ad27275c5cdf05050820d91\",\"dweb:/ipfs/QmQMvwEcPhoRXzbXyrdoeRtvLoifUW9Qh7Luho7bmUPRkc\"]},\"@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol\":{\"keccak256\":\"0x7c9bc70e5996c763e02ff38905282bc24fb242b0ef2519a003b36824fc524a4b\",\"urls\":[\"bzz-raw://85d5ad2dd23ee127f40907a12865a1e8cb5828814f6f2480285e1827dd72dedf\",\"dweb:/ipfs/QmayKQWJgWmr46DqWseADyUanmqxh662hPNdAkdHRjiQQH\"]}},\"version\":1}",
+  "bytecode": "0x60806040523480156200001157600080fd5b5060405162001ec838038062001ec8833981016040819052620000349162000094565b60048054336001600160a01b0319918216179091556005805482166001600160a01b0395861617905560068054821692851692909217909155600980549091169190921617905562000114565b80516200008e81620000fa565b92915050565b600080600060608486031215620000aa57600080fd5b6000620000b8868662000081565b9350506020620000cb8682870162000081565b9250506040620000de8682870162000081565b9150509250925092565b60006001600160a01b0382166200008e565b6200010581620000e8565b81146200011157600080fd5b50565b611da480620001246000396000f3fe608060405234801561001057600080fd5b50600436106101735760003560e01c8063825ad607116100de578063aed29d0711610097578063c0ec4ac511610071578063c0ec4ac5146102f9578063cf02377914610301578063e0cf728514610309578063f4b9fa751461031157610173565b8063aed29d07146102cb578063b6b55f25146102d3578063c0d7a94f146102e657610173565b8063825ad6071461024c578063832092591461025f57806386cf9f141461027257806395ccea671461028557806397a5d5b5146102985780639940686e146102b857610173565b80634162169f116101305780634162169f1461020257806344d96e95146102175780634838ed191461021f57806351858e27146102275780635c975abb1461022f5780637298d36e1461024457610173565b80631667eb171461017857806327de9e32146101a157806329f32ed4146101b65780632e1a7d4d146101c95780632e2ebe06146101dc578063379607f5146101ef575b600080fd5b61018b610186366004611777565b610326565b6040516101989190611bae565b60405180910390f35b6101b46101af366004611885565b610348565b005b61018b6101c4366004611777565b610491565b6101b46101d7366004611885565b6104af565b6101b46101ea366004611885565b6105de565b6101b46101fd366004611885565b610783565b61020a61087a565b6040516101989190611b41565b61018b610889565b61018b61088f565b6101b4610895565b6102376108d6565b6040516101989190611b33565b61020a6108df565b61018b61025a366004611777565b6108ee565b6101b461026d36600461179d565b61090c565b61018b610280366004611777565b61094b565b6101b46102933660046117ea565b610966565b6102ab6102a6366004611777565b6109fd565b6040516101989190611b4f565b6101b46102c6366004611885565b610a37565b61018b610b25565b6101b46102e1366004611885565b610bc6565b61018b6102f4366004611777565b610cb1565b61020a610d39565b61018b610d48565b61018b610d4e565b610319610d54565b6040516101989190611ad4565b6001600160a01b0381166000908152600860205260409020600101545b919050565b61035133610d63565b600061035c336108ee565b90506103936000821163141bdbdb60e21b7f696e73756666696369656e7420626f6e6465642062616c616e63650000000000610d95565b60006103be826103b2856103a633610cb1565b9063ffffffff610df316565b9063ffffffff610e3416565b905060006103d3836103b2866103a633610491565b90506103df3385610e76565b6103e93383610ed3565b61040c3385604051806060016040528060218152602001611d4160219139610f38565b61042f3382604051806060016040528060228152602001611cfe60229139610fa0565b610437611008565b337f93530ac0ee8c50e696e13c5ac62355d0c0ba4bd943620d5bda1eb08b64ae751261047260016104666110d1565b9063ffffffff61114b16565b868560405161048393929190611bca565b60405180910390a250505050565b6001600160a01b031660009081526008602052604090206003015490565b336104e660005b6104bf836109fd565b60028111156104ca57fe5b1463141bdbdb60e21b692737ba10333937bd32b760b11b610d95565b6104ee6108df565b6001600160a01b031663a9059cbb33846040518363ffffffff1660e01b815260040161051b929190611b0a565b602060405180830381600087803b15801561053557600080fd5b505af1158015610549573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525061056d9190810190611824565b506105913383604051806060016040528060218152602001611d2060219139611170565b610599611008565b336001600160a01b03167f884edad9ce6fa2440d8a54cc123490eb96d2768479d49ff9c7366125a9424364836040516105d29190611bae565b60405180910390a25050565b336105e960006104b6565b61060c6105f46108d6565b1563141bdbdb60e21b6514185d5cd95960d21b610d95565b6106486000610619610889565b1163141bdbdb60e21b7f696e73756666696369656e7420746f74616c20626f6e64656400000000000000610d95565b6106846000610655610b25565b1163141bdbdb60e21b7f696e73756666696369656e7420746f74616c2072657761726465640000000000610d95565b6106c18261069133610cb1565b101563141bdbdb60e21b7f696e73756666696369656e742072657761726465642062616c616e6365000000610d95565b6000806106cd846111d0565b9150915060006106ea856104666106e2610d4e565b610466610b25565b905060006107096106f9610889565b6103b2848663ffffffff610df316565b905061071533846113c3565b61072e33610729888463ffffffff61114b16565b611428565b610736611008565b336001600160a01b03167fbe9d8078818a53534ce225882a00e0c6f709b5296c8a08c3a1f23f9ffd44838087868660405161077393929190611bca565b60405180910390a2505050505050565b3361078e60006104b6565b610796610d39565b6001600160a01b031663a9059cbb33846040518363ffffffff1660e01b81526004016107c3929190611b0a565b602060405180830381600087803b1580156107dd57600080fd5b505af11580156107f1573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506108159190810190611824565b506108393383604051806060016040528060248152602001611cda6024913961148d565b610841611008565b336001600160a01b03167f47cee97cb7acd717b3c0aa1435d004cd5b3c8c57d70dbceb4e4458bbd60e39d4836040516105d29190611bae565b600a546001600160a01b031690565b60025490565b60015490565b6108cc6108a061087a565b6001600160a01b0316336001600160a01b03161463141bdbdb60e21b664e6f742064616f60c81b610d95565b6108d46114f5565b565b60075460ff1690565b600c546001600160a01b031690565b6001600160a01b031660009081526008602052604090206002015490565b600a80546001600160a01b039485166001600160a01b031991821617909155600b805493851693821693909317909255600c8054919093169116179055565b6001600160a01b031660009081526008602052604090205490565b6109716108a061087a565b816001600160a01b031663a9059cbb61098861087a565b836040518363ffffffff1660e01b81526004016109a6929190611b25565b602060405180830381600087803b1580156109c057600080fd5b505af11580156109d4573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506109f89190810190611824565b505050565b6001600160a01b038116600090815260086020526040812060040154610a216110d1565b1015610a2e576001610a31565b60005b92915050565b610a426105f46108d6565b610a4b33610d63565b6000610a586106e2610d4e565b90506000610a64610889565b15610a7957610a746106f9610889565b610a99565b610a81610b25565b15610a8d576000610a99565b610a99836103a6611504565b9050610aa533846113c3565b610aaf3382611428565b610ad23384604051806060016040528060218152602001611d2060219139611170565b610ada611008565b337f3ae9ad26d7d47616d306d7757b947fe7b0f9a7c61a5f0dc784b0ddb6c7c40b5a610b0960016104666110d1565b85604051610b18929190611bbc565b60405180910390a2505050565b6000610bc1610b3261088f565b610b3a610d39565b6001600160a01b03166370a08231306040518263ffffffff1660e01b8152600401610b659190611ad4565b60206040518083038186803b158015610b7d57600080fd5b505afa158015610b91573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250610bb591908101906118a3565b9063ffffffff61150b16565b905090565b33610bd160006104b6565b610bdc6105f46108d6565b610be46108df565b6001600160a01b03166323b872dd3330856040518463ffffffff1660e01b8152600401610c1393929190611ae2565b602060405180830381600087803b158015610c2d57600080fd5b505af1158015610c41573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250610c659190810190611824565b50610c703383610e76565b610c78611008565b336001600160a01b03167fe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c836040516105d29190611bae565b600080610cbc610889565b905080610ccd576000915050610343565b6000610cda6106e2610d4e565b90506000610cfb836103b2610cee886108ee565b859063ffffffff610df316565b90506000610d0886610491565b905080821115610d2d57610d22828263ffffffff61150b16565b945050505050610343565b50600095945050505050565b600b546001600160a01b031690565b60005490565b60035490565b6009546001600160a01b031690565b610d76610d6e61154d565b6104666110d1565b6001600160a01b03909116600090815260086020526040902060040155565b826109f857610da382611552565b6101d160f51b610db283611552565b604051602001610dc493929190611aa3565b60408051601f198184030181529082905262461bcd60e51b8252610dea91600401611b5d565b60405180910390fd5b600082610e0257506000610a31565b82820282848281610e0f57fe5b0414610e2d5760405162461bcd60e51b8152600401610dea90611b8e565b9392505050565b6000610e2d83836040518060400160405280601a81526020017f536166654d6174683a206469766973696f6e206279207a65726f0000000000008152506115d2565b6001600160a01b038216600090815260086020526040902054610e9f908263ffffffff61114b16565b6001600160a01b03831660009081526008602052604081209190915554610ecc908263ffffffff61114b16565b6000555050565b6001600160a01b038216600090815260086020526040902060010154610eff908263ffffffff61114b16565b6001600160a01b038316600090815260086020526040902060019081019190915554610f31908263ffffffff61114b16565b6001555050565b6001600160a01b038316600090815260086020526040902060020154610f6590838363ffffffff61160916565b6001600160a01b038416600090815260086020526040902060029081019190915554610f9890838363ffffffff61160916565b600255505050565b6001600160a01b038316600090815260086020526040902060030154610fcd90838363ffffffff61160916565b6001600160a01b03841660009081526008602052604090206003908101919091555461100090838363ffffffff61160916565b600355505050565b6108d461101e611016610889565b610466610d48565b6110266108df565b6001600160a01b03166370a08231306040518263ffffffff1660e01b81526004016110519190611ad4565b60206040518083038186803b15801561106957600080fd5b505afa15801561107d573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506110a191908101906118a3565b101563141bdbdb60e21b7f496e636f6e73697374656e7420554e492d56322062616c616e63657300000000610d95565b60006110db61087a565b6001600160a01b031663900cf0cf6040518163ffffffff1660e01b815260040160206040518083038186803b15801561111357600080fd5b505afa158015611127573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250610bc191908101906118a3565b600082820183811015610e2d5760405162461bcd60e51b8152600401610dea90611b6e565b6001600160a01b03831660009081526008602052604090205461119a90838363ffffffff61160916565b6001600160a01b038416600090815260086020526040812091909155546111c890838363ffffffff61160916565b600055505050565b6000806000806111de610d39565b6111e6610d54565b915091506000806111f78484611635565b91509150600082600014801561120b575081155b61121f5761121a8884846116c7565b611221565b875b9050600061122d6108df565b60405163a9059cbb60e01b81529091506001600160a01b0387169063a9059cbb9061125e9084908d90600401611b25565b602060405180830381600087803b15801561127857600080fd5b505af115801561128c573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506112b09190810190611824565b506040516323b872dd60e01b81526001600160a01b038616906323b872dd906112e190339085908790600401611ae2565b602060405180830381600087803b1580156112fb57600080fd5b505af115801561130f573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506113339190810190611824565b506040516335313c2160e11b815282906001600160a01b03831690636a62784290611362903090600401611ad4565b602060405180830381600087803b15801561137c57600080fd5b505af1158015611390573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506113b491908101906118a3565b97509750505050505050915091565b6001600160a01b0382166000908152600860205260409020600201546113ef908263ffffffff61114b16565b6001600160a01b038316600090815260086020526040902060029081019190915554611421908263ffffffff61114b16565b6002555050565b6001600160a01b038216600090815260086020526040902060030154611454908263ffffffff61114b16565b6001600160a01b038316600090815260086020526040902060039081019190915554611486908263ffffffff61114b16565b6003555050565b6001600160a01b0383166000908152600860205260409020600101546114ba90838363ffffffff61160916565b6001600160a01b0384166000908152600860205260409020600190810191909155546114ed90838363ffffffff61160916565b600155505050565b6007805460ff19166001179055565b620f424090565b6000610e2d83836040518060400160405280601e81526020017f536166654d6174683a207375627472616374696f6e206f766572666c6f770000815250611609565b606090565b606080826040516020016115669190611a8e565b60408051601f19818403018152919052905060205b80156115bb5781516000199091019082908290811061159657fe5b01602001516001600160f81b031916156115b65760010181529050610343565b61157b565b505060408051600081526020810190915292915050565b600081836115f35760405162461bcd60e51b8152600401610dea9190611b5d565b5060008385816115ff57fe5b0495945050505050565b6000818484111561162d5760405162461bcd60e51b8152600401610dea9190611b5d565b505050900390565b6000806116406108df565b6001600160a01b0316630902f1ac6040518163ffffffff1660e01b815260040160606040518083038186803b15801561167857600080fd5b505afa15801561168c573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506116b09190810190611842565b506001600160701b03918216969116945092505050565b60008084116116e85760405162461bcd60e51b8152600401610dea90611b9e565b6000831180156116f85750600082115b6117145760405162461bcd60e51b8152600401610dea90611b7e565b82611725858463ffffffff610df316565b8161172c57fe5b04949350505050565b8035610a3181611ca1565b8051610a3181611cb5565b8051610a3181611cbe565b8035610a3181611cc7565b8051610a3181611cc7565b8051610a3181611cd0565b60006020828403121561178957600080fd5b60006117958484611735565b949350505050565b6000806000606084860312156117b257600080fd5b60006117be8686611735565b93505060206117cf86828701611735565b92505060406117e086828701611735565b9150509250925092565b600080604083850312156117fd57600080fd5b60006118098585611735565b925050602061181a85828601611756565b9150509250929050565b60006020828403121561183657600080fd5b60006117958484611740565b60008060006060848603121561185757600080fd5b6000611863868661174b565b93505060206118748682870161174b565b92505060406117e08682870161176c565b60006020828403121561189757600080fd5b60006117958484611756565b6000602082840312156118b557600080fd5b60006117958484611761565b6118ca81611c3d565b82525050565b6118ca81611bf2565b6118ca81611bfd565b6118ca6118ee82611c02565b611c0f565b6118ca6118ee82611c0f565b600061190a82611be5565b6119148185610343565b9350611924818560208601611c5a565b9290920192915050565b6118ca81611c44565b6118ca81611c4f565b600061194b82611be5565b6119558185611be9565b9350611965818560208601611c5a565b61196e81611c8a565b9093019392505050565b6000611985601b83611be9565b7f536166654d6174683a206164646974696f6e206f766572666c6f770000000000815260200192915050565b60006119be602883611be9565b7f556e697377617056324c6962726172793a20494e53554646494349454e545f4c815267495155494449545960c01b602082015260400192915050565b6000611a08602183611be9565b7f536166654d6174683a206d756c7469706c69636174696f6e206f766572666c6f8152607760f81b602082015260400192915050565b6000611a4b602583611be9565b7f556e697377617056324c6962726172793a20494e53554646494349454e545f418152641353d5539560da1b602082015260400192915050565b6118ca81611c0f565b6000611a9a82846118f3565b50602001919050565b6000611aaf82866118ff565b9150611abb82856118e2565b600282019150611acb82846118ff565b95945050505050565b60208101610a3182846118d0565b60608101611af082866118c1565b611afd60208301856118d0565b6117956040830184611a85565b60408101611b1882856118c1565b610e2d6020830184611a85565b60408101611b1882856118d0565b60208101610a3182846118d9565b60208101610a31828461192e565b60208101610a318284611937565b60208082528101610e2d8184611940565b60208082528101610a3181611978565b60208082528101610a31816119b1565b60208082528101610a31816119fb565b60208082528101610a3181611a3e565b60208101610a318284611a85565b60408101611b188285611a85565b60608101611bd88286611a85565b611afd6020830185611a85565b5190565b90815260200190565b6000610a3182611c28565b151590565b6001600160f01b03191690565b90565b8061034381611c94565b6001600160701b031690565b6001600160a01b031690565b63ffffffff1690565b6000610a31825b6000610a3182611bf2565b6000610a3182611c12565b60005b83811015611c75578181015183820152602001611c5d565b83811115611c84576000848401525b50505050565b601f01601f191690565b60038110611c9e57fe5b50565b611caa81611bf2565b8114611c9e57600080fd5b611caa81611bfd565b611caa81611c1c565b611caa81611c0f565b611caa81611c3456fe506f6f6c3a20696e73756666696369656e7420636c61696d61626c652062616c616e6365506f6f6c3a20696e73756666696369656e74207068616e746f6d2062616c616e6365506f6f6c3a20696e73756666696369656e74207374616765642062616c616e6365506f6f6c3a20696e73756666696369656e7420626f6e6465642062616c616e6365a365627a7a723158209085cbc395f4152384f3d7bb01beaaea234cadfeb4c756ffc475bfa40de55f6d6c6578706572696d656e74616cf564736f6c63430005110040",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106101735760003560e01c8063825ad607116100de578063aed29d0711610097578063c0ec4ac511610071578063c0ec4ac5146102f9578063cf02377914610301578063e0cf728514610309578063f4b9fa751461031157610173565b8063aed29d07146102cb578063b6b55f25146102d3578063c0d7a94f146102e657610173565b8063825ad6071461024c578063832092591461025f57806386cf9f141461027257806395ccea671461028557806397a5d5b5146102985780639940686e146102b857610173565b80634162169f116101305780634162169f1461020257806344d96e95146102175780634838ed191461021f57806351858e27146102275780635c975abb1461022f5780637298d36e1461024457610173565b80631667eb171461017857806327de9e32146101a157806329f32ed4146101b65780632e1a7d4d146101c95780632e2ebe06146101dc578063379607f5146101ef575b600080fd5b61018b610186366004611777565b610326565b6040516101989190611bae565b60405180910390f35b6101b46101af366004611885565b610348565b005b61018b6101c4366004611777565b610491565b6101b46101d7366004611885565b6104af565b6101b46101ea366004611885565b6105de565b6101b46101fd366004611885565b610783565b61020a61087a565b6040516101989190611b41565b61018b610889565b61018b61088f565b6101b4610895565b6102376108d6565b6040516101989190611b33565b61020a6108df565b61018b61025a366004611777565b6108ee565b6101b461026d36600461179d565b61090c565b61018b610280366004611777565b61094b565b6101b46102933660046117ea565b610966565b6102ab6102a6366004611777565b6109fd565b6040516101989190611b4f565b6101b46102c6366004611885565b610a37565b61018b610b25565b6101b46102e1366004611885565b610bc6565b61018b6102f4366004611777565b610cb1565b61020a610d39565b61018b610d48565b61018b610d4e565b610319610d54565b6040516101989190611ad4565b6001600160a01b0381166000908152600860205260409020600101545b919050565b61035133610d63565b600061035c336108ee565b90506103936000821163141bdbdb60e21b7f696e73756666696369656e7420626f6e6465642062616c616e63650000000000610d95565b60006103be826103b2856103a633610cb1565b9063ffffffff610df316565b9063ffffffff610e3416565b905060006103d3836103b2866103a633610491565b90506103df3385610e76565b6103e93383610ed3565b61040c3385604051806060016040528060218152602001611d4160219139610f38565b61042f3382604051806060016040528060228152602001611cfe60229139610fa0565b610437611008565b337f93530ac0ee8c50e696e13c5ac62355d0c0ba4bd943620d5bda1eb08b64ae751261047260016104666110d1565b9063ffffffff61114b16565b868560405161048393929190611bca565b60405180910390a250505050565b6001600160a01b031660009081526008602052604090206003015490565b336104e660005b6104bf836109fd565b60028111156104ca57fe5b1463141bdbdb60e21b692737ba10333937bd32b760b11b610d95565b6104ee6108df565b6001600160a01b031663a9059cbb33846040518363ffffffff1660e01b815260040161051b929190611b0a565b602060405180830381600087803b15801561053557600080fd5b505af1158015610549573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525061056d9190810190611824565b506105913383604051806060016040528060218152602001611d2060219139611170565b610599611008565b336001600160a01b03167f884edad9ce6fa2440d8a54cc123490eb96d2768479d49ff9c7366125a9424364836040516105d29190611bae565b60405180910390a25050565b336105e960006104b6565b61060c6105f46108d6565b1563141bdbdb60e21b6514185d5cd95960d21b610d95565b6106486000610619610889565b1163141bdbdb60e21b7f696e73756666696369656e7420746f74616c20626f6e64656400000000000000610d95565b6106846000610655610b25565b1163141bdbdb60e21b7f696e73756666696369656e7420746f74616c2072657761726465640000000000610d95565b6106c18261069133610cb1565b101563141bdbdb60e21b7f696e73756666696369656e742072657761726465642062616c616e6365000000610d95565b6000806106cd846111d0565b9150915060006106ea856104666106e2610d4e565b610466610b25565b905060006107096106f9610889565b6103b2848663ffffffff610df316565b905061071533846113c3565b61072e33610729888463ffffffff61114b16565b611428565b610736611008565b336001600160a01b03167fbe9d8078818a53534ce225882a00e0c6f709b5296c8a08c3a1f23f9ffd44838087868660405161077393929190611bca565b60405180910390a2505050505050565b3361078e60006104b6565b610796610d39565b6001600160a01b031663a9059cbb33846040518363ffffffff1660e01b81526004016107c3929190611b0a565b602060405180830381600087803b1580156107dd57600080fd5b505af11580156107f1573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506108159190810190611824565b506108393383604051806060016040528060248152602001611cda6024913961148d565b610841611008565b336001600160a01b03167f47cee97cb7acd717b3c0aa1435d004cd5b3c8c57d70dbceb4e4458bbd60e39d4836040516105d29190611bae565b600a546001600160a01b031690565b60025490565b60015490565b6108cc6108a061087a565b6001600160a01b0316336001600160a01b03161463141bdbdb60e21b664e6f742064616f60c81b610d95565b6108d46114f5565b565b60075460ff1690565b600c546001600160a01b031690565b6001600160a01b031660009081526008602052604090206002015490565b600a80546001600160a01b039485166001600160a01b031991821617909155600b805493851693821693909317909255600c8054919093169116179055565b6001600160a01b031660009081526008602052604090205490565b6109716108a061087a565b816001600160a01b031663a9059cbb61098861087a565b836040518363ffffffff1660e01b81526004016109a6929190611b25565b602060405180830381600087803b1580156109c057600080fd5b505af11580156109d4573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506109f89190810190611824565b505050565b6001600160a01b038116600090815260086020526040812060040154610a216110d1565b1015610a2e576001610a31565b60005b92915050565b610a426105f46108d6565b610a4b33610d63565b6000610a586106e2610d4e565b90506000610a64610889565b15610a7957610a746106f9610889565b610a99565b610a81610b25565b15610a8d576000610a99565b610a99836103a6611504565b9050610aa533846113c3565b610aaf3382611428565b610ad23384604051806060016040528060218152602001611d2060219139611170565b610ada611008565b337f3ae9ad26d7d47616d306d7757b947fe7b0f9a7c61a5f0dc784b0ddb6c7c40b5a610b0960016104666110d1565b85604051610b18929190611bbc565b60405180910390a2505050565b6000610bc1610b3261088f565b610b3a610d39565b6001600160a01b03166370a08231306040518263ffffffff1660e01b8152600401610b659190611ad4565b60206040518083038186803b158015610b7d57600080fd5b505afa158015610b91573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250610bb591908101906118a3565b9063ffffffff61150b16565b905090565b33610bd160006104b6565b610bdc6105f46108d6565b610be46108df565b6001600160a01b03166323b872dd3330856040518463ffffffff1660e01b8152600401610c1393929190611ae2565b602060405180830381600087803b158015610c2d57600080fd5b505af1158015610c41573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250610c659190810190611824565b50610c703383610e76565b610c78611008565b336001600160a01b03167fe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c836040516105d29190611bae565b600080610cbc610889565b905080610ccd576000915050610343565b6000610cda6106e2610d4e565b90506000610cfb836103b2610cee886108ee565b859063ffffffff610df316565b90506000610d0886610491565b905080821115610d2d57610d22828263ffffffff61150b16565b945050505050610343565b50600095945050505050565b600b546001600160a01b031690565b60005490565b60035490565b6009546001600160a01b031690565b610d76610d6e61154d565b6104666110d1565b6001600160a01b03909116600090815260086020526040902060040155565b826109f857610da382611552565b6101d160f51b610db283611552565b604051602001610dc493929190611aa3565b60408051601f198184030181529082905262461bcd60e51b8252610dea91600401611b5d565b60405180910390fd5b600082610e0257506000610a31565b82820282848281610e0f57fe5b0414610e2d5760405162461bcd60e51b8152600401610dea90611b8e565b9392505050565b6000610e2d83836040518060400160405280601a81526020017f536166654d6174683a206469766973696f6e206279207a65726f0000000000008152506115d2565b6001600160a01b038216600090815260086020526040902054610e9f908263ffffffff61114b16565b6001600160a01b03831660009081526008602052604081209190915554610ecc908263ffffffff61114b16565b6000555050565b6001600160a01b038216600090815260086020526040902060010154610eff908263ffffffff61114b16565b6001600160a01b038316600090815260086020526040902060019081019190915554610f31908263ffffffff61114b16565b6001555050565b6001600160a01b038316600090815260086020526040902060020154610f6590838363ffffffff61160916565b6001600160a01b038416600090815260086020526040902060029081019190915554610f9890838363ffffffff61160916565b600255505050565b6001600160a01b038316600090815260086020526040902060030154610fcd90838363ffffffff61160916565b6001600160a01b03841660009081526008602052604090206003908101919091555461100090838363ffffffff61160916565b600355505050565b6108d461101e611016610889565b610466610d48565b6110266108df565b6001600160a01b03166370a08231306040518263ffffffff1660e01b81526004016110519190611ad4565b60206040518083038186803b15801561106957600080fd5b505afa15801561107d573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506110a191908101906118a3565b101563141bdbdb60e21b7f496e636f6e73697374656e7420554e492d56322062616c616e63657300000000610d95565b60006110db61087a565b6001600160a01b031663900cf0cf6040518163ffffffff1660e01b815260040160206040518083038186803b15801561111357600080fd5b505afa158015611127573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250610bc191908101906118a3565b600082820183811015610e2d5760405162461bcd60e51b8152600401610dea90611b6e565b6001600160a01b03831660009081526008602052604090205461119a90838363ffffffff61160916565b6001600160a01b038416600090815260086020526040812091909155546111c890838363ffffffff61160916565b600055505050565b6000806000806111de610d39565b6111e6610d54565b915091506000806111f78484611635565b91509150600082600014801561120b575081155b61121f5761121a8884846116c7565b611221565b875b9050600061122d6108df565b60405163a9059cbb60e01b81529091506001600160a01b0387169063a9059cbb9061125e9084908d90600401611b25565b602060405180830381600087803b15801561127857600080fd5b505af115801561128c573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506112b09190810190611824565b506040516323b872dd60e01b81526001600160a01b038616906323b872dd906112e190339085908790600401611ae2565b602060405180830381600087803b1580156112fb57600080fd5b505af115801561130f573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506113339190810190611824565b506040516335313c2160e11b815282906001600160a01b03831690636a62784290611362903090600401611ad4565b602060405180830381600087803b15801561137c57600080fd5b505af1158015611390573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506113b491908101906118a3565b97509750505050505050915091565b6001600160a01b0382166000908152600860205260409020600201546113ef908263ffffffff61114b16565b6001600160a01b038316600090815260086020526040902060029081019190915554611421908263ffffffff61114b16565b6002555050565b6001600160a01b038216600090815260086020526040902060030154611454908263ffffffff61114b16565b6001600160a01b038316600090815260086020526040902060039081019190915554611486908263ffffffff61114b16565b6003555050565b6001600160a01b0383166000908152600860205260409020600101546114ba90838363ffffffff61160916565b6001600160a01b0384166000908152600860205260409020600190810191909155546114ed90838363ffffffff61160916565b600155505050565b6007805460ff19166001179055565b620f424090565b6000610e2d83836040518060400160405280601e81526020017f536166654d6174683a207375627472616374696f6e206f766572666c6f770000815250611609565b606090565b606080826040516020016115669190611a8e565b60408051601f19818403018152919052905060205b80156115bb5781516000199091019082908290811061159657fe5b01602001516001600160f81b031916156115b65760010181529050610343565b61157b565b505060408051600081526020810190915292915050565b600081836115f35760405162461bcd60e51b8152600401610dea9190611b5d565b5060008385816115ff57fe5b0495945050505050565b6000818484111561162d5760405162461bcd60e51b8152600401610dea9190611b5d565b505050900390565b6000806116406108df565b6001600160a01b0316630902f1ac6040518163ffffffff1660e01b815260040160606040518083038186803b15801561167857600080fd5b505afa15801561168c573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506116b09190810190611842565b506001600160701b03918216969116945092505050565b60008084116116e85760405162461bcd60e51b8152600401610dea90611b9e565b6000831180156116f85750600082115b6117145760405162461bcd60e51b8152600401610dea90611b7e565b82611725858463ffffffff610df316565b8161172c57fe5b04949350505050565b8035610a3181611ca1565b8051610a3181611cb5565b8051610a3181611cbe565b8035610a3181611cc7565b8051610a3181611cc7565b8051610a3181611cd0565b60006020828403121561178957600080fd5b60006117958484611735565b949350505050565b6000806000606084860312156117b257600080fd5b60006117be8686611735565b93505060206117cf86828701611735565b92505060406117e086828701611735565b9150509250925092565b600080604083850312156117fd57600080fd5b60006118098585611735565b925050602061181a85828601611756565b9150509250929050565b60006020828403121561183657600080fd5b60006117958484611740565b60008060006060848603121561185757600080fd5b6000611863868661174b565b93505060206118748682870161174b565b92505060406117e08682870161176c565b60006020828403121561189757600080fd5b60006117958484611756565b6000602082840312156118b557600080fd5b60006117958484611761565b6118ca81611c3d565b82525050565b6118ca81611bf2565b6118ca81611bfd565b6118ca6118ee82611c02565b611c0f565b6118ca6118ee82611c0f565b600061190a82611be5565b6119148185610343565b9350611924818560208601611c5a565b9290920192915050565b6118ca81611c44565b6118ca81611c4f565b600061194b82611be5565b6119558185611be9565b9350611965818560208601611c5a565b61196e81611c8a565b9093019392505050565b6000611985601b83611be9565b7f536166654d6174683a206164646974696f6e206f766572666c6f770000000000815260200192915050565b60006119be602883611be9565b7f556e697377617056324c6962726172793a20494e53554646494349454e545f4c815267495155494449545960c01b602082015260400192915050565b6000611a08602183611be9565b7f536166654d6174683a206d756c7469706c69636174696f6e206f766572666c6f8152607760f81b602082015260400192915050565b6000611a4b602583611be9565b7f556e697377617056324c6962726172793a20494e53554646494349454e545f418152641353d5539560da1b602082015260400192915050565b6118ca81611c0f565b6000611a9a82846118f3565b50602001919050565b6000611aaf82866118ff565b9150611abb82856118e2565b600282019150611acb82846118ff565b95945050505050565b60208101610a3182846118d0565b60608101611af082866118c1565b611afd60208301856118d0565b6117956040830184611a85565b60408101611b1882856118c1565b610e2d6020830184611a85565b60408101611b1882856118d0565b60208101610a3182846118d9565b60208101610a31828461192e565b60208101610a318284611937565b60208082528101610e2d8184611940565b60208082528101610a3181611978565b60208082528101610a31816119b1565b60208082528101610a31816119fb565b60208082528101610a3181611a3e565b60208101610a318284611a85565b60408101611b188285611a85565b60608101611bd88286611a85565b611afd6020830185611a85565b5190565b90815260200190565b6000610a3182611c28565b151590565b6001600160f01b03191690565b90565b8061034381611c94565b6001600160701b031690565b6001600160a01b031690565b63ffffffff1690565b6000610a31825b6000610a3182611bf2565b6000610a3182611c12565b60005b83811015611c75578181015183820152602001611c5d565b83811115611c84576000848401525b50505050565b601f01601f191690565b60038110611c9e57fe5b50565b611caa81611bf2565b8114611c9e57600080fd5b611caa81611bfd565b611caa81611c1c565b611caa81611c0f565b611caa81611c3456fe506f6f6c3a20696e73756666696369656e7420636c61696d61626c652062616c616e6365506f6f6c3a20696e73756666696369656e74207068616e746f6d2062616c616e6365506f6f6c3a20696e73756666696369656e74207374616765642062616c616e6365506f6f6c3a20696e73756666696369656e7420626f6e6465642062616c616e6365a365627a7a723158209085cbc395f4152384f3d7bb01beaaea234cadfeb4c756ffc475bfa40de55f6d6c6578706572696d656e74616cf564736f6c63430005110040",
+  "sourceMap": "775:937:29:-;;;916:108;8:9:-1;5:2;;;30:1;27;20:12;5:2;916:108:29;;;;;;;;;;;;;;;;;;;;;1108:15:45;:38;;1135:10;-1:-1:-1;;;;;;1108:38:45;;;;;;;1156:21;:37;;;;-1:-1:-1;;;;;1156:37:45;;;;;;1203:21;:37;;;;;;;;;;;;;;1007:4:29;:10;;;;;;;;;;;;775:937;;5:134:-1;83:13;;101:33;83:13;101:33;;;68:71;;;;;146:535;;;;295:2;283:9;274:7;270:23;266:32;263:2;;;311:1;308;301:12;263:2;346:1;363:64;419:7;399:9;363:64;;;353:74;;325:108;464:2;482:64;538:7;529:6;518:9;514:22;482:64;;;472:74;;443:109;583:2;601:64;657:7;648:6;637:9;633:22;601:64;;;591:74;;562:109;257:424;;;;;;688:91;;-1:-1;;;;;848:54;;750:24;831:76;914:117;983:24;1001:5;983:24;;;976:5;973:35;963:2;;1022:1;1019;1012:12;963:2;957:74;;;775:937:29;;;;;;",
+  "deployedSourceMap": "775:937:29:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;775:937:29;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2156:133:46;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;3229:855:45;;;;;;;;;:::i;:::-;;2428:129:46;;;;;;;;;:::i;2006:275:45:-;;;;;;;;;:::i;4090:960::-;;;;;;;;;:::i;2287:275::-;;;;;;;;;:::i;1255:76:29:-;;;:::i;:::-;;;;;;;;1340:98:46;;;:::i;1548:104::-;;;:::i;5198:67:45:-;;;:::i;1903:82:46:-;;;:::i;:::-;;;;;;;;1427:84:29;;;:::i;2295:127:46:-;;;;;;;;;:::i;1030:140:29:-;;;;;;;;;:::i;2023:127:46:-;;;;;;;;;:::i;5056:136:45:-;;;;;;;;;:::i;3211:225:46:-;;;;;;;;;:::i;:::-;;;;;;;;2568:655:45;;;;;;;;;:::i;1764:133:46:-;;;:::i;1735:265:45:-;;;;;;;;;:::i;2563:642:46:-;;;;;;;;;:::i;1337:84:29:-;;;:::i;1444:98:46:-;;;:::i;1658:100::-;;;:::i;1176:73:29:-;;;:::i;:::-;;;;;;;;2156:133:46;-1:-1:-1;;;;;2248:24:46;;2222:7;2248:24;;;:15;:24;;;;;:34;;;2156:133;;;;:::o;3229:855:45:-;3279:20;3288:10;3279:8;:20::i;:::-;3310:23;3336:27;3352:10;3336:15;:27::i;:::-;3310:53;;3373:116;3417:1;3399:15;:19;-1:-1:-1;;;3373:116:45;:12;:116::i;:::-;3500:20;3523:61;3568:15;3523:40;3557:5;3523:29;3541:10;3523:17;:29::i;:::-;:33;:40;:33;:40;:::i;:::-;:44;:61;:44;:61;:::i;:::-;3500:84;;3594:19;3616:60;3660:15;3616:39;3649:5;3616:28;3633:10;3616:16;:28::i;:60::-;3594:82;;3687:43;3712:10;3724:5;3687:24;:43::i;:::-;3740:53;3768:10;3780:12;3740:27;:53::i;:::-;3803:80;3828:10;3840:5;3803:80;;;;;;;;;;;;;;;;;:24;:80::i;:::-;3893:88;3919:10;3931:11;3893:88;;;;;;;;;;;;;;;;;:25;:88::i;:::-;3992:14;:12;:14::i;:::-;4029:10;4022:55;4041:14;4053:1;4041:7;:5;:7::i;:::-;:11;:14;:11;:14;:::i;:::-;4057:5;4064:12;4022:55;;;;;;;;;;;;;;;;;3229:855;;;;:::o;2428:129:46:-;-1:-1:-1;;;;;2518:24:46;2492:7;2518:24;;;:15;:24;;;;;:32;;;;2428:129::o;2006:275:45:-;2059:10;5539:126;5586:25;5565:46;:17;5574:7;5565:8;:17::i;:::-;:46;;;;;;;;;-1:-1:-1;;;;;;5539:12:45;:126::i;:::-;2081:7;:5;:7::i;:::-;-1:-1:-1;;;;;2081:16:45;;2098:10;2110:5;2081:35;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2081:35:45;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;2081:35:45;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;2081:35:45;;;;;;;;;;2126:80;2151:10;2163:5;2126:80;;;;;;;;;;;;;;;;;:24;:80::i;:::-;2217:14;:12;:14::i;:::-;2256:10;-1:-1:-1;;;;;2247:27:45;;2268:5;2247:27;;;;;;;;;;;;;;;2006:275;;:::o;4090:960::-;4142:10;5539:126;5586:25;5565:46;;5539:126;5880:85;5907:8;:6;:8::i;:::-;5906:9;-1:-1:-1;;;;;;5880:12:45;:85::i;:::-;4174:112;4216:1;4200:13;:11;:13::i;:::-;:17;-1:-1:-1;;;4174:112:45;:12;:112::i;:::-;4297:116;4341:1;4323:15;:13;:15::i;:::-;:19;-1:-1:-1;;;4297:116:45;:12;:116::i;:::-;4424:137;4483:5;4450:29;4468:10;4450:17;:29::i;:::-;:38;;-1:-1:-1;;;4424:137:45;:12;:137::i;:::-;4573:15;4590:16;4610:19;4623:5;4610:12;:19::i;:::-;4572:57;;;;4640:32;4675:46;4715:5;4675:35;4695:14;:12;:14::i;:::-;4675:15;:13;:15::i;:46::-;4640:81;;4731:28;4762:57;4805:13;:11;:13::i;:::-;4762:38;:24;4791:8;4762:38;:28;:38;:::i;:57::-;4731:88;;4830:46;4855:10;4867:8;4830:24;:46::i;:::-;4886:70;4912:10;4924:31;:5;4934:20;4924:31;:9;:31;:::i;:::-;4886:25;:70::i;:::-;4968:14;:12;:14::i;:::-;5006:10;-1:-1:-1;;;;;4998:45:45;;5018:5;5025:7;5034:8;4998:45;;;;;;;;;;;;;;;;;5976:1;;;;4090:960;;:::o;2287:275::-;2337:10;5539:126;5586:25;5565:46;;5539:126;2359:7;:5;:7::i;:::-;-1:-1:-1;;;;;2359:16:45;;2376:10;2388:5;2359:35;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2359:35:45;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;2359:35:45;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;2359:35:45;;;;;;;;;;2404:86;2432:10;2444:5;2404:86;;;;;;;;;;;;;;;;;:27;:86::i;:::-;2501:14;:12;:14::i;:::-;2537:10;-1:-1:-1;;;;;2531:24:45;;2549:5;2531:24;;;;;;;1255:76:29;1319:4;;-1:-1:-1;;;;;1319:4:29;1255:76;:::o;1340:98:46:-;1410:21;;1340:98;:::o;1548:104::-;1621:24;;1548:104;:::o;5198:67:45:-;5719:105;5767:5;:3;:5::i;:::-;-1:-1:-1;;;;;5745:28:45;:10;-1:-1:-1;;;;;5745:28:45;;-1:-1:-1;;;;;;5719:12:45;:105::i;:::-;5251:7;:5;:7::i;:::-;5198:67::o;1903:82:46:-;1965:13;;;;1903:82;:::o;1427:84:29:-;1497:6;;-1:-1:-1;;;;;1497:6:29;1427:84;:::o;2295:127:46:-;-1:-1:-1;;;;;2384:24:46;2358:7;2384:24;;;:15;:24;;;;;:31;;;;2295:127::o;1030:140:29:-;1105:4;:10;;-1:-1:-1;;;;;1105:10:29;;;-1:-1:-1;;;;;;1105:10:29;;;;;;;1125:6;:14;;;;;;;;;;;;;;;1149:6;:14;;;;;;;;;;;1030:140::o;2023:127:46:-;-1:-1:-1;;;;;2112:24:46;2086:7;2112:24;;;:15;:24;;;;;:31;;2023:127::o;5056:136:45:-;5719:105;5767:5;:3;:5::i;5719:105::-;5147:5;-1:-1:-1;;;;;5140:22:45;;5171:5;:3;:5::i;:::-;5179;5140:45;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;5140:45:45;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;5140:45:45;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;5140:45:45;;;;;;;;;;5056:136;;:::o;3211:225:46:-;-1:-1:-1;;;;;3315:24:46;;3267:18;3315:24;;;:15;:24;;;;;:35;;;3304:7;:5;:7::i;:::-;:46;;:125;;3405:24;3304:125;;;3365:25;3304:125;3297:132;3211:225;-1:-1:-1;;3211:225:46:o;2568:655:45:-;5880:85;5907:8;:6;:8::i;5880:85::-;2626:20;2635:10;2626:8;:20::i;:::-;2657:32;2692:35;2712:14;:12;:14::i;2692:35::-;2657:70;;2737:18;2758:13;:11;:13::i;:::-;:18;:175;;2879:54;2919:13;:11;:13::i;2879:54::-;2758:175;;;2791:15;:13;:15::i;:::-;:20;:73;;2863:1;2791:73;;;2814:46;2854:5;2814:35;:33;:35::i;:46::-;2737:196;;2944:43;2969:10;2981:5;2944:24;:43::i;:::-;2997:49;3023:10;3035;2997:25;:49::i;:::-;3056:80;3081:10;3093:5;3056:80;;;;;;;;;;;;;;;;;:24;:80::i;:::-;3147:14;:12;:14::i;:::-;3182:10;3177:39;3194:14;3206:1;3194:7;:5;:7::i;:14::-;3210:5;3177:39;;;;;;;;;;;;;;;;5976:1;;2568:655;:::o;1764:133:46:-;1810:7;1836:54;1873:16;:14;:16::i;:::-;1836:7;:5;:7::i;:::-;-1:-1:-1;;;;;1836:17:46;;1862:4;1836:32;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1836:32:46;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1836:32:46;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;1836:32:46;;;;;;;;;:36;:54;:36;:54;:::i;:::-;1829:61;;1764:133;:::o;1735:265:45:-;1787:10;5539:126;5586:25;5565:46;;5539:126;5880:85;5907:8;:6;:8::i;5880:85::-;1819:7;:5;:7::i;:::-;-1:-1:-1;;;;;1819:20:45;;1840:10;1860:4;1867:5;1819:54;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1819:54:45;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1819:54:45;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;1819:54:45;;;;;;;;;;1883:43;1908:10;1920:5;1883:24;:43::i;:::-;1937:14;:12;:14::i;:::-;1975:10;-1:-1:-1;;;;;1967:26:45;;1987:5;1967:26;;;;;;;2563:642:46;2628:7;2647:19;2669:13;:11;:13::i;:::-;2647:35;-1:-1:-1;2696:16:46;2692:55;;2735:1;2728:8;;;;;2692:55;2757:32;2792:35;2812:14;:12;:14::i;2792:35::-;2757:70;;2837:36;2876:97;2961:11;2876:67;2918:24;2934:7;2918:15;:24::i;:::-;2876;;:67;:41;:67;:::i;:97::-;2837:136;;2984:24;3011:25;3028:7;3011:16;:25::i;:::-;2984:52;;3081:16;3050:28;:47;3046:135;;;3120:50;:28;3153:16;3120:50;:32;:50;:::i;:::-;3113:57;;;;;;;;3046:135;-1:-1:-1;3197:1:46;;2563:642;-1:-1:-1;;;;;2563:642:46:o;1337:84:29:-;1407:6;;-1:-1:-1;;;;;1407:6:29;1337:84;:::o;1444:98:46:-;1488:7;1514:21;1444:98;:::o;1658:100::-;1729:22;;1658:100;:::o;1176:73:29:-;1238:4;;-1:-1:-1;;;;;1238:4:29;1176:73;:::o;3206:147:47:-;3298:48;3310:35;:33;:35::i;:::-;3298:7;:5;:7::i;:48::-;-1:-1:-1;;;;;3260:24:47;;;:6;:24;;;:15;:24;;;;;:35;;:86;3206:147::o;1257:418:18:-;1383:4;1378:291;;1497:24;1516:4;1497:18;:24::i;:::-;-1:-1:-1;;;1578:26:18;1597:6;1578:18;:26::i;:::-;1455:171;;;;;;;;;;;;;;;-1:-1:-1;;26:21;;;22:32;6:49;;1455:171:18;;;;-1:-1:-1;;;1403:255:18;;;;;;;;;;;;;;;;2159:459:55;2217:7;2458:6;2454:45;;-1:-1:-1;2487:1:55;2480:8;;2454:45;2521:5;;;2525:1;2521;:5;:1;2544:5;;;;;:10;2536:56;;;;-1:-1:-1;;;2536:56:55;;;;;;;;;2610:1;2159:459;-1:-1:-1;;;2159:459:55:o;3073:130::-;3131:7;3157:39;3161:1;3164;3157:39;;;;;;;;;;;;;;;;;:3;:39::i;1594:237:47:-;-1:-1:-1;;;;;1714:24:47;;:6;:24;;;:15;:24;;;;;:31;:43;;1750:6;1714:43;:35;:43;:::i;:::-;-1:-1:-1;;;;;1680:24:47;;:6;:24;;;:15;:24;;;;;:77;;;;1791:21;:33;;1817:6;1791:33;:25;:33;:::i;:::-;1767:6;:57;-1:-1:-1;;1594:237:47:o;2118:252::-;-1:-1:-1;;;;;2244:24:47;;:6;:24;;;:15;:24;;;;;:34;;;:46;;2283:6;2244:46;:38;:46;:::i;:::-;-1:-1:-1;;;;;2207:24:47;;:6;:24;;;:15;:24;;;;;:34;;;;:83;;;;2327:24;:36;;2356:6;2327:36;:28;:36;:::i;:::-;2300:24;:63;-1:-1:-1;;2118:252:47:o;1313:275::-;-1:-1:-1;;;;;1455:24:47;;:6;:24;;;:15;:24;;;;;:31;;;:51;;1491:6;1499;1455:51;:35;:51;:::i;:::-;-1:-1:-1;;;;;1421:24:47;;:6;:24;;;:15;:24;;;;;:31;;;;:85;;;;1540:21;:41;;1566:6;1574;1540:41;:25;:41;:::i;:::-;1516:21;:65;-1:-1:-1;;;1313:275:47:o;2920:280::-;-1:-1:-1;;;;;3064:24:47;;:6;:24;;;:15;:24;;;;;:32;;;:52;;3101:6;3109;3064:52;:36;:52;:::i;:::-;-1:-1:-1;;;;;3029:24:47;;:6;:24;;;:15;:24;;;;;:32;;;;:87;;;;3151:22;:42;;3178:6;3186;3151:42;:26;:42;:::i;:::-;3126:22;:67;-1:-1:-1;;;2920:280:47:o;5271:215:45:-;5313:166;5375:32;5393:13;:11;:13::i;:::-;5375;:11;:13::i;:32::-;5339:7;:5;:7::i;:::-;-1:-1:-1;;;;;5339:17:45;;5365:4;5339:32;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;5339:32:45;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;5339:32:45;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;5339:32:45;;;;;;;;;:68;;-1:-1:-1;;;5313:166:45;:12;:166::i;3472:86:46:-;3512:7;3538:5;:3;:5::i;:::-;-1:-1:-1;;;;;3538:11:46;;:13;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;3538:13:46;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;3538:13:46;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;3538:13:46;;;;;;;;834:176:55;892:7;923:5;;;946:6;;;;938:46;;;;-1:-1:-1;;;938:46:55;;;;;;;;1837:275:47;-1:-1:-1;;;;;1979:24:47;;:6;:24;;;:15;:24;;;;;:31;:51;;2015:6;2023;1979:51;:35;:51;:::i;:::-;-1:-1:-1;;;;;1945:24:47;;:6;:24;;;:15;:24;;;;;:85;;;;2064:21;:41;;2090:6;2098;2064:41;:25;:41;:::i;:::-;2040:6;:65;-1:-1:-1;;;1837:275:47:o;1109:605:43:-;1170:7;1179;1199:13;1214:11;1238:7;:5;:7::i;:::-;1248:5;:3;:5::i;:::-;1198:56;;;;1265:13;1280;1297:23;1309:5;1316:3;1297:11;:23::i;:::-;1264:56;;;;1331:17;1352:8;1364:1;1352:13;:30;;;;-1:-1:-1;1369:13:43;;1352:30;1351:130;;1426:55;1449:11;1462:8;1472;1426:22;:55::i;:::-;1351:130;;;1399:11;1351:130;1331:150;;1492:12;1515:7;:5;:7::i;:::-;1533:41;;-1:-1:-1;;;1533:41:43;;1492:31;;-1:-1:-1;;;;;;1533:22:43;;;;;:41;;1492:31;;1562:11;;1533:41;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1533:41:43;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1533:41:43;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;1533:41:43;;;;;;;;;-1:-1:-1;1584:53:43;;-1:-1:-1;;;1584:53:43;;-1:-1:-1;;;;;1584:24:43;;;;;:53;;1609:10;;1621:4;;1627:9;;1584:53;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1584:53:43;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1584:53:43;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;1584:53:43;;;;;;;;;-1:-1:-1;1666:40:43;;-1:-1:-1;;;1666:40:43;;1655:9;;-1:-1:-1;;;;;1666:25:43;;;;;:40;;1700:4;;1666:40;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1666:40:43;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1666:40:43;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;1666:40:43;;;;;;;;;1647:60;;;;;;;;;;1109:605;;;:::o;1070:237:47:-;-1:-1:-1;;;;;1190:24:47;;:6;:24;;;:15;:24;;;;;:31;;;:43;;1226:6;1190:43;:35;:43;:::i;:::-;-1:-1:-1;;;;;1156:24:47;;:6;:24;;;:15;:24;;;;;:31;;;;:77;;;;1267:21;:33;;1293:6;1267:33;:25;:33;:::i;:::-;1243:21;:57;-1:-1:-1;;1070:237:47:o;2672:242::-;-1:-1:-1;;;;;2794:24:47;;:6;:24;;;:15;:24;;;;;:32;;;:44;;2831:6;2794:44;:36;:44;:::i;:::-;-1:-1:-1;;;;;2759:24:47;;:6;:24;;;:15;:24;;;;;:32;;;;:79;;;;2873:22;:34;;2900:6;2873:34;:26;:34;:::i;:::-;2848:22;:59;-1:-1:-1;;2672:242:47:o;2376:290::-;-1:-1:-1;;;;;2524:24:47;;:6;:24;;;:15;:24;;;;;:34;;;:54;;2563:6;2571;2524:54;:38;:54;:::i;:::-;-1:-1:-1;;;;;2487:24:47;;:6;:24;;;:15;:24;;;;;:34;;;;:91;;;;2615:24;:44;;2644:6;2652;2615:44;:28;:44;:::i;:::-;2588:24;:71;-1:-1:-1;;;2376:290:47:o;969:63::-;1005:13;:20;;-1:-1:-1;;1005:20:47;1021:4;1005:20;;;969:63::o;4936:113:0:-;1486:3;4936:113;:::o;1274:134:55:-;1332:7;1358:43;1362:1;1365;1358:43;;;;;;;;;;;;;;;;;:3;:43::i;6757:114:0:-;2890:2;6757:114;:::o;6258:954:18:-;6349:12;6424:19;6463:5;6446:23;;;;;;;;;;;;;-1:-1:-1;;26:21;;;22:32;6:49;;6446:23:18;;;;-1:-1:-1;49:4;6575:571:18;6596:5;;6575:571;;6847:9;;-1:-1:-1;;6749:3:18;;;;6847:6;;6749:3;;6847:9;;;;;;;;;;-1:-1:-1;;;;;;6847:9:18;:14;6843:293;;6902:1;6898:5;7028:22;;7035:6;-1:-1:-1;7108:13:18;;6843:293;6575:571;;;-1:-1:-1;;7193:12:18;;;7203:1;7193:12;;;;;;;;;7186:19;-1:-1:-1;;6258:954:18:o;3718:338:55:-;3804:7;3904:12;3897:5;3889:28;;;;-1:-1:-1;;;3889:28:55;;;;;;;;;;;3927:9;3943:1;3939;:5;;;;;;;3718:338;-1:-1:-1;;;;;3718:338:55:o;1732:187::-;1818:7;1853:12;1845:6;;;;1837:29;;;;-1:-1:-1;;;1837:29:55;;;;;;;;;;-1:-1:-1;;;1888:5:55;;;1732:187::o;1517:193:29:-;1593:13;1608;1680:7;:5;:7::i;:::-;-1:-1:-1;;;;;1657:44:29;;:46;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1657:46:29;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1657:46:29;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;1657:46:29;;;;;;;;;-1:-1:-1;;;;;;1633:70:29;;;;;;;-1:-1:-1;1517:193:29;-1:-1:-1;;;1517:193:29:o;1763:317:19:-;1845:12;1887:1;1877:7;:11;1869:61;;;;-1:-1:-1;;;1869:61:19;;;;;;;;;1959:1;1948:8;:12;:28;;;;;1975:1;1964:8;:12;1948:28;1940:81;;;;-1:-1:-1;;;1940:81:19;;;;;;;;;2065:8;2041:21;:7;2053:8;2041:21;:11;:21;:::i;:::-;:32;;;;;;;1763:317;-1:-1:-1;;;;1763:317:19:o;5:130:-1:-;72:20;;97:33;72:20;97:33;;142:128;217:13;;235:30;217:13;235:30;;277:134;355:13;;373:33;355:13;373:33;;418:130;485:20;;510:33;485:20;510:33;;555:134;633:13;;651:33;633:13;651:33;;696:132;773:13;;791:32;773:13;791:32;;835:241;;939:2;927:9;918:7;914:23;910:32;907:2;;;955:1;952;945:12;907:2;990:1;1007:53;1052:7;1032:9;1007:53;;;997:63;901:175;-1:-1;;;;901:175;1083:491;;;;1221:2;1209:9;1200:7;1196:23;1192:32;1189:2;;;1237:1;1234;1227:12;1189:2;1272:1;1289:53;1334:7;1314:9;1289:53;;;1279:63;;1251:97;1379:2;1397:53;1442:7;1433:6;1422:9;1418:22;1397:53;;;1387:63;;1358:98;1487:2;1505:53;1550:7;1541:6;1530:9;1526:22;1505:53;;;1495:63;;1466:98;1183:391;;;;;;1581:366;;;1702:2;1690:9;1681:7;1677:23;1673:32;1670:2;;;1718:1;1715;1708:12;1670:2;1753:1;1770:53;1815:7;1795:9;1770:53;;;1760:63;;1732:97;1860:2;1878:53;1923:7;1914:6;1903:9;1899:22;1878:53;;;1868:63;;1839:98;1664:283;;;;;;1954:257;;2066:2;2054:9;2045:7;2041:23;2037:32;2034:2;;;2082:1;2079;2072:12;2034:2;2117:1;2134:61;2187:7;2167:9;2134:61;;2218:533;;;;2366:2;2354:9;2345:7;2341:23;2337:32;2334:2;;;2382:1;2379;2372:12;2334:2;2417:1;2434:64;2490:7;2470:9;2434:64;;;2424:74;;2396:108;2535:2;2553:64;2609:7;2600:6;2589:9;2585:22;2553:64;;;2543:74;;2514:109;2654:2;2672:63;2727:7;2718:6;2707:9;2703:22;2672:63;;2758:241;;2862:2;2850:9;2841:7;2837:23;2833:32;2830:2;;;2878:1;2875;2868:12;2830:2;2913:1;2930:53;2975:7;2955:9;2930:53;;3006:263;;3121:2;3109:9;3100:7;3096:23;3092:32;3089:2;;;3137:1;3134;3127:12;3089:2;3172:1;3189:64;3245:7;3225:9;3189:64;;3276:142;3367:45;3406:5;3367:45;;;3362:3;3355:58;3349:69;;;3425:113;3508:24;3526:5;3508:24;;3545:104;3622:21;3637:5;3622:21;;3656:148;3755:43;3774:23;3791:5;3774:23;;;3755:43;;3811:152;3912:45;3932:24;3950:5;3932:24;;3970:356;;4098:38;4130:5;4098:38;;;4148:88;4229:6;4224:3;4148:88;;;4141:95;;4241:52;4286:6;4281:3;4274:4;4267:5;4263:16;4241:52;;;4305:16;;;;;4078:248;-1:-1;;4078:248;4333:152;4429:50;4473:5;4429:50;;4822:146;4915:47;4956:5;4915:47;;4975:347;;5087:39;5120:5;5087:39;;;5138:71;5202:6;5197:3;5138:71;;;5131:78;;5214:52;5259:6;5254:3;5247:4;5240:5;5236:16;5214:52;;;5287:29;5309:6;5287:29;;;5278:39;;;;5067:255;-1:-1;;;5067:255;5330:327;;5490:67;5554:2;5549:3;5490:67;;;5590:29;5570:50;;5648:2;5639:12;;5476:181;-1:-1;;5476:181;5666:377;;5826:67;5890:2;5885:3;5826:67;;;5926:34;5906:55;;-1:-1;;;5990:2;5981:12;;5974:32;6034:2;6025:12;;5812:231;-1:-1;;5812:231;6052:370;;6212:67;6276:2;6271:3;6212:67;;;6312:34;6292:55;;-1:-1;;;6376:2;6367:12;;6360:25;6413:2;6404:12;;6198:224;-1:-1;;6198:224;6431:374;;6591:67;6655:2;6650:3;6591:67;;;6691:34;6671:55;;-1:-1;;;6755:2;6746:12;;6739:29;6796:2;6787:12;;6577:228;-1:-1;;6577:228;6813:113;6896:24;6914:5;6896:24;;6933:244;;7052:75;7123:3;7114:6;7052:75;;;-1:-1;7149:2;7140:12;;7040:137;-1:-1;7040:137;7184:553;;7400:93;7489:3;7480:6;7400:93;;;7393:100;;7504:73;7573:3;7564:6;7504:73;;;7599:1;7594:3;7590:11;7583:18;;7619:93;7708:3;7699:6;7619:93;;;7612:100;7381:356;-1:-1;;;;;7381:356;7744:213;7862:2;7847:18;;7876:71;7851:9;7920:6;7876:71;;7964:451;8146:2;8131:18;;8160:79;8135:9;8212:6;8160:79;;;8250:72;8318:2;8307:9;8303:18;8294:6;8250:72;;;8333;8401:2;8390:9;8386:18;8377:6;8333:72;;8422:340;8576:2;8561:18;;8590:79;8565:9;8642:6;8590:79;;;8680:72;8748:2;8737:9;8733:18;8724:6;8680:72;;8769:324;8915:2;8900:18;;8929:71;8904:9;8973:6;8929:71;;9100:201;9212:2;9197:18;;9226:65;9201:9;9264:6;9226:65;;9308:239;9439:2;9424:18;;9453:84;9428:9;9510:6;9453:84;;10058:233;10186:2;10171:18;;10200:81;10175:9;10254:6;10200:81;;10298:301;10436:2;10450:47;;;10421:18;;10511:78;10421:18;10575:6;10511:78;;10606:407;10797:2;10811:47;;;10782:18;;10872:131;10782:18;10872:131;;11020:407;11211:2;11225:47;;;11196:18;;11286:131;11196:18;11286:131;;11434:407;11625:2;11639:47;;;11610:18;;11700:131;11610:18;11700:131;;11848:407;12039:2;12053:47;;;12024:18;;12114:131;12024:18;12114:131;;12262:213;12380:2;12365:18;;12394:71;12369:9;12438:6;12394:71;;12482:324;12628:2;12613:18;;12642:71;12617:9;12686:6;12642:71;;12813:435;12987:2;12972:18;;13001:71;12976:9;13045:6;13001:71;;;13083:72;13151:2;13140:9;13136:18;13127:6;13083:72;;13255:121;13342:12;;13313:63;13666:163;13769:19;;;13818:4;13809:14;;13762:67;13837:91;;13899:24;13917:5;13899:24;;13935:85;14001:13;13994:21;;13977:43;14027:144;-1:-1;;;;;;14088:78;;14071:100;14178:72;14240:5;14223:27;14257:130;14331:5;14337:45;14331:5;14337:45;;14394:109;-1:-1;;;;;14456:42;;14439:64;14510:121;-1:-1;;;;;14572:54;;14555:76;14717:88;14789:10;14778:22;;14761:44;14812:129;;14899:37;14930:5;14948:147;;15040:50;15084:5;15040:50;;15812:130;;15901:36;15931:5;15901:36;;16193:268;16258:1;16265:101;16279:6;16276:1;16273:13;16265:101;;;16346:11;;;16340:18;16327:11;;;16320:39;16301:2;16294:10;16265:101;;;16381:6;16378:1;16375:13;16372:2;;;16446:1;16437:6;16432:3;16428:16;16421:27;16372:2;16242:219;;;;;16630:97;16718:2;16698:14;-1:-1;;16694:28;;16678:49;16735:103;16816:1;16809:5;16806:12;16796:2;;16822:9;16796:2;16790:48;;16845:117;16914:24;16932:5;16914:24;;;16907:5;16904:35;16894:2;;16953:1;16950;16943:12;16969:111;17035:21;17050:5;17035:21;;17087:117;17156:24;17174:5;17156:24;;17211:117;17280:24;17298:5;17280:24;;17335:115;17403:23;17420:5;17403:23;",
+  "source": "/*\n    Copyright 2021 Ethic Money Devs <devs@ethic.money> and Copyright 2020 Empty Set Squad <emptysetsquad@protonmail.com>\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n*/\n\npragma solidity ^0.5.17;\npragma experimental ABIEncoderV2;\n\nimport \"../oracle/Pool.sol\";\n\ncontract MockPool is Pool {\n    address private _dai;\n    address private _dao;\n    address private _ethic;\n    address private _univ2;\n\n    constructor(address ethic, address dai, address univ2) Pool(ethic, univ2) public {\n        _dai = dai;\n    }\n\n    function set(address dao, address ethic, address univ2) external {\n        _dao = dao;\n        _ethic = ethic;\n        _univ2 = univ2;\n    }\n\n    function dai() public view returns (address) {\n        return _dai;\n    }\n\n    function dao() public view returns (IDAO) {\n        return IDAO(_dao);\n    }\n\n    function ethic() public view returns (IEthic) {\n        return IEthic(_ethic);\n    }\n\n    function univ2() public view returns (IERC20) {\n        return IERC20(_univ2);\n    }\n\n    function getReserves(address tokenA, address tokenB) internal view returns (uint reserveA, uint reserveB) {\n        (reserveA, reserveB,) = IUniswapV2Pair(address(univ2())).getReserves();\n    }\n}\n",
+  "sourcePath": "/home/ville/projects/ethic/protocol/contracts/mock/MockPool.sol",
+  "ast": {
+    "absolutePath": "/home/ville/projects/ethic/protocol/contracts/mock/MockPool.sol",
+    "exportedSymbols": {
+      "MockPool": [
+        6871
+      ]
+    },
+    "id": 6872,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6755,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".17"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "685:24:29"
+      },
+      {
+        "id": 6756,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "710:33:29"
+      },
+      {
+        "absolutePath": "/home/ville/projects/ethic/protocol/contracts/oracle/Pool.sol",
+        "file": "../oracle/Pool.sol",
+        "id": 6757,
+        "nodeType": "ImportDirective",
+        "scope": 6872,
+        "sourceUnit": 10068,
+        "src": "745:28:29",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 6758,
+              "name": "Pool",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 10067,
+              "src": "796:4:29",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Pool_$10067",
+                "typeString": "contract Pool"
+              }
+            },
+            "id": 6759,
+            "nodeType": "InheritanceSpecifier",
+            "src": "796:4:29"
+          }
+        ],
+        "contractDependencies": [
+          9069,
+          10067,
+          10336,
+          10693,
+          10747
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 6871,
+        "linearizedBaseContracts": [
+          6871,
+          10067,
+          9069,
+          10693,
+          10336,
+          10747
+        ],
+        "name": "MockPool",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 6761,
+            "name": "_dai",
+            "nodeType": "VariableDeclaration",
+            "scope": 6871,
+            "src": "807:20:29",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 6760,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "807:7:29",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "constant": false,
+            "id": 6763,
+            "name": "_dao",
+            "nodeType": "VariableDeclaration",
+            "scope": 6871,
+            "src": "833:20:29",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 6762,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "833:7:29",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "constant": false,
+            "id": 6765,
+            "name": "_ethic",
+            "nodeType": "VariableDeclaration",
+            "scope": 6871,
+            "src": "859:22:29",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 6764,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "859:7:29",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "constant": false,
+            "id": 6767,
+            "name": "_univ2",
+            "nodeType": "VariableDeclaration",
+            "scope": 6871,
+            "src": "887:22:29",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 6766,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "887:7:29",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 6784,
+              "nodeType": "Block",
+              "src": "997:27:29",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6782,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6780,
+                      "name": "_dai",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6761,
+                      "src": "1007:4:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 6781,
+                      "name": "dai",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6771,
+                      "src": "1014:3:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1007:10:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 6783,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1007:10:29"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6785,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 6776,
+                    "name": "ethic",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 6769,
+                    "src": "976:5:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 6777,
+                    "name": "univ2",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 6773,
+                    "src": "983:5:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  }
+                ],
+                "id": 6778,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 6775,
+                  "name": "Pool",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 10067,
+                  "src": "971:4:29",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_contract$_Pool_$10067_$",
+                    "typeString": "type(contract Pool)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "971:18:29"
+              }
+            ],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6774,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6769,
+                  "name": "ethic",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6785,
+                  "src": "928:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6768,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "928:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6771,
+                  "name": "dai",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6785,
+                  "src": "943:11:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6770,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "943:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6773,
+                  "name": "univ2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6785,
+                  "src": "956:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6772,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "956:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "927:43:29"
+            },
+            "returnParameters": {
+              "id": 6779,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "997:0:29"
+            },
+            "scope": 6871,
+            "src": "916:108:29",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 6806,
+              "nodeType": "Block",
+              "src": "1095:75:29",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6796,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6794,
+                      "name": "_dao",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6763,
+                      "src": "1105:4:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 6795,
+                      "name": "dao",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6787,
+                      "src": "1112:3:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1105:10:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 6797,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1105:10:29"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6800,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6798,
+                      "name": "_ethic",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6765,
+                      "src": "1125:6:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 6799,
+                      "name": "ethic",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6789,
+                      "src": "1134:5:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1125:14:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 6801,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1125:14:29"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6804,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6802,
+                      "name": "_univ2",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6767,
+                      "src": "1149:6:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 6803,
+                      "name": "univ2",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6791,
+                      "src": "1158:5:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1149:14:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 6805,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1149:14:29"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6807,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "set",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6792,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6787,
+                  "name": "dao",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6807,
+                  "src": "1043:11:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6786,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1043:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6789,
+                  "name": "ethic",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6807,
+                  "src": "1056:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6788,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1056:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6791,
+                  "name": "univ2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6807,
+                  "src": "1071:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6790,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1071:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1042:43:29"
+            },
+            "returnParameters": {
+              "id": 6793,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1095:0:29"
+            },
+            "scope": 6871,
+            "src": "1030:140:29",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 6814,
+              "nodeType": "Block",
+              "src": "1221:28:29",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6812,
+                    "name": "_dai",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 6761,
+                    "src": "1238:4:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "functionReturnParameters": 6811,
+                  "id": 6813,
+                  "nodeType": "Return",
+                  "src": "1231:11:29"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6815,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "dai",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6808,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1188:2:29"
+            },
+            "returnParameters": {
+              "id": 6811,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6810,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6815,
+                  "src": "1212:7:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6809,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1212:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1211:9:29"
+            },
+            "scope": 6871,
+            "src": "1176:73:29",
+            "stateMutability": "view",
+            "superFunction": 10088,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 6824,
+              "nodeType": "Block",
+              "src": "1297:34:29",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 6821,
+                        "name": "_dao",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6763,
+                        "src": "1319:4:29",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 6820,
+                      "name": "IDAO",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 8897,
+                      "src": "1314:4:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IDAO_$8897_$",
+                        "typeString": "type(contract IDAO)"
+                      }
+                    },
+                    "id": 6822,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1314:10:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IDAO_$8897",
+                      "typeString": "contract IDAO"
+                    }
+                  },
+                  "functionReturnParameters": 6819,
+                  "id": 6823,
+                  "nodeType": "Return",
+                  "src": "1307:17:29"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6825,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "dao",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6816,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1267:2:29"
+            },
+            "returnParameters": {
+              "id": 6819,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6818,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6825,
+                  "src": "1291:4:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IDAO_$8897",
+                    "typeString": "contract IDAO"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 6817,
+                    "name": "IDAO",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 8897,
+                    "src": "1291:4:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IDAO_$8897",
+                      "typeString": "contract IDAO"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1290:6:29"
+            },
+            "scope": 6871,
+            "src": "1255:76:29",
+            "stateMutability": "view",
+            "superFunction": 10098,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 6834,
+              "nodeType": "Block",
+              "src": "1383:38:29",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 6831,
+                        "name": "_ethic",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6765,
+                        "src": "1407:6:29",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 6830,
+                      "name": "IEthic",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10871,
+                      "src": "1400:6:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IEthic_$10871_$",
+                        "typeString": "type(contract IEthic)"
+                      }
+                    },
+                    "id": 6832,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1400:14:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IEthic_$10871",
+                      "typeString": "contract IEthic"
+                    }
+                  },
+                  "functionReturnParameters": 6829,
+                  "id": 6833,
+                  "nodeType": "Return",
+                  "src": "1393:21:29"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6835,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "ethic",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6826,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1351:2:29"
+            },
+            "returnParameters": {
+              "id": 6829,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6828,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6835,
+                  "src": "1375:6:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IEthic_$10871",
+                    "typeString": "contract IEthic"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 6827,
+                    "name": "IEthic",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 10871,
+                    "src": "1375:6:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IEthic_$10871",
+                      "typeString": "contract IEthic"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1374:8:29"
+            },
+            "scope": 6871,
+            "src": "1337:84:29",
+            "stateMutability": "view",
+            "superFunction": 10108,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 6844,
+              "nodeType": "Block",
+              "src": "1473:38:29",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 6841,
+                        "name": "_univ2",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6767,
+                        "src": "1497:6:29",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 6840,
+                      "name": "IERC20",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 11971,
+                      "src": "1490:6:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IERC20_$11971_$",
+                        "typeString": "type(contract IERC20)"
+                      }
+                    },
+                    "id": 6842,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1490:14:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$11971",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "functionReturnParameters": 6839,
+                  "id": 6843,
+                  "nodeType": "Return",
+                  "src": "1483:21:29"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6845,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "univ2",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6836,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1441:2:29"
+            },
+            "returnParameters": {
+              "id": 6839,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6838,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6845,
+                  "src": "1465:6:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC20_$11971",
+                    "typeString": "contract IERC20"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 6837,
+                    "name": "IERC20",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 11971,
+                    "src": "1465:6:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$11971",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1464:8:29"
+            },
+            "scope": 6871,
+            "src": "1427:84:29",
+            "stateMutability": "view",
+            "superFunction": 10118,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 6869,
+              "nodeType": "Block",
+              "src": "1623:87:29",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6867,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "components": [
+                        {
+                          "argumentTypes": null,
+                          "id": 6856,
+                          "name": "reserveA",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6852,
+                          "src": "1634:8:29",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 6857,
+                          "name": "reserveB",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6854,
+                          "src": "1644:8:29",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        null
+                      ],
+                      "id": 6858,
+                      "isConstant": false,
+                      "isInlineArray": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "TupleExpression",
+                      "src": "1633:21:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_tuple$_t_uint256_$_t_uint256_$__$",
+                        "typeString": "tuple(uint256,uint256,)"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "arguments": [
+                                {
+                                  "argumentTypes": null,
+                                  "arguments": [],
+                                  "expression": {
+                                    "argumentTypes": [],
+                                    "id": 6861,
+                                    "name": "univ2",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [
+                                      6845
+                                    ],
+                                    "referencedDeclaration": 6845,
+                                    "src": "1680:5:29",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_function_internal_view$__$returns$_t_contract$_IERC20_$11971_$",
+                                      "typeString": "function () view returns (contract IERC20)"
+                                    }
+                                  },
+                                  "id": 6862,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "kind": "functionCall",
+                                  "lValueRequested": false,
+                                  "names": [],
+                                  "nodeType": "FunctionCall",
+                                  "src": "1680:7:29",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_contract$_IERC20_$11971",
+                                    "typeString": "contract IERC20"
+                                  }
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_contract$_IERC20_$11971",
+                                    "typeString": "contract IERC20"
+                                  }
+                                ],
+                                "id": 6860,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "lValueRequested": false,
+                                "nodeType": "ElementaryTypeNameExpression",
+                                "src": "1672:7:29",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_type$_t_address_$",
+                                  "typeString": "type(address)"
+                                },
+                                "typeName": "address"
+                              },
+                              "id": 6863,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "typeConversion",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "1672:16:29",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            ],
+                            "id": 6859,
+                            "name": "IUniswapV2Pair",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 12726,
+                            "src": "1657:14:29",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_contract$_IUniswapV2Pair_$12726_$",
+                              "typeString": "type(contract IUniswapV2Pair)"
+                            }
+                          },
+                          "id": 6864,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1657:32:29",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_IUniswapV2Pair_$12726",
+                            "typeString": "contract IUniswapV2Pair"
+                          }
+                        },
+                        "id": 6865,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "getReserves",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 12668,
+                        "src": "1657:44:29",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_external_view$__$returns$_t_uint112_$_t_uint112_$_t_uint32_$",
+                          "typeString": "function () view external returns (uint112,uint112,uint32)"
+                        }
+                      },
+                      "id": 6866,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1657:46:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_tuple$_t_uint112_$_t_uint112_$_t_uint32_$",
+                        "typeString": "tuple(uint112,uint112,uint32)"
+                      }
+                    },
+                    "src": "1633:70:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6868,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1633:70:29"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6870,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getReserves",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6850,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6847,
+                  "name": "tokenA",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6870,
+                  "src": "1538:14:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6846,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1538:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6849,
+                  "name": "tokenB",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6870,
+                  "src": "1554:14:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6848,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1554:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1537:32:29"
+            },
+            "returnParameters": {
+              "id": 6855,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6852,
+                  "name": "reserveA",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6870,
+                  "src": "1593:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6851,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1593:4:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6854,
+                  "name": "reserveB",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6870,
+                  "src": "1608:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6853,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1608:4:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1592:30:29"
+            },
+            "scope": 6871,
+            "src": "1517:193:29",
+            "stateMutability": "view",
+            "superFunction": 9068,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 6872,
+        "src": "775:937:29"
+      }
+    ],
+    "src": "685:1028:29"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/ville/projects/ethic/protocol/contracts/mock/MockPool.sol",
+    "exportedSymbols": {
+      "MockPool": [
+        6871
+      ]
+    },
+    "id": 6872,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6755,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".17"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "685:24:29"
+      },
+      {
+        "id": 6756,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "710:33:29"
+      },
+      {
+        "absolutePath": "/home/ville/projects/ethic/protocol/contracts/oracle/Pool.sol",
+        "file": "../oracle/Pool.sol",
+        "id": 6757,
+        "nodeType": "ImportDirective",
+        "scope": 6872,
+        "sourceUnit": 10068,
+        "src": "745:28:29",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 6758,
+              "name": "Pool",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 10067,
+              "src": "796:4:29",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Pool_$10067",
+                "typeString": "contract Pool"
+              }
+            },
+            "id": 6759,
+            "nodeType": "InheritanceSpecifier",
+            "src": "796:4:29"
+          }
+        ],
+        "contractDependencies": [
+          9069,
+          10067,
+          10336,
+          10693,
+          10747
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 6871,
+        "linearizedBaseContracts": [
+          6871,
+          10067,
+          9069,
+          10693,
+          10336,
+          10747
+        ],
+        "name": "MockPool",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 6761,
+            "name": "_dai",
+            "nodeType": "VariableDeclaration",
+            "scope": 6871,
+            "src": "807:20:29",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 6760,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "807:7:29",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "constant": false,
+            "id": 6763,
+            "name": "_dao",
+            "nodeType": "VariableDeclaration",
+            "scope": 6871,
+            "src": "833:20:29",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 6762,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "833:7:29",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "constant": false,
+            "id": 6765,
+            "name": "_ethic",
+            "nodeType": "VariableDeclaration",
+            "scope": 6871,
+            "src": "859:22:29",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 6764,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "859:7:29",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "constant": false,
+            "id": 6767,
+            "name": "_univ2",
+            "nodeType": "VariableDeclaration",
+            "scope": 6871,
+            "src": "887:22:29",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 6766,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "887:7:29",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 6784,
+              "nodeType": "Block",
+              "src": "997:27:29",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6782,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6780,
+                      "name": "_dai",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6761,
+                      "src": "1007:4:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 6781,
+                      "name": "dai",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6771,
+                      "src": "1014:3:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1007:10:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 6783,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1007:10:29"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6785,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 6776,
+                    "name": "ethic",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 6769,
+                    "src": "976:5:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 6777,
+                    "name": "univ2",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 6773,
+                    "src": "983:5:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  }
+                ],
+                "id": 6778,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 6775,
+                  "name": "Pool",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 10067,
+                  "src": "971:4:29",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_contract$_Pool_$10067_$",
+                    "typeString": "type(contract Pool)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "971:18:29"
+              }
+            ],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6774,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6769,
+                  "name": "ethic",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6785,
+                  "src": "928:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6768,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "928:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6771,
+                  "name": "dai",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6785,
+                  "src": "943:11:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6770,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "943:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6773,
+                  "name": "univ2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6785,
+                  "src": "956:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6772,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "956:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "927:43:29"
+            },
+            "returnParameters": {
+              "id": 6779,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "997:0:29"
+            },
+            "scope": 6871,
+            "src": "916:108:29",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 6806,
+              "nodeType": "Block",
+              "src": "1095:75:29",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6796,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6794,
+                      "name": "_dao",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6763,
+                      "src": "1105:4:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 6795,
+                      "name": "dao",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6787,
+                      "src": "1112:3:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1105:10:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 6797,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1105:10:29"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6800,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6798,
+                      "name": "_ethic",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6765,
+                      "src": "1125:6:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 6799,
+                      "name": "ethic",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6789,
+                      "src": "1134:5:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1125:14:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 6801,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1125:14:29"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6804,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6802,
+                      "name": "_univ2",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6767,
+                      "src": "1149:6:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 6803,
+                      "name": "univ2",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6791,
+                      "src": "1158:5:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1149:14:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 6805,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1149:14:29"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6807,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "set",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6792,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6787,
+                  "name": "dao",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6807,
+                  "src": "1043:11:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6786,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1043:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6789,
+                  "name": "ethic",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6807,
+                  "src": "1056:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6788,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1056:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6791,
+                  "name": "univ2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6807,
+                  "src": "1071:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6790,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1071:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1042:43:29"
+            },
+            "returnParameters": {
+              "id": 6793,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1095:0:29"
+            },
+            "scope": 6871,
+            "src": "1030:140:29",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 6814,
+              "nodeType": "Block",
+              "src": "1221:28:29",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6812,
+                    "name": "_dai",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 6761,
+                    "src": "1238:4:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "functionReturnParameters": 6811,
+                  "id": 6813,
+                  "nodeType": "Return",
+                  "src": "1231:11:29"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6815,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "dai",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6808,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1188:2:29"
+            },
+            "returnParameters": {
+              "id": 6811,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6810,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6815,
+                  "src": "1212:7:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6809,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1212:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1211:9:29"
+            },
+            "scope": 6871,
+            "src": "1176:73:29",
+            "stateMutability": "view",
+            "superFunction": 10088,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 6824,
+              "nodeType": "Block",
+              "src": "1297:34:29",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 6821,
+                        "name": "_dao",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6763,
+                        "src": "1319:4:29",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 6820,
+                      "name": "IDAO",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 8897,
+                      "src": "1314:4:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IDAO_$8897_$",
+                        "typeString": "type(contract IDAO)"
+                      }
+                    },
+                    "id": 6822,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1314:10:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IDAO_$8897",
+                      "typeString": "contract IDAO"
+                    }
+                  },
+                  "functionReturnParameters": 6819,
+                  "id": 6823,
+                  "nodeType": "Return",
+                  "src": "1307:17:29"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6825,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "dao",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6816,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1267:2:29"
+            },
+            "returnParameters": {
+              "id": 6819,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6818,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6825,
+                  "src": "1291:4:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IDAO_$8897",
+                    "typeString": "contract IDAO"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 6817,
+                    "name": "IDAO",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 8897,
+                    "src": "1291:4:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IDAO_$8897",
+                      "typeString": "contract IDAO"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1290:6:29"
+            },
+            "scope": 6871,
+            "src": "1255:76:29",
+            "stateMutability": "view",
+            "superFunction": 10098,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 6834,
+              "nodeType": "Block",
+              "src": "1383:38:29",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 6831,
+                        "name": "_ethic",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6765,
+                        "src": "1407:6:29",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 6830,
+                      "name": "IEthic",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10871,
+                      "src": "1400:6:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IEthic_$10871_$",
+                        "typeString": "type(contract IEthic)"
+                      }
+                    },
+                    "id": 6832,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1400:14:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IEthic_$10871",
+                      "typeString": "contract IEthic"
+                    }
+                  },
+                  "functionReturnParameters": 6829,
+                  "id": 6833,
+                  "nodeType": "Return",
+                  "src": "1393:21:29"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6835,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "ethic",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6826,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1351:2:29"
+            },
+            "returnParameters": {
+              "id": 6829,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6828,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6835,
+                  "src": "1375:6:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IEthic_$10871",
+                    "typeString": "contract IEthic"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 6827,
+                    "name": "IEthic",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 10871,
+                    "src": "1375:6:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IEthic_$10871",
+                      "typeString": "contract IEthic"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1374:8:29"
+            },
+            "scope": 6871,
+            "src": "1337:84:29",
+            "stateMutability": "view",
+            "superFunction": 10108,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 6844,
+              "nodeType": "Block",
+              "src": "1473:38:29",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 6841,
+                        "name": "_univ2",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6767,
+                        "src": "1497:6:29",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 6840,
+                      "name": "IERC20",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 11971,
+                      "src": "1490:6:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IERC20_$11971_$",
+                        "typeString": "type(contract IERC20)"
+                      }
+                    },
+                    "id": 6842,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1490:14:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$11971",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "functionReturnParameters": 6839,
+                  "id": 6843,
+                  "nodeType": "Return",
+                  "src": "1483:21:29"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6845,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "univ2",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6836,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1441:2:29"
+            },
+            "returnParameters": {
+              "id": 6839,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6838,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6845,
+                  "src": "1465:6:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC20_$11971",
+                    "typeString": "contract IERC20"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 6837,
+                    "name": "IERC20",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 11971,
+                    "src": "1465:6:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$11971",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1464:8:29"
+            },
+            "scope": 6871,
+            "src": "1427:84:29",
+            "stateMutability": "view",
+            "superFunction": 10118,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 6869,
+              "nodeType": "Block",
+              "src": "1623:87:29",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6867,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "components": [
+                        {
+                          "argumentTypes": null,
+                          "id": 6856,
+                          "name": "reserveA",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6852,
+                          "src": "1634:8:29",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 6857,
+                          "name": "reserveB",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6854,
+                          "src": "1644:8:29",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        null
+                      ],
+                      "id": 6858,
+                      "isConstant": false,
+                      "isInlineArray": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "TupleExpression",
+                      "src": "1633:21:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_tuple$_t_uint256_$_t_uint256_$__$",
+                        "typeString": "tuple(uint256,uint256,)"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "arguments": [
+                                {
+                                  "argumentTypes": null,
+                                  "arguments": [],
+                                  "expression": {
+                                    "argumentTypes": [],
+                                    "id": 6861,
+                                    "name": "univ2",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [
+                                      6845
+                                    ],
+                                    "referencedDeclaration": 6845,
+                                    "src": "1680:5:29",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_function_internal_view$__$returns$_t_contract$_IERC20_$11971_$",
+                                      "typeString": "function () view returns (contract IERC20)"
+                                    }
+                                  },
+                                  "id": 6862,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "kind": "functionCall",
+                                  "lValueRequested": false,
+                                  "names": [],
+                                  "nodeType": "FunctionCall",
+                                  "src": "1680:7:29",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_contract$_IERC20_$11971",
+                                    "typeString": "contract IERC20"
+                                  }
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_contract$_IERC20_$11971",
+                                    "typeString": "contract IERC20"
+                                  }
+                                ],
+                                "id": 6860,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "lValueRequested": false,
+                                "nodeType": "ElementaryTypeNameExpression",
+                                "src": "1672:7:29",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_type$_t_address_$",
+                                  "typeString": "type(address)"
+                                },
+                                "typeName": "address"
+                              },
+                              "id": 6863,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "typeConversion",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "1672:16:29",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            ],
+                            "id": 6859,
+                            "name": "IUniswapV2Pair",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 12726,
+                            "src": "1657:14:29",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_contract$_IUniswapV2Pair_$12726_$",
+                              "typeString": "type(contract IUniswapV2Pair)"
+                            }
+                          },
+                          "id": 6864,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1657:32:29",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_IUniswapV2Pair_$12726",
+                            "typeString": "contract IUniswapV2Pair"
+                          }
+                        },
+                        "id": 6865,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "getReserves",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 12668,
+                        "src": "1657:44:29",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_external_view$__$returns$_t_uint112_$_t_uint112_$_t_uint32_$",
+                          "typeString": "function () view external returns (uint112,uint112,uint32)"
+                        }
+                      },
+                      "id": 6866,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1657:46:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_tuple$_t_uint112_$_t_uint112_$_t_uint32_$",
+                        "typeString": "tuple(uint112,uint112,uint32)"
+                      }
+                    },
+                    "src": "1633:70:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6868,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1633:70:29"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6870,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getReserves",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6850,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6847,
+                  "name": "tokenA",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6870,
+                  "src": "1538:14:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6846,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1538:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6849,
+                  "name": "tokenB",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6870,
+                  "src": "1554:14:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6848,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1554:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1537:32:29"
+            },
+            "returnParameters": {
+              "id": 6855,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6852,
+                  "name": "reserveA",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6870,
+                  "src": "1593:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6851,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1593:4:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6854,
+                  "name": "reserveB",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6870,
+                  "src": "1608:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6853,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1608:4:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1592:30:29"
+            },
+            "scope": 6871,
+            "src": "1517:193:29",
+            "stateMutability": "view",
+            "superFunction": 9068,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 6872,
+        "src": "775:937:29"
+      }
+    ],
+    "src": "685:1028:29"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.2",
+  "updatedAt": "2021-02-04T14:36:42.372Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {
+      "balanceOfStaged(address)": {
+        "notice": "Account"
+      }
+    }
+  }
+}
