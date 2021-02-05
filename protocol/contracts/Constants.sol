@@ -77,10 +77,10 @@ library Constants {
     uint256 private constant TREASURY_RATIO = 250; // 2.5%
     
     /* Deployed */
-    address private constant DAO_ADDRESS = address(0x5bc5d5964cd2ee0fb452fe4d219d6f1ec0ac781d); // Deployed to Kovan Testnet - update with mainnet DAO address
-    address private constant ETHIC_ADDRESS = address(0xe250351D7dA08C5b41b1662Ff41241E45B5E990B); // Deployed to Kovan Testnet - update with mainnet ethic address
-    address private constant PAIR_ADDRESS = address(0x7ab1D07Dcf918d1AB6f312b50464DD5C65CA0250); // Deployed to Kovan Testnet - update with mainnet pair address
-    address private constant TREASURY_ADDRESS = address(0xC8FFaCea42C3Cbe6747D64Ef4383D9e1a10AaBB2); // Deployed to Kovan Testnet - update with mainnet treasury address
+    address private constant DAO_ADDRESS = address(0x5bc5d5964cd2ee0fb452fe4d219d6f1ec0ac781d); // (Root.sol) Deployed to Kovan Testnet - update with mainnet DAO address
+    address private constant ETHIC_ADDRESS = address(0xe250351D7dA08C5b41b1662Ff41241E45B5E990B); // (Ethic.sol - token) Deployed to Kovan Testnet - update with mainnet ethic address
+    address private constant PAIR_ADDRESS = address(0x7ab1D07Dcf918d1AB6f312b50464DD5C65CA0250); // (UniswapV2 DAI:ETHC pair) Deployed to Kovan Testnet - update with mainnet pair address
+    address private constant TREASURY_ADDRESS = address(0x88B6b8518D80ecf62C39D5A3AafaCcC4705941A7); // (Community Controlled Rewards Pool - Gnosis Safe multisig wallet) Deployed to Kovan Testnet - update with mainnet treasury address
     address private constant DEVELOPER_ADDRESS = address(0x64655E2c5721A92077978076B38bD34872f8b09F); // Kovan Testnet - unneeded on mainnet
     address private constant WPS_ADDRESS = address(0x42125A6B882bBF6e69375F2a274F23aC928c593a); // Kovan Testnet - unneeded on mainnet
     
