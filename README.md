@@ -142,11 +142,11 @@ Rewarding developers incentivizes them to remain with a project, uncovering bugs
 
 ### Kovan Testnet
 
-- `0x3A29121f4D66d67432B3420c5fA5711003CB76C1` **DAO**
-- `0xb0deb36900e84Cf257325452a775fe9E81d060fb` **∉thic**
-- `0x------------` **Oracle**
+- `0x5bC5D5964CD2EE0fB452fE4d219D6f1Ec0ac781D` **DAO**
+- `0xe250351d7da08c5b41b1662ff41241e45b5e990b` **∉thic Token**
+- `0xd62df41a88c4b2ba17e140a55f16d51092a292ac` **Oracle**
 - `0x7ab1D07Dcf918d1AB6f312b50464DD5C65CA0250` **UniswapV2 DAI:ETHC Pair**
-- `0x------------` **LP Incentivation Pool**
+- `0xc8ffacea42c3cbe6747d64ef4383d9e1a10aabb2` **LP Incentivation Pool**
 - `0x88B6b8518D80ecf62C39D5A3AafaCcC4705941A7` **Community Treasury Multisig**
 
 
@@ -181,13 +181,13 @@ As ∉thic operations accrues funds for the community treasury pool intended to 
 
 | Signer | Country | Position | Signing Address |
 | --- | --- | --- | --- |
-| **Sukesh Tedla** | Sweden |  Chairman of Swedish Blockchain Association | `0xE2262b6a9e049E1c9E7675b32090744e7dbD8FAe` |
+| **Sukesh Tedla** [![Twitter](https://i.imgur.com/wWzX9uB.png)](https://twitter.com/sukeshtedla) [![LinkedIn](https://i.imgur.com/YckIOms.png)](https://linkedin/in/sukeshtedla/) | Sweden |  Chairman of Swedish Blockchain Association | `0xE2262b6a9e049E1c9E7675b32090744e7dbD8FAe` |
 | **Suvi Rinkinen** | Finland |  Telos Foundation CEO | `0x00D155bE8b97aE6590bcb868154C5636250cF1e6` |
 | **Rory Mapstone** | South Africa |  TSwaps.com creator, EOS/ZA | `0x85BFb3867FEc02bd4b138B6A8E211Ab2942a4E2C` |
 | **Marlon Williams** | USA |  Qubicles CEO | `0x87E592C8D476EA66329Df1801D4a45FD463A7003` |
 | **Rami James** | Israel |  Scatter Founder | `0xebc927335d9a6ae78312dda40a8d9de10c7b32fa` |
 | **George Vernon** | USA |  Crypto Investor | `0x988c844503F2740c17Cc0010A4fBbDC89D5209AA` |
-| **Douglas Horn**  [![Twitter](https://i.imgur.com/wWzX9uB.png)](https://twitter.com/Douglas_Horn) [![Github](https://i.imgur.com/9I6NRUm.png)](https://github.com/DouglasHorn)       | USA |  ∉thic Founder, Telos Architect | `0x5C327e62F735F37e7F816eEb2c8574a4ce61E003` |
+| **Douglas Horn**  [![Twitter](https://i.imgur.com/wWzX9uB.png)](https://twitter.com/Douglas_Horn) [![Github](https://i.imgur.com/9I6NRUm.png)](https://github.com/DouglasHorn) | USA |  ∉thic Founder, Telos Architect | `0x5C327e62F735F37e7F816eEb2c8574a4ce61E003` |
 
 
 ## Disclaimer
