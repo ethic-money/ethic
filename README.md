@@ -142,11 +142,12 @@ Rewarding developers incentivizes them to remain with a project, uncovering bugs
 
 ### Kovan Testnet
 
-- `0x3A29121f4D66d67432B3420c5fA5711003CB76C1` **DAO**
-- `0xb0deb36900e84Cf257325452a775fe9E81d060fb` **∉thic**
-- `0x------------` **Oracle**
+- `0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa` **Maker DAI Token**
+- `0x5bC5D5964CD2EE0fB452fE4d219D6f1Ec0ac781D` **DAO / ETHCS Token**
+- `0xb0deb36900e84Cf257325452a775fe9E81d060fb` **∉thic / ETHC Token**
+- `0xd62dF41A88C4b2Ba17e140a55f16d51092A292AC` **Oracle**
 - `0x7ab1D07Dcf918d1AB6f312b50464DD5C65CA0250` **UniswapV2 DAI:ETHC Pair**
-- `0x------------` **LP Incentivation Pool**
+- `0xC8FFaCea42C3Cbe6747D64Ef4383D9e1a10AaBB2` **LP Incentivation Pool**
 - `0x88B6b8518D80ecf62C39D5A3AafaCcC4705941A7` **Community Treasury Multisig**
 
 
