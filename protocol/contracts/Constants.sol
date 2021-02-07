@@ -26,7 +26,7 @@ library Constants {
     /* Bootstrapping */
     uint256 private constant BOOTSTRAPPING_PERIOD = 90;
     uint256 private constant BOOTSTRAPPING_PRICE = 11e17; // 1.10 DAI
-    uint256 private constant BOOTSTRAPPING_SPEEDUP_FACTOR = 3; // 30 days @ 8 hours
+    uint256 private constant BOOTSTRAPPING_SPEEDUP_FACTOR = 1; // Maintain epoch time at 1 hour
     
     /* Oracle */
     address private constant DAI_ADDRESS = address(0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa); // Kovan testnet address. Mainnet DAI addr = 0x6B175474E89094C44Da98b954EedeAC495271d0F
