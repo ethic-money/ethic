@@ -21,15 +21,15 @@ import "./external/Decimal.sol";
 
 library Constants {
     /* Chain */
-    uint256 private constant CHAIN_ID = 42; // Kovan testnet.  Mainnet = 1
+    uint256 private constant CHAIN_ID = 3; // Ropsten testnet.  Mainnet = 1
     
     /* Bootstrapping */
-    uint256 private constant BOOTSTRAPPING_PERIOD = 90;
+    uint256 private constant BOOTSTRAPPING_PERIOD = 720; // 30 days at 24 epochs per day
     uint256 private constant BOOTSTRAPPING_PRICE = 11e17; // 1.10 DAI
-    uint256 private constant BOOTSTRAPPING_SPEEDUP_FACTOR = 1; // Do not accelerate beyond 1 epoch per hour
+    uint256 private constant BOOTSTRAPPING_SPEEDUP_FACTOR = 1; // Maintain epoch time at 1 hour
     
     /* Oracle */
-    address private constant DAI_ADDRESS = address(0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa); // Kovan testnet address. Mainnet DAI addr = 0x6B175474E89094C44Da98b954EedeAC495271d0F
+    address private constant DAI_ADDRESS = address(0xad6d458402f60fd3bd25163575031acdce07538d); // Ropsten testnet DAI address. Mainnet DAI addr = 0x6B175474E89094C44Da98b954EedeAC495271d0F
     uint256 private constant ORACLE_RESERVE_MINIMUM = 1e10; // 10,000 DAI
     
     /* Bonding */
@@ -42,8 +42,8 @@ library Constants {
         uint256 period;
     }
     
-    uint256 private constant EPOCH_OFFSET = 106;
-    uint256 private constant EPOCH_START = 1610292686;
+    uint256 private constant EPOCH_OFFSET = 8;    // test 
+    uint256 private constant EPOCH_START = 1613026800;  // GMT: Thursday, February 11, 2021 7:00:00 AM for test deployment
     uint256 private constant EPOCH_PERIOD = 3600;
     
     /* Governance */
@@ -77,13 +77,10 @@ library Constants {
     uint256 private constant TREASURY_RATIO = 250; // 2.5%
     
     /* Deployed */
-    address private constant DAO_ADDRESS = address(0x3A29121f4D66d67432B3420c5fA5711003CB76C1); // Kovan Testnet - update with mainnet DAO address
-    address private constant ETHIC_ADDRESS = address(0xb0deb36900e84Cf257325452a775fe9E81d060fb); // Kovan Testnet - update with mainnet ethic address
-    address private constant PAIR_ADDRESS = address(0x7ab1D07Dcf918d1AB6f312b50464DD5C65CA0250); // Kovan Testnet - update with mainnet pair address
-    address private constant TREASURY_ADDRESS = address(0x88B6b8518D80ecf62C39D5A3AafaCcC4705941A7); // Kovan Testnet - update with mainnet treasury address
-    address private constant DEVELOPER_ADDRESS = address(0x64655E2c5721A92077978076B38bD34872f8b09F); // Kovan Testnet - unneeded on mainnet
-    address private constant WPS_ADDRESS = address(0x42125A6B882bBF6e69375F2a274F23aC928c593a); // Kovan Testnet - unneeded on mainnet
-    
+    address private constant DAO_ADDRESS = address(0x0000000000000000000000000000000000000000); // Test necessity
+    address private constant ETHIC_ADDRESS = address(0x0000000000000000000000000000000000000000); // Test necessity
+    address private constant PAIR_ADDRESS = address(0x0000000000000000000000000000000000000000); // Test necessity
+    address private constant TREASURY_ADDRESS = address(0x88B6b8518D80ecf62C39D5A3AafaCcC4705941A7); // Ropsten Testnet - update with mainnet treasury msig address
     
     /**
      * Getters
