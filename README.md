@@ -140,6 +140,16 @@ Rewarding developers incentivizes them to remain with a project, uncovering bugs
 
 ## Contracts
 
+### Ropsten Testnet
+
+- `0xad6d458402f60fd3bd25163575031acdce07538d` **Maker DAI Token**
+- `0x8f9fA63fF3cc3eF3e94D1a2B6CfC8dde16a38a91` **DAO / ETHCS Token**
+- `0xC5d9f91c0866046Da1eB4D218F131D9eac58a653` **∉thic / ETHC Token**
+- `0xA6f8379114640a80053337c4f64ad942628331d4` **Oracle**
+- `0x77843e99fef0712629f9380519831e628ebedfa1` **UniswapV2 DAI:ETHC Pair**
+- `0x12fbE8908d4db291f8CfDf13f6AE632a0336d3Ba` **LP Incentivation Pool**
+- `0x88B6b8518D80ecf62C39D5A3AafaCcC4705941A7` **Community Treasury Multisig**
+
 ### Kovan Testnet
 
 - `0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa` **Maker DAI Token**
@@ -149,7 +159,6 @@ Rewarding developers incentivizes them to remain with a project, uncovering bugs
 - `0x7ab1D07Dcf918d1AB6f312b50464DD5C65CA0250` **UniswapV2 DAI:ETHC Pair**
 - `0xC8FFaCea42C3Cbe6747D64Ef4383D9e1a10AaBB2` **LP Incentivation Pool**
 - `0x88B6b8518D80ecf62C39D5A3AafaCcC4705941A7` **Community Treasury Multisig**
-
 
 ### Mainnet
 
