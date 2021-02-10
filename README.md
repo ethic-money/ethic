@@ -142,11 +142,12 @@ Rewarding developers incentivizes them to remain with a project, uncovering bugs
 
 ### Kovan Testnet
 
-- `0x3A29121f4D66d67432B3420c5fA5711003CB76C1` **DAO**
-- `0xb0deb36900e84Cf257325452a775fe9E81d060fb` **∉thic**
-- `0x------------` **Oracle**
+- `0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa` **Maker DAI Token**
+- `0x5bC5D5964CD2EE0fB452fE4d219D6f1Ec0ac781D` **DAO / ETHCS Token**
+- `0xb0deb36900e84Cf257325452a775fe9E81d060fb` **∉thic / ETHC Token**
+- `0xd62dF41A88C4b2Ba17e140a55f16d51092A292AC` **Oracle**
 - `0x7ab1D07Dcf918d1AB6f312b50464DD5C65CA0250` **UniswapV2 DAI:ETHC Pair**
-- `0x------------` **LP Incentivation Pool**
+- `0xC8FFaCea42C3Cbe6747D64Ef4383D9e1a10AaBB2` **LP Incentivation Pool**
 - `0x88B6b8518D80ecf62C39D5A3AafaCcC4705941A7` **Community Treasury Multisig**
 
 
@@ -157,7 +158,7 @@ Rewarding developers incentivizes them to remain with a project, uncovering bugs
 - `0x-----------` **Oracle**
 - `0x-----------` **UniswapV2 DAI:ETHC Pair**
 - `0x-----------` **LP Incentivation Pool**
-- `0x-----------` **Community Treasury Multisig**
+- `0x25825313BeAd63Ab5b93Aae07f1879A6bC501F6E` **Community Treasury Multisig**
 
 ## Audit
 
@@ -187,7 +188,7 @@ As ∉thic operations accrues funds for the community treasury pool intended to 
 | **Marlon Williams** | USA |  Qubicles CEO | `0x87E592C8D476EA66329Df1801D4a45FD463A7003` |
 | **Rami James** | Israel |  Scatter Founder | `0xebc927335d9a6ae78312dda40a8d9de10c7b32fa` |
 | **George Vernon** | USA |  Crypto Investor | `0x988c844503F2740c17Cc0010A4fBbDC89D5209AA` |
-| **Douglas Horn**  [![Twitter](https://i.imgur.com/wWzX9uB.png)](https://twitter.com/Douglas_Horn) [![Github](https://i.imgur.com/9I6NRUm.png)](https://github.com/DouglasHorn)       | USA |  ETHIC Founder, Telos Architect | `0x5C327e62F735F37e7F816eEb2c8574a4ce61E003` |
+| **Douglas Horn**  [![Twitter](https://i.imgur.com/wWzX9uB.png)](https://twitter.com/Douglas_Horn) [![Github](https://i.imgur.com/9I6NRUm.png)](https://github.com/DouglasHorn)       | USA |  ∉thic Founder, Telos Architect | `0x5C327e62F735F37e7F816eEb2c8574a4ce61E003` |
 
 
 ## Disclaimer

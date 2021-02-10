@@ -9,7 +9,7 @@
     "compile": "truffle compile",
     "test": "mocha --timeout 10000 --exit --recursive test",
     "deploy": "truffle migrate --network mainnet",
-    "verify": "truffle run verify Implementation --network mainnet"
+    "verify": "truffle run verify Implementation --network kovan"
   },
   "author": "",
   "license": "Apache-2.0",
@@ -17,7 +17,8 @@
     "@openzeppelin/contracts": "^2.5.0",
     "@openzeppelin/upgrades": "^2.8.0",
     "@uniswap/lib": "^1.1.2",
-    "@uniswap/v2-core": "^1.0.1"
+    "@uniswap/v2-core": "^1.0.1",
+    "web3-provider-engine": "^16.0.1"
   },
   "devDependencies": {
     "@openzeppelin/test-environment": "^0.1.4",
