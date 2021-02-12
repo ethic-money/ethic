@@ -6,9 +6,9 @@ Ethical, decentralized, voluntary, self-stabilizing money. **Not an element of f
 
 | :white_check_mark: Algorithmic Stablecoin | :x: Not a product of fiat money systems |
 | :--- | :--- |
-| :white_check_mark: Voluntary Elastic Supply | :x: 20,000 ETHC Premine for initial liquidity - to be returned to treasury after bootstrap period |
+| :white_check_mark: Voluntary Elastic Supply | :x: NO Rebasing |
 | :white_check_mark: 100% Community Governance | :x: NO Pre-existing Developer Pool |
-| :white_check_mark: Fully composable for DeFi | :x: NO Rebasing |
+| :white_check_mark: Fully composable for DeFi | :x: 20,000 ETHC initial liquidity pool - to be returned to treasury after bootstrap period |
 | :white_check_mark: Publicly Identified Developers |  |
 | :white_check_mark: Path to free voting & improved governance |  |
 
@@ -90,9 +90,9 @@ The symbol for ∉thic is the mathematical sign, **∉**, meaning "Not an elemen
 | Epoch Time | 4 hour | Smaller, more consistent adjustments balancing Ethereum gas price for long term sustainability |
 | Bonding | 100 ETHC -> 100M ETHCS | Successful for previous protocols |
 | Oracle Reserve Minimum | 10,000 DAI | Successful for previous protocols |
-| Bootstrapping Period | 45 days (270 epochs) | Longer period with lower speedup |
+| Bootstrapping Period | 20 days (120 epochs) | Shorter period for better long-term tokenomics |
 | Bootstrapping Price Target | 1.10 DAI | Successful for previous protocols |
-| Bootstrapping Speedup Factor | 2 | Lower speedup paired to longer bootstrap period |
+| Bootstrapping Speedup Factor | 2 | Lower speedup bootstrap period |
 | Epoch Advance Reward | 300 ETHC | More frequent epochs / reasonable reward |
 | Epoch Treasury Payment | 100 ETHC | ensure ongoing developer/marketing funding in contraction periods |
 | Governance Period | 4 days (24 epochs) | Longer voting period invites more voters |
