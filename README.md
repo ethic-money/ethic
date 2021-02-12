@@ -6,7 +6,7 @@ Ethical, decentralized, voluntary, self-stabilizing money. **Not an element of f
 
 | :white_check_mark: Algorithmic Stablecoin | :x: Not a product of fiat money systems |
 | :--- | :--- |
-| :white_check_mark: Voluntary Elastic Supply | :x: NO Premine |
+| :white_check_mark: Voluntary Elastic Supply | :x: 20,000 ETHC Premine for initial liquidity - to be returned to treasury after bootstrap period |
 | :white_check_mark: 100% Community Governance | :x: NO Pre-existing Developer Pool |
 | :white_check_mark: Fully composable for DeFi | :x: NO Rebasing |
 | :white_check_mark: Publicly Identified Developers |  |
@@ -87,27 +87,28 @@ The symbol for ∉thic is the mathematical sign, **∉**, meaning "Not an elemen
 | Parameter Name | Setting | Rationale |
 | --- | --- | --- |
 | Target Denomination | Maker DAI | Standard 1 USD unit without being directly tied to any fiat USD |
-| Epoch Time | 1 hour | Smaller, more consistent adjustments |
+| Epoch Time | 4 hour | Smaller, more consistent adjustments balancing Ethereum gas price for long term sustainability |
 | Bonding | 100 ETHC -> 100M ETHCS | Successful for previous protocols |
 | Oracle Reserve Minimum | 10,000 DAI | Successful for previous protocols |
-| Bootstrapping Period | 45 days (1080 epochs) | Longer period with lower speedup |
+| Bootstrapping Period | 45 days (270 epochs) | Longer period with lower speedup |
 | Bootstrapping Price Target | 1.10 DAI | Successful for previous protocols |
 | Bootstrapping Speedup Factor | 2 | Lower speedup paired to longer bootstrap period |
-| Epoch Advance Reward | 40 ETHC | More frequent epochs / reasonable reward |
-| Governance Period | 4 days (96 epochs) | Longer voting period invites more voters |
-| Governance Expiration |  1 day (24 epochs) | Reasonable amount of time to execute governance proposals |
+| Epoch Advance Reward | 300 ETHC | More frequent epochs / reasonable reward |
+| Epoch Treasury Payment | 100 ETHC | ensure ongoing developer/marketing funding in contraction periods |
+| Governance Period | 4 days (24 epochs) | Longer voting period invites more voters |
+| Governance Expiration |  1 day (6 epochs) | Reasonable amount of time to execute governance proposals |
 | Governance Quorum | 30% | Higher quorum supports better governance |
-| Governance Proposal Threshold | 2% | Ensure proposals have reasonable support |
+| Governance Proposal Threshold | 1% | Ensure proposals have reasonable support |
 | Governance Super-Majority | 60% | With higher quorum, a lower supermajority helps ensure passage with broader community support |
-| Governance Emergency Delay | 3 days (72 epochs) | Such delays will be rare; Ensures time to fully develop and test a solution |
-| DAO Entrance Lockup Period | 4 days (96 epochs) | Shorter period creates better liquidity for users |
-| DAO Exit Lockup Period | 7 days (168 epochs) | Longer period encourages more stable staking to expand pool equity |
-| Pool Exit Lockup Period | 4 days (96 epochs) | Improved experience for liquidity providers |
-| Coupon Expiration | 45 days (1080 epochs) | Provides longer viable period for coupon-holders to preserve against value loss in prolonged contraction |
-| Debt Ratio Cap | 20% |  |
+| Governance Emergency Delay | 3 days (18 epochs) | Such delays will be rare; Ensures time to fully develop and test a solution |
+| DAO Entrance Lockup Period | 4 days (24 epochs) | Shorter period creates better liquidity for users |
+| DAO Exit Lockup Period | 7 days (42 epochs) | Longer period encourages more stable staking to expand pool equity |
+| Pool Exit Lockup Period | 4 days (24 epochs) | Improved experience for liquidity providers |
+| Coupon Expiration | 45 days (270 epochs) | Provides longer viable period for coupon-holders to preserve against value loss in prolonged contraction |
+| Debt Ratio Cap | 24% | Greater incentive at extreme debt demand |
 | Initial Coupon Redemption Penalty | 50% | Favors earlier token burners over later thanks to a DSD improvement |
 | Coupon Redeption Penalty Delay | 1 hour |  |
-| Supply Change Limit | 0.3%/epoch or 7.2% per day | high resolution (1 hr) supply change with lower daily amount for greater stability |
+| Supply Change Limit | 1.5% /epoch | moderate expansion for greater stability |
 | Coupon Supply Limit | 6% |  |
 | Oracle Pool Ratio | 20% |  |
 | Treasury Ratio | 2.25% | Lower treasury ratio to accommodate additional creation on advance |
