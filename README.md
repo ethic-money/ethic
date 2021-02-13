@@ -140,24 +140,34 @@ Rewarding developers incentivizes them to remain with a project, uncovering bugs
 
 ## Contracts
 
-### Kovan Testnet
+### Ropsten Testnet
 
-- `0x3A29121f4D66d67432B3420c5fA5711003CB76C1` **DAO**
-- `0xb0deb36900e84Cf257325452a775fe9E81d060fb` **∉thic**
-- `0x------------` **Oracle**
-- `0x7ab1D07Dcf918d1AB6f312b50464DD5C65CA0250` **UniswapV2 DAI:ETHC Pair**
-- `0x------------` **LP Incentivation Pool**
+- `0xad6d458402f60fd3bd25163575031acdce07538d` **Maker DAI Token**
+- `0x8f9fA63fF3cc3eF3e94D1a2B6CfC8dde16a38a91` **DAO / ETHCS Token**
+- `0x086765A465EcCfb78722587932D1898182d2Aeb3` **∉thic / ETHC Token**
+- `0xA6f8379114640a80053337c4f64ad942628331d4` **Oracle**
+- `0x5ab7ff199ac6da5c1995e458698e88a4b11e56fa` **UniswapV2 DAI:ETHC Pair**
+- `0xc4bEE5f4f85617c13AFfA22bcF5FDD150A1c64c1` **LP Bonding Pool**
 - `0x88B6b8518D80ecf62C39D5A3AafaCcC4705941A7` **Community Treasury Multisig**
 
+### Kovan Testnet
 
-### Mainnet
+- `0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa` **Maker DAI Token**
+- `0x5bC5D5964CD2EE0fB452fE4d219D6f1Ec0ac781D` **DAO / ETHCS Token**
+- `0xb0deb36900e84Cf257325452a775fe9E81d060fb` **∉thic / ETHC Token**
+- `0xd62dF41A88C4b2Ba17e140a55f16d51092A292AC` **Oracle**
+- `0x7ab1D07Dcf918d1AB6f312b50464DD5C65CA0250` **UniswapV2 DAI:ETHC Pair**
+- `0xC8FFaCea42C3Cbe6747D64Ef4383D9e1a10AaBB2` **LP Bonding Pool**
+- `0x88B6b8518D80ecf62C39D5A3AafaCcC4705941A7` **Community Treasury Multisig**
 
-- `0x-----------` **DAO**
-- `0x-----------` **∉thic**
-- `0x-----------` **Oracle**
-- `0x-----------` **UniswapV2 DAI:ETHC Pair**
-- `0x-----------` **LP Incentivation Pool**
-- `0x-----------` **Community Treasury Multisig**
+### Ethereum Mainnet
+
+- `0xb5C18e59Ac0Ee2fe1a91542981DD5eFD8b6eE5C0` **DAO / ETHCS token**
+- `0x223B787a82d286BeC67b9f8068c1D679cA4cfB4a` **∉thic / ETHC token**
+- `0xaF078D6e313C833fB04fF2570ee01B08936Fe42A` **Oracle**
+- `0xdB312a0952705484F3C685074F547c877EaA244b` **UniswapV2 DAI:ETHC Pair**
+- `0x6A0AEac013f59b2440306d98bE1A8fbE82444A51` **LP Bonding Pool**
+- `0x25825313BeAd63Ab5b93Aae07f1879A6bC501F6E` **Community Treasury Multisig**
 
 ## Audit
 
@@ -187,7 +197,7 @@ As ∉thic operations accrues funds for the community treasury pool intended to 
 | **Marlon Williams** | USA |  Qubicles CEO | `0x87E592C8D476EA66329Df1801D4a45FD463A7003` |
 | **Rami James** | Israel |  Scatter Founder | `0xebc927335d9a6ae78312dda40a8d9de10c7b32fa` |
 | **George Vernon** | USA |  Crypto Investor | `0x988c844503F2740c17Cc0010A4fBbDC89D5209AA` |
-| **Douglas Horn**  [![Twitter](https://i.imgur.com/wWzX9uB.png)](https://twitter.com/Douglas_Horn) [![Github](https://i.imgur.com/9I6NRUm.png)](https://github.com/DouglasHorn)       | USA |  ETHIC Founder, Telos Architect | `0x5C327e62F735F37e7F816eEb2c8574a4ce61E003` |
+| **Douglas Horn**  [![Twitter](https://i.imgur.com/wWzX9uB.png)](https://twitter.com/Douglas_Horn) [![Github](https://i.imgur.com/9I6NRUm.png)](https://github.com/DouglasHorn)       | USA |  ∉thic Founder, Telos Architect | `0x5C327e62F735F37e7F816eEb2c8574a4ce61E003` |
 
 
 ## Disclaimer
