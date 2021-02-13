@@ -144,10 +144,10 @@ Rewarding developers incentivizes them to remain with a project, uncovering bugs
 
 - `0xad6d458402f60fd3bd25163575031acdce07538d` **Maker DAI Token**
 - `0x8f9fA63fF3cc3eF3e94D1a2B6CfC8dde16a38a91` **DAO / ETHCS Token**
-- `0xC5d9f91c0866046Da1eB4D218F131D9eac58a653` **∉thic / ETHC Token**
+- `0x086765A465EcCfb78722587932D1898182d2Aeb3` **∉thic / ETHC Token**
 - `0xA6f8379114640a80053337c4f64ad942628331d4` **Oracle**
-- `0x77843e99fef0712629f9380519831e628ebedfa1` **UniswapV2 DAI:ETHC Pair**
-- `0x12fbE8908d4db291f8CfDf13f6AE632a0336d3Ba` **LP Incentivation Pool**
+- `0x5ab7ff199ac6da5c1995e458698e88a4b11e56fa` **UniswapV2 DAI:ETHC Pair**
+- `0xc4bEE5f4f85617c13AFfA22bcF5FDD150A1c64c1` **LP Bonding Pool**
 - `0x88B6b8518D80ecf62C39D5A3AafaCcC4705941A7` **Community Treasury Multisig**
 
 ### Kovan Testnet
@@ -157,16 +157,16 @@ Rewarding developers incentivizes them to remain with a project, uncovering bugs
 - `0xb0deb36900e84Cf257325452a775fe9E81d060fb` **∉thic / ETHC Token**
 - `0xd62dF41A88C4b2Ba17e140a55f16d51092A292AC` **Oracle**
 - `0x7ab1D07Dcf918d1AB6f312b50464DD5C65CA0250` **UniswapV2 DAI:ETHC Pair**
-- `0xC8FFaCea42C3Cbe6747D64Ef4383D9e1a10AaBB2` **LP Incentivation Pool**
+- `0xC8FFaCea42C3Cbe6747D64Ef4383D9e1a10AaBB2` **LP Bonding Pool**
 - `0x88B6b8518D80ecf62C39D5A3AafaCcC4705941A7` **Community Treasury Multisig**
 
-### Mainnet
+### Ethereum Mainnet
 
-- `0x-----------` **DAO**
-- `0x-----------` **∉thic**
-- `0x-----------` **Oracle**
-- `0x-----------` **UniswapV2 DAI:ETHC Pair**
-- `0x-----------` **LP Incentivation Pool**
+- `0xb5C18e59Ac0Ee2fe1a91542981DD5eFD8b6eE5C0` **DAO / ETHCS token**
+- `0x223B787a82d286BeC67b9f8068c1D679cA4cfB4a` **∉thic / ETHC token**
+- `0xaF078D6e313C833fB04fF2570ee01B08936Fe42A` **Oracle**
+- `0xdB312a0952705484F3C685074F547c877EaA244b` **UniswapV2 DAI:ETHC Pair**
+- `0xc4bEE5f4f85617c13AFfA22bcF5FDD150A1c64c1` **LP Bonding Pool**
 - `0x25825313BeAd63Ab5b93Aae07f1879A6bC501F6E` **Community Treasury Multisig**
 
 ## Audit
