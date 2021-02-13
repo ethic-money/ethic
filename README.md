@@ -189,16 +189,6 @@ For the protection of the community, the ∉thic project will only accept develo
 
 As ∉thic operations accrues funds for the community treasury pool intended to support ongoing development and marketing efforts, these funds are deposited into an Ethereum address controlled by multisignature wallets (using the Gnosis multisig wallet contracts). The signers with the ability to approve these transactions are also openly announced individuals who will only approve transactions voted on and passed by the community. They are not developers of the protocol and their only role is to approve only valid draws from these multisig wallets. Executing any transfer requires agreement from 4 signatures of a possible 7 signers.
 
-| Signer | Country | Position | Signing Address |
-| --- | --- | --- | --- |
-| **Sukesh Tedla** | Sweden |  Chairman of Swedish Blockchain Association | `0xE2262b6a9e049E1c9E7675b32090744e7dbD8FAe` |
-| **Suvi Rinkinen** | Finland |  Telos Foundation CEO | `0x00D155bE8b97aE6590bcb868154C5636250cF1e6` |
-| **Rory Mapstone** | South Africa |  TSwaps.com creator, EOS/ZA | `0x85BFb3867FEc02bd4b138B6A8E211Ab2942a4E2C` |
-| **Marlon Williams** | USA |  Qubicles CEO | `0x87E592C8D476EA66329Df1801D4a45FD463A7003` |
-| **Rami James** | Israel |  Scatter Founder | `0xebc927335d9a6ae78312dda40a8d9de10c7b32fa` |
-| **George Vernon** | USA |  Crypto Investor | `0x988c844503F2740c17Cc0010A4fBbDC89D5209AA` |
-| **Douglas Horn**  [![Twitter](https://i.imgur.com/wWzX9uB.png)](https://twitter.com/Douglas_Horn) [![Github](https://i.imgur.com/9I6NRUm.png)](https://github.com/DouglasHorn)       | USA |  ∉thic Founder, Telos Architect | `0x5C327e62F735F37e7F816eEb2c8574a4ce61E003` |
-
 
 ## Disclaimer
 This project is an experiment in decentralize finance and monetary systems. Its contracts are unaudited but based on previously audited open source software code. These contracts operate on a blockchain with dependencies on open source software code and price oracles that are accessed by wallet applications on computer operating systems - all are built using a variety of frameworks, programming languages and code libraries believed to be reliable but outside the control of the developers. Bugs, errors and exploits unknown to the developers may exist or be discovered or introduced at any layer or step in the technology stack of components that make this application operate. All participants should take great caution when interacting with this experimental software. The loss of some or all funds contributed to this experimental system is possibilite. The developers and Treasury address multisig signers disavow any fiduciary responsibility, custodianship or legal or moral responsibilities for losses resulting from anything outside their direct, explicit, intentioned actions. 
