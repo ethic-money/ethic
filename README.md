@@ -166,7 +166,7 @@ Rewarding developers incentivizes them to remain with a project, uncovering bugs
 - `0x223B787a82d286BeC67b9f8068c1D679cA4cfB4a` **∉thic / ETHC token**
 - `0xaF078D6e313C833fB04fF2570ee01B08936Fe42A` **Oracle**
 - `0xdB312a0952705484F3C685074F547c877EaA244b` **UniswapV2 DAI:ETHC Pair**
-- `0xc4bEE5f4f85617c13AFfA22bcF5FDD150A1c64c1` **LP Bonding Pool**
+- `0xbD8f6fF11F0fe89ea94243625968747c0dA62c82` **LP Bonding Pool**
 - `0x25825313BeAd63Ab5b93Aae07f1879A6bC501F6E` **Community Treasury Multisig**
 
 ## Audit
