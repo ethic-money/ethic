@@ -187,7 +187,7 @@ For the protection of the community, the ∉thic project will only accept develo
 
 ### Community Treasury Funds Control
 
-As ∉thic operations accrues funds for the community treasury pool intended to support ongoing development and marketing efforts, these funds are deposited into an Ethereum address controlled by multisignature wallets (using the Gnosis multisig wallet contracts). The signers with the ability to approve these transactions are also openly announced individuals who will only approve transactions voted on and passed by the community. They are not developers of the protocol and their only role is to approve only valid draws from these multisig wallets. Executing any transfer requires agreement from 4 signatures of a possible 7 signers.
+As ∉thic operations accrues funds for the community treasury pool intended to support ongoing development and marketing efforts, these funds are deposited into an Ethereum address controlled by multisignature wallets (using the Gnosis multisig wallet contracts). The signers with the ability to approve these transactions will only approve transactions voted on and passed by the community. They are not developers of the protocol and their only role is to approve only valid draws from these multisig wallets. Executing any transfer requires agreement from 4 signatures of a possible 7 signers.
 
 
 ## Disclaimer
