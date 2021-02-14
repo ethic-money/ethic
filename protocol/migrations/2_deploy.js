@@ -38,7 +38,7 @@ module.exports = function(deployer) {
         break;
       case 'mainnet':
       case 'mainnet-fork':
-        await deployImplementation(deployer);
+        await deployTestnet(deployer);
         break;
       default:
         throw("Unsupported network");
