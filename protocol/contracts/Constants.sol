@@ -21,15 +21,15 @@ import "./external/Decimal.sol";
 
 library Constants {
     /* Chain */
-    uint256 private constant CHAIN_ID = 3; // Ropsten testnet.  Mainnet = 1
+    uint256 private constant CHAIN_ID = 1; //  Mainnet 
     
     /* Bootstrapping */
-    uint256 private constant BOOTSTRAPPING_PERIOD = 720; // 30 days at 24 epochs per day
+    uint256 private constant BOOTSTRAPPING_PERIOD = 120; // 7 days at 6 epochs per day
     uint256 private constant BOOTSTRAPPING_PRICE = 11e17; // 1.10 DAI
-    uint256 private constant BOOTSTRAPPING_SPEEDUP_FACTOR = 1; // Maintain epoch time at 1 hour
+    uint256 private constant BOOTSTRAPPING_SPEEDUP_FACTOR = 2; // 
     
-    /* Oracle */
-    address private constant DAI_ADDRESS = address(0xad6d458402f60fd3bd25163575031acdce07538d); // Ropsten testnet DAI address. Mainnet DAI addr = 0x6B175474E89094C44Da98b954EedeAC495271d0F
+    /* Oracle */                                   
+    address private constant DAI_ADDRESS = address(0x6B175474E89094C44Da98b954EedeAC495271d0F); //  Mainnet DAI addr 
     uint256 private constant ORACLE_RESERVE_MINIMUM = 1e10; // 10,000 DAI
     
     /* Bonding */
@@ -42,45 +42,47 @@ library Constants {
         uint256 period;
     }
     
-    uint256 private constant EPOCH_OFFSET = 8;    // test 
-    uint256 private constant EPOCH_START = 1613026800;  // GMT: Thursday, February 11, 2021 7:00:00 AM for test deployment
-    uint256 private constant EPOCH_PERIOD = 3600;
+    uint256 private constant EPOCH_OFFSET = 0;    // no offset
+    uint256 private constant EPOCH_START = 1613221200;  // Friday, Saturday, February 13, 2021 1:00:00 PM GMT 
+    uint256 private constant EPOCH_PERIOD = 14400;  // 4 hours
     
     /* Governance */
-    uint256 private constant GOVERNANCE_PERIOD = 96; // 96 epochs = 4 days
-    uint256 private constant GOVERNANCE_EXPIRATION = 23; // 23 + 1 epochs = 24 hours
+    uint256 private constant GOVERNANCE_PERIOD = 24; // 24 epochs = 4 days
+    uint256 private constant GOVERNANCE_EXPIRATION = 6; // 6 + 1 epochs = 24 hours
     uint256 private constant GOVERNANCE_QUORUM = 30e16; // 30% - higher quorum for better governance
-    uint256 private constant GOVERNANCE_PROPOSAL_THRESHOLD = 2e16; // 2% - higher proposal threshold
+    uint256 private constant GOVERNANCE_PROPOSAL_THRESHOLD = 1e16; // 1% - higher proposal threshold
     uint256 private constant GOVERNANCE_SUPER_MAJORITY = 6e17; // 60% - lower supermajority
-    uint256 private constant GOVERNANCE_EMERGENCY_DELAY = 72; // 72 epochs = 3 days
+    uint256 private constant GOVERNANCE_EMERGENCY_DELAY = 18; // 18 epochs = 3 days
     
     /* DAO */
-    uint256 private constant INCENTIVE = 8e19; // 80 ETHC total incentive
-    uint256 private constant ADVANCE_INCENTIVE = (INCENTIVE/100)*50; // 50% of incentive
-    uint256 private constant TREASURY_INCENTIVE = (INCENTIVE/100)*50; // 50% of incentive
-    uint256 private constant DAO_ENTRANCE_LOCKUP_EPOCHS = 96; // 96 epochs fluid = 4 days
-    uint256 private constant DAO_EXIT_LOCKUP_EPOCHS = 168; // 168 epochs fluid = 7 days
+    
+    uint256 private constant INITIALIZE_INCENTIVE = 2e22; // 20,000 ETHC for initial liquidity
+    uint256 private constant INCENTIVE = 4e20; // 400 ETHC total incentive
+    uint256 private constant ADVANCE_INCENTIVE = (INCENTIVE/100)*75; // 75% of incentive
+    uint256 private constant TREASURY_INCENTIVE = (INCENTIVE/100)*25; // 25% of incentive
+    uint256 private constant DAO_ENTRANCE_LOCKUP_EPOCHS = 24; // 24 epochs fluid = 4 days
+    uint256 private constant DAO_EXIT_LOCKUP_EPOCHS = 42; // 42 epochs fluid = 7 days
     
     /* Pool */
-    uint256 private constant POOL_EXIT_LOCKUP_EPOCHS = 96; // 96 epochs fluid = 4 days
+    uint256 private constant POOL_EXIT_LOCKUP_EPOCHS = 24; // 24 epochs fluid = 4 days
     
     /* Market */
-    uint256 private constant COUPON_EXPIRATION = 1080; // 1080 epochs = 45 days
-    uint256 private constant DEBT_RATIO_CAP = 2e17; // 20%
+    uint256 private constant COUPON_EXPIRATION = 270; // 270 epochs = 45 days
+    uint256 private constant DEBT_RATIO_CAP = 24e16; // 24%
     uint256 private constant INITIAL_COUPON_REDEMPTION_PENALTY = 5e17; // 50%
     uint256 private constant COUPON_REDEMPTION_PENALTY_DECAY = 3600; // 1 hour 
 
     /* Regulator */
-    uint256 private constant SUPPLY_CHANGE_LIMIT = 3e15; // 0.3% per epoch = 7.2% per day
+    uint256 private constant SUPPLY_CHANGE_LIMIT = 15e15; // 1.5% per epoch = 9% per day
     uint256 private constant COUPON_SUPPLY_CHANGE_LIMIT = 6e16; // 6%
     uint256 private constant ORACLE_POOL_RATIO = 20; // 20%
-    uint256 private constant TREASURY_RATIO = 250; // 2.5%
+    uint256 private constant TREASURY_RATIO = 225; // 2.25%
     
     /* Deployed */
-    address private constant DAO_ADDRESS = address(0x0000000000000000000000000000000000000000); // Test necessity
-    address private constant ETHIC_ADDRESS = address(0x0000000000000000000000000000000000000000); // Test necessity
-    address private constant PAIR_ADDRESS = address(0x0000000000000000000000000000000000000000); // Test necessity
-    address private constant TREASURY_ADDRESS = address(0x88B6b8518D80ecf62C39D5A3AafaCcC4705941A7); // Ropsten Testnet - update with mainnet treasury msig address
+    address private constant DAO_ADDRESS = address(0x0000000000000000000000000000000000000000); // 
+    address private constant ETHIC_ADDRESS = address(0x0000000000000000000000000000000000000000); // 
+    address private constant PAIR_ADDRESS = address(0x0000000000000000000000000000000000000000); // 
+    address private constant TREASURY_ADDRESS = address(0x25825313BeAd63Ab5b93Aae07f1879A6bC501F6E); // Gnosis Safe mainnet treasury msig address
     
     /**
      * Getters
@@ -141,6 +143,10 @@ library Constants {
     function getGovernanceEmergencyDelay() internal pure returns (uint256) {
         return GOVERNANCE_EMERGENCY_DELAY;
     }
+
+    function getInitializeIncentive() internal pure returns (uint256) {
+        return INITIALIZE_INCENTIVE;
+    } 
 
     function getAdvanceIncentive() internal pure returns (uint256) {
         return ADVANCE_INCENTIVE;

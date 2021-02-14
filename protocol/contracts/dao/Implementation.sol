@@ -31,10 +31,9 @@ contract Implementation is State, Bonding, Market, Regulator, Govern {
     event Incentivization(address indexed account, uint256 amount);
 
     function initialize() initializer public {
-        // Reward committer
-        incentivize(msg.sender, Constants.getAdvanceIncentive());
-        // Dev rewards
-
+        // Create Initial Liquidity Pool for Committer
+        incentivize(msg.sender, Constants.getInitializeIncentive());
+       
     }
 
     function advance() external {
