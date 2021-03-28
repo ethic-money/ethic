@@ -57,7 +57,7 @@ library Constants {
     /* DAO */
     
     uint256 private constant INITIALIZE_INCENTIVE = 2e22; // 20,000 ETHC for initial liquidity
-    uint256 private constant INCENTIVE = 4e20; // 400 ETHC total incentive
+    uint256 private constant INCENTIVE = 12e19; // 120 ETHC total incentive
     uint256 private constant ADVANCE_INCENTIVE = (INCENTIVE/100)*75; // 75% of incentive
     uint256 private constant TREASURY_INCENTIVE = (INCENTIVE/100)*25; // 25% of incentive
     uint256 private constant DAO_ENTRANCE_LOCKUP_EPOCHS = 24; // 24 epochs fluid = 4 days

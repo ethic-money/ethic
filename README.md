@@ -87,27 +87,27 @@ The symbol for ∉thic is the mathematical sign, **∉**, meaning "Not an elemen
 | Parameter Name | Setting | Rationale |
 | --- | --- | --- |
 | Target Denomination | Maker DAI | Standard 1 USD unit without being directly tied to any fiat USD |
-| Epoch Time | 1 hour | Smaller, more consistent adjustments |
+| Epoch Time | 4 hours | Smaller, more consistent adjustments |
 | Bonding | 100 ETHC -> 100M ETHCS | Successful for previous protocols |
 | Oracle Reserve Minimum | 10,000 DAI | Successful for previous protocols |
-| Bootstrapping Period | 45 days (1080 epochs) | Longer period with lower speedup |
+| Bootstrapping Period | 7 days (42 epochs) | Longer period with lower speedup |
 | Bootstrapping Price Target | 1.10 DAI | Successful for previous protocols |
 | Bootstrapping Speedup Factor | 2 | Lower speedup paired to longer bootstrap period |
-| Epoch Advance Reward | 40 ETHC | More frequent epochs / reasonable reward |
-| Governance Period | 4 days (96 epochs) | Longer voting period invites more voters |
-| Governance Expiration |  1 day (24 epochs) | Reasonable amount of time to execute governance proposals |
+| Epoch Advance Reward | 19.2 ETHC | Reduce bot reward and dump |
+| Governance Period | 2 days (12 epochs) | Shortened voting period for more nimble voting in case of problems |
+| Governance Expiration |  1 day (6 epochs) | Reasonable amount of time to execute governance proposals |
 | Governance Quorum | 30% | Higher quorum supports better governance |
-| Governance Proposal Threshold | 2% | Ensure proposals have reasonable support |
+| Governance Proposal Threshold | 1% | Ensure proposals have reasonable support |
 | Governance Super-Majority | 60% | With higher quorum, a lower supermajority helps ensure passage with broader community support |
-| Governance Emergency Delay | 3 days (72 epochs) | Such delays will be rare; Ensures time to fully develop and test a solution |
-| DAO Entrance Lockup Period | 4 days (96 epochs) | Shorter period creates better liquidity for users |
-| DAO Exit Lockup Period | 7 days (168 epochs) | Longer period encourages more stable staking to expand pool equity |
-| Pool Exit Lockup Period | 4 days (96 epochs) | Improved experience for liquidity providers |
-| Coupon Expiration | 45 days (1080 epochs) | Provides longer viable period for coupon-holders to preserve against value loss in prolonged contraction |
-| Debt Ratio Cap | 20% |  |
+| Governance Emergency Delay | 3 days (18 epochs) | Such delays will be rare; Ensures time to fully develop and test a solution |
+| DAO Entrance Lockup Period | 4 days (24 epochs) | Shorter period creates better liquidity for users |
+| DAO Exit Lockup Period | 7 days (42 epochs) | Longer period encourages more stable staking to expand pool equity |
+| Pool Exit Lockup Period | 4 days (24 epochs) | Improved experience for liquidity providers |
+| Coupon Expiration | 45 days (270 epochs) | Provides longer viable period for coupon-holders to preserve against value loss in prolonged contraction |
+| Debt Ratio Cap | 24% |  |
 | Initial Coupon Redemption Penalty | 50% | Favors earlier token burners over later thanks to a DSD improvement |
 | Coupon Redeption Penalty Delay | 1 hour |  |
-| Supply Change Limit | 0.3%/epoch or 7.2% per day | high resolution (1 hr) supply change with lower daily amount for greater stability |
+| Supply Change Limit | 1.5%/epoch or 9% per day | supply change with lower daily amount for greater stability |
 | Coupon Supply Limit | 6% |  |
 | Oracle Pool Ratio | 20% |  |
 | Treasury Ratio | 2.25% | Lower treasury ratio to accommodate additional creation on advance |
@@ -166,7 +166,7 @@ Rewarding developers incentivizes them to remain with a project, uncovering bugs
 - `0x223B787a82d286BeC67b9f8068c1D679cA4cfB4a` **∉thic / ETHC token**
 - `0xaF078D6e313C833fB04fF2570ee01B08936Fe42A` **Oracle**
 - `0xdB312a0952705484F3C685074F547c877EaA244b` **UniswapV2 DAI:ETHC Pair**
-- `0x6A0AEac013f59b2440306d98bE1A8fbE82444A51` **LP Bonding Pool**
+- `0x71CE74c83e88Dc19bF9BeF4db23a713444DbB6D0` **LP Bonding Pool**
 - `0x25825313BeAd63Ab5b93Aae07f1879A6bC501F6E` **Community Treasury Multisig**
 
 ## Audit
@@ -188,6 +188,16 @@ For the protection of the community, the ∉thic project will only accept develo
 ### Community Treasury Funds Control
 
 As ∉thic operations accrues funds for the community treasury pool intended to support ongoing development and marketing efforts, these funds are deposited into an Ethereum address controlled by multisignature wallets (using the Gnosis multisig wallet contracts). The signers with the ability to approve these transactions will only approve transactions voted on and passed by the community. They are not developers of the protocol and their only role is to approve only valid draws from these multisig wallets. Executing any transfer requires agreement from 4 signatures of a possible 7 signers.
+
+# Update Log
+
+The Ethic project code can be upgraded by the votes of the Ethic bonded DAO members.
+
+| # | Date | Tx Hash | Changes |
+| --- | --- | --- | --- |
+| 0 | Feb 13, 2021 | [0x86f8c2ec9d7d9de9679bbdce77d15339227bf4039aeb91bff6d2f9ebf32a4a40](https://etherscan.io/tx/0x86f8c2ec9d7d9de9679bbdce77d15339227bf4039aeb91bff6d2f9ebf32a4a40) | Original Implementation |
+| 1 | Feb 22, 2021 | [0x23898336328ccacbbbfe1e7a4e57271566e9cdcb4ca28c42134561c61f369c72](https://etherscan.io/tx/0x23898336328ccacbbbfe1e7a4e57271566e9cdcb4ca28c42134561c61f369c72) | - change Advance Fee to ∉19.8 <br> - change bootstrap period to 7 days <br> - change gov voting period to 2 days |
+
 
 
 ## Disclaimer
