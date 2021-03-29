@@ -71,6 +71,35 @@ contract Bonding is Setters, Permission {
         emit Bond(msg.sender, epoch().add(1), balance, value);
     }
 
+    function depositAndBond(uint256 value) external {
+        Require.that(
+            statusOf(msg.sender) != Account.Status.Locked,
+            FILE,
+            "Not frozen or fluid"
+        );
+
+        Require.that(
+            statusOf(msg.sender) != Account.Status.Fluid,
+            FILE,
+            "Not frozen or locked"
+        );
+
+        ethic().transferFrom(msg.sender, address(this), value);
+        incrementBalanceOfStaged(msg.sender, value);
+
+        unfreeze(msg.sender, Constants.getDAOEntranceLockupEpochs());
+
+        uint256 balance = totalBonded() == 0 ?
+            value.mul(Constants.getInitialStakeMultiple()) :
+            value.mul(totalSupply()).div(totalBonded());
+        incrementBalanceOf(msg.sender, balance);
+        incrementTotalBonded(value);
+        decrementBalanceOfStaged(msg.sender, value, "Bonding: insufficient staged balance");
+
+        emit Deposit(msg.sender, value);
+        emit Bond(msg.sender, epoch().add(1), balance, value);
+    }
+
     function unbond(uint256 value) external onlyFrozenOrFluid(msg.sender) {
         unfreeze(msg.sender, Constants.getDAOExitLockupEpochs()); // Use individual DAO exit lockups per address
 
