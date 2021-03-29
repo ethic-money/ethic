@@ -55,11 +55,10 @@ library Constants {
     uint256 private constant GOVERNANCE_EMERGENCY_DELAY = 18; // 18 epochs = 3 days
     
     /* DAO */
-    
     uint256 private constant INITIALIZE_INCENTIVE = 2e21; // 2,000 ETHC gas fees for launching update
-    uint256 private constant INCENTIVE = 4e20; // 120 ETHC total incentive
-    uint256 private constant ADVANCE_INCENTIVE = (INCENTIVE/100)*25; // 25% of incentive. 100 ETHC
-    uint256 private constant TREASURY_INCENTIVE = (INCENTIVE/100)*75; // 75% of incentive. 300 ETHC
+    uint256 private constant INCENTIVE = 4e20; // 400 ETHC total incentive
+    uint256 private constant ADVANCE_INCENTIVE = (INCENTIVE/100)*30; // 30% of incentive. 120 ETHC
+    uint256 private constant TREASURY_INCENTIVE = (INCENTIVE/100)*70; // 70% of incentive. 280 ETHC
     uint256 private constant DAO_ENTRANCE_LOCKUP_EPOCHS = 24; // 24 epochs fluid = 4 days
     uint256 private constant DAO_EXIT_LOCKUP_EPOCHS = 42; // 42 epochs fluid = 7 days
     
@@ -73,7 +72,7 @@ library Constants {
     uint256 private constant COUPON_REDEMPTION_PENALTY_DECAY = 3600; // 1 hour 
 
     /* Regulator */
-    uint256 private constant SUPPLY_CHANGE_LIMIT = 15e15; // 1.5% per epoch = 9% per day
+    uint256 private constant SUPPLY_CHANGE_LIMIT = 15e15; // 1.5% per epoch = 9.344% per day
     uint256 private constant COUPON_SUPPLY_CHANGE_LIMIT = 6e16; // 6%
     uint256 private constant ORACLE_POOL_RATIO = 20; // 20%
     uint256 private constant TREASURY_RATIO = 225; // 2.25%
