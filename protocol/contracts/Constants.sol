@@ -56,10 +56,10 @@ library Constants {
     
     /* DAO */
     
-    uint256 private constant INITIALIZE_INCENTIVE = 2e22; // 20,000 ETHC for initial liquidity
-    uint256 private constant INCENTIVE = 12e19; // 120 ETHC total incentive
-    uint256 private constant ADVANCE_INCENTIVE = (INCENTIVE/100)*75; // 75% of incentive
-    uint256 private constant TREASURY_INCENTIVE = (INCENTIVE/100)*25; // 25% of incentive
+    uint256 private constant INITIALIZE_INCENTIVE = 2e21; // 2,000 ETHC gas fees for launching update
+    uint256 private constant INCENTIVE = 4e20; // 120 ETHC total incentive
+    uint256 private constant ADVANCE_INCENTIVE = (INCENTIVE/100)*25; // 25% of incentive. 100 ETHC
+    uint256 private constant TREASURY_INCENTIVE = (INCENTIVE/100)*75; // 75% of incentive. 300 ETHC
     uint256 private constant DAO_ENTRANCE_LOCKUP_EPOCHS = 24; // 24 epochs fluid = 4 days
     uint256 private constant DAO_EXIT_LOCKUP_EPOCHS = 42; // 42 epochs fluid = 7 days
     
@@ -79,9 +79,9 @@ library Constants {
     uint256 private constant TREASURY_RATIO = 225; // 2.25%
     
     /* Deployed */
-    address private constant DAO_ADDRESS = address(0x0000000000000000000000000000000000000000); // 
-    address private constant ETHIC_ADDRESS = address(0x0000000000000000000000000000000000000000); // 
-    address private constant PAIR_ADDRESS = address(0x0000000000000000000000000000000000000000); // 
+    address private constant DAO_ADDRESS = address(0xb5C18e59Ac0Ee2fe1a91542981DD5eFD8b6eE5C0); // 
+    address private constant ETHIC_ADDRESS = address(0x223B787a82d286BeC67b9f8068c1D679cA4cfB4a); // 
+    address private constant PAIR_ADDRESS = address(0xdB312a0952705484F3C685074F547c877EaA244b); // 
     address private constant TREASURY_ADDRESS = address(0x25825313BeAd63Ab5b93Aae07f1879A6bC501F6E); // Gnosis Safe mainnet treasury msig address
     
     /**

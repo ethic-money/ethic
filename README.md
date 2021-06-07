@@ -93,7 +93,7 @@ The symbol for ∉thic is the mathematical sign, **∉**, meaning "Not an elemen
 | Bootstrapping Period | 7 days (42 epochs) | Longer period with lower speedup |
 | Bootstrapping Price Target | 1.10 DAI | Successful for previous protocols |
 | Bootstrapping Speedup Factor | 2 | Lower speedup paired to longer bootstrap period |
-| Epoch Advance Reward | 19.2 ETHC | Reduce bot reward and dump |
+| Epoch Advance Reward | 100 ETHC | Reduce bot reward and dump |
 | Governance Period | 2 days (12 epochs) | Shortened voting period for more nimble voting in case of problems |
 | Governance Expiration |  1 day (6 epochs) | Reasonable amount of time to execute governance proposals |
 | Governance Quorum | 30% | Higher quorum supports better governance |
@@ -112,9 +112,9 @@ The symbol for ∉thic is the mathematical sign, **∉**, meaning "Not an elemen
 | Oracle Pool Ratio | 20% |  |
 | Treasury Ratio | 2.25% | Lower treasury ratio to accommodate additional creation on advance |
 
-## Dashboard
+## Interface
 
-A simple [dashboard](https://github.com/ethic-money/ethic-dashboard) for interacting with the ∉thic protocol.
+A simple [Interface](https://app.ethic.money) for interacting with the ∉thic protocol.
 
 ## Litepaper
 
